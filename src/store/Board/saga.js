@@ -2,11 +2,7 @@ import { all, takeLatest, call, put } from 'redux-saga/effects'
 import { getToken } from '../../helpers/session'
 import {
   SINGLE_HELP,
-  GET_HINT_BEST_MOVES,
-  GET_HINT_SHOW_BEST,
-  GET_HINT_HEATMAP_FULL,
   MAP_HELP,
-  GET_HINT_HEATMAP_ZONE,
   SCORES_WINNER,
   GET_SCORES_WINNER,
 } from './types'
@@ -16,13 +12,36 @@ import {
   helpHeatmapFull,
   helpHeatmapZone,
   scoresWinner,
+  helpBestMovesEnemy,
 } from '../../api/board'
+import { HintTypes } from './decl'
 
 function* fetchGetHintBestMoves_saga(action) {
   const { payload } = action
   try {
     const res = yield call(
       helpBestMoves,
+      getToken(),
+      payload.game_id,
+      payload.count
+    )
+    if (res.hint) {
+      let newObj = {}
+      res.hint.forEach((key, i) => {
+        newObj[key.move] = i + 1
+      })
+      yield put({ type: SINGLE_HELP, payload: newObj })
+    }
+  } catch (e) {
+    //throw e;
+  }
+}
+
+function* fetchGetHintBestMovesEnemy_saga(action) {
+  const { payload } = action
+  try {
+    const res = yield call(
+      helpBestMovesEnemy,
       getToken(),
       payload.game_id,
       payload.count
@@ -104,10 +123,14 @@ function* fetchGetHintScoresWinner_saga(action) {
 
 export function* boardSaga() {
   yield all([
-    takeLatest(GET_HINT_BEST_MOVES, fetchGetHintBestMoves_saga),
-    takeLatest(GET_HINT_SHOW_BEST, fetchGetHintShowBest_saga),
-    takeLatest(GET_HINT_HEATMAP_FULL, fetchGetHintHeatmapFull_saga),
-    takeLatest(GET_HINT_HEATMAP_ZONE, fetchGetHintHeatmapZone_saga),
+    takeLatest(HintTypes.GET_HINT_BEST_MOVES, fetchGetHintBestMoves_saga),
+    takeLatest(HintTypes.GET_HINT_SHOW_BEST, fetchGetHintShowBest_saga),
+    takeLatest(HintTypes.GET_HINT_HEATMAP_FULL, fetchGetHintHeatmapFull_saga),
+    takeLatest(HintTypes.GET_HINT_HEATMAP_ZONE, fetchGetHintHeatmapZone_saga),
     takeLatest(GET_SCORES_WINNER, fetchGetHintScoresWinner_saga),
+    takeLatest(
+      HintTypes.GET_HINT_BEST_MOVES_ENEMY,
+      fetchGetHintBestMovesEnemy_saga
+    ),
   ])
 }

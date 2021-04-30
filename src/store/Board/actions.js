@@ -4,18 +4,14 @@ import {
   MULTIPLE_HELP,
   WINNER_USER,
   LOSER_USER,
-  GET_HINT_BEST_MOVES,
-  GET_HINT_SHOW_BEST,
-  GET_HINT_HEATMAP_FULL,
-  GET_HINT_HEATMAP,
-  GET_HINT_HEATMAP_ZONE,
   SET_BLOCKED,
   MAP_STONES,
   GET_SCORES_WINNER,
 } from './types'
+import { HintTypes } from './decl'
 
 export const hintHeatmapFull = (game_id) => ({
-  type: GET_HINT_HEATMAP_FULL,
+  type: HintTypes.GET_HINT_HEATMAP_FULL,
   payload: { game_id: game_id },
 })
 
@@ -57,21 +53,26 @@ export const setScoresWinner = (game_id) => ({
 })
 
 export const hintBestMoves = (game_id, count) => ({
-  type: GET_HINT_BEST_MOVES,
+  type: HintTypes.GET_HINT_BEST_MOVES,
+  payload: { game_id: game_id, count: count },
+})
+
+export const hintBestMovesEnemy = (game_id, count) => ({
+  type: HintTypes.GET_HINT_BEST_MOVES_ENEMY,
   payload: { game_id: game_id, count: count },
 })
 
 export const hintShowBest = (game_id, moves) => ({
-  type: GET_HINT_SHOW_BEST,
+  type: HintTypes.GET_HINT_SHOW_BEST,
   payload: { game_id: game_id, moves: moves },
 })
 
 export const hintHeatmap = (game_id) => ({
-  type: GET_HINT_HEATMAP,
+  type: HintTypes.GET_HINT_HEATMAP,
   payload: { game_id: game_id },
 })
 
 export const hintHeatmapZone = (game_id, isQuarter) => ({
-  type: GET_HINT_HEATMAP_ZONE,
+  type: HintTypes.GET_HINT_HEATMAP_ZONE,
   payload: { game_id: game_id, isQuarter },
 })

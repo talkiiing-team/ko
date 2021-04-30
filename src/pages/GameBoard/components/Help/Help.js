@@ -1,7 +1,7 @@
 import React from 'react'
 import styled from 'styled-components'
 import Players from '../GameInfo/components/Players/Players'
-import { HEATMAP_FULL, HEATMAP_ZONE_QUARTER } from './types'
+import { HelpTypes } from './decl'
 
 const Wrapper = styled.div`
   width: 46%;
@@ -54,43 +54,57 @@ const Help = ({
       />
       <HelpWrapper>
         <HelpItem
-          active={activeHelpId === 1}
+          active={activeHelpId === HelpTypes.BEST_MOVES}
           onClick={() =>
-            scores && handleHelp({ type: 'single', id: 1, count: 1 })
+            scores && handleHelp({ type: 'single', id: HelpTypes.BEST_MOVES, count: 1 })
           }
         >
           Лучший ход
         </HelpItem>
         <HelpItem
-          active={activeHelpId === HEATMAP_FULL}
+          active={activeHelpId === HelpTypes.BEST_MOVES_ENEMY}
           onClick={() =>
-            scores && handleHelp({ type: 'map', id: HEATMAP_FULL })
+            scores && handleHelp({ type: 'single', id: HelpTypes.BEST_MOVES_ENEMY, count: 1 })
+          }
+        >
+          Лучший ход соперника
+        </HelpItem>
+        <HelpItem
+          active={activeHelpId === HelpTypes.HEATMAP_FULL}
+          onClick={() =>
+            scores && handleHelp({ type: 'map', id: HelpTypes.HEATMAP_FULL })
           }
         >
           Тепловая карта всей доски. Детализированная
         </HelpItem>
         <HelpItem
-          active={activeHelpId === 16}
+          active={activeHelpId === HelpTypes.SELECT_BEST_MOVES}
           onClick={() =>
             scores &&
-            handleHelp({ type: 'multiple', multipleHandleCount: 4, id: 16 })
+            handleHelp({ type: 'multiple', multipleHandleCount: 4, id: HelpTypes.SELECT_BEST_MOVES })
           }
         >
           Показать лучший из заданных 3 ходов
         </HelpItem>
         <HelpItem
-          active={activeHelpId === HEATMAP_ZONE_QUARTER}
+          active={activeHelpId === HelpTypes.HEATMAP_ZONE_QUARTER}
           onClick={() =>
-            scores && handleHelp({ type: 'map', id: HEATMAP_ZONE_QUARTER })
+            scores && handleHelp({ type: 'map', id: HelpTypes.HEATMAP_ZONE_QUARTER })
           }
         >
           В какой четверти доски сейчас лучший ход?
         </HelpItem>
         <HelpItem
-          active={activeHelpId === 34}
-          onClick={() => scores && handleHelp({ type: 'score', id: 34 })}
+          active={activeHelpId === HelpTypes.PRED_SUPERIOR}
+          onClick={() => scores && handleHelp({ type: 'score', id: HelpTypes.PRED_SUPERIOR })}
         >
-          Кто побеждает на данный момент?
+          Кто лидирует?
+        </HelpItem>
+        <HelpItem
+          active={activeHelpId === HelpTypes.PRED_WINNER}
+          onClick={() => scores && handleHelp({ type: 'score', id: HelpTypes.PRED_WINNER })}
+        >
+          Кого можно назвать победителем сейчас?
         </HelpItem>
       </HelpWrapper>
     </Wrapper>

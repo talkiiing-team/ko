@@ -15,13 +15,12 @@ import {
   setBlocked,
   hintShowBest,
   setScoresWinner,
-  hintBestMoves,
+  hintBestMoves, hintBestMovesEnemy,
 } from '../../store/Board/actions'
 
 import { clearGameId } from '../../store/GameCreate/actions'
 
 import { client, token } from '../../Socket.js'
-import { HEATMAP_FULL, HEATMAP_ZONE_QUARTER } from './components/Help/types'
 
 const Wrapper = styled.div`
   max-width: 1377px;
@@ -243,7 +242,14 @@ const GameBoard = ({ history }) => {
     if (type === 'single') {
       dispatch(setBlocked(true))
       setHelpType('single')
-      dispatch(hintBestMoves(game_id, count))
+      switch (id) {
+        case HelpTypes.BEST_MOVES:
+          dispatch(hintBestMoves(game_id, count))
+          break
+        case HelpTypes.BEST_MOVES_ENEMY:
+          dispatch(hintBestMovesEnemy(game_id, count))
+          break
+      }
     }
     if (type === 'multiple') {
       setHelpType('multiple')
@@ -255,10 +261,10 @@ const GameBoard = ({ history }) => {
       setHelpType('map')
       setMapType('map')
       switch (id) {
-        case HEATMAP_FULL:
+        case HelpTypes.HEATMAP_FULL:
           dispatch(hintHeatmapFull(game_id))
           break
-        case HEATMAP_ZONE_QUARTER:
+        case HelpTypes.HEATMAP_ZONE_QUARTER:
           dispatch(hintHeatmapZone(game_id, true))
           break
       }
