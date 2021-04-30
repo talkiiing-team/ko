@@ -5,5 +5,5 @@ import { gameCreateSaga } from './GameCreate/saga'
 import { profileSaga } from './Profile/saga'
 
 export function* storyStart() {
-    yield all([authSaga(), profileSaga(), boardSaga(), gameCreateSaga()])
+  yield all([authSaga(), profileSaga(), boardSaga(), gameCreateSaga()])
 }

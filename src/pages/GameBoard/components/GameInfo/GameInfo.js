@@ -10,14 +10,32 @@ const Wrapper = styled.div`
   flex-direction: column;
 `
 
-
-const GameInfo = ({ stepColor, enemyPass, yourColor, you, opponent, turns, stepMain, stepTwo, times }) => {
-    return (
-        <Wrapper>
-            <Players enemyPass={enemyPass} opponent={opponent} you={you} stepColor={stepColor} yourColor={yourColor} stepMain={stepMain} stepTwo={stepTwo} times={times} />
-            <Info turns={turns}/>
-        </Wrapper>
-    )
+const GameInfo = ({
+  stepColor,
+  enemyPass,
+  yourColor,
+  you,
+  opponent,
+  turns,
+  stepMain,
+  stepTwo,
+  times,
+}) => {
+  return (
+    <Wrapper>
+      <Players
+        enemyPass={enemyPass}
+        opponent={opponent}
+        you={you}
+        stepColor={stepColor}
+        yourColor={yourColor}
+        stepMain={stepMain}
+        stepTwo={stepTwo}
+        times={times}
+      />
+      <Info turns={turns} />
+    </Wrapper>
+  )
 }
 
 export default GameInfo

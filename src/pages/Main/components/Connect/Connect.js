@@ -41,37 +41,38 @@ const Avatar = styled.img`
 `
 
 export const Connect = ({ text, history, opponent }) => {
+  const [seconds, setSeconds] = useState(0)
 
-    const [seconds, setSeconds] = useState(0)
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setSeconds((seconds) => seconds + 1)
+    }, 1000)
+    return () => clearInterval(interval)
+  }, [])
 
-    useEffect(() => {
-        const interval = setInterval(() => {
-            setSeconds((seconds) => seconds + 1)
-        }, 1000)
-        return () => clearInterval(interval)
-    }, [])
+  useEffect(() => {
+    if (seconds === 1) {
+      history.push(GAME_URL)
+    }
+  }, [seconds])
 
-    useEffect(() => {
-        if (seconds === 1) {
-            history.push(GAME_URL)
-        }
-    }, [seconds])
-
-    return (
-        <>
-            <Enemy>
-                <Info>
-                    <Avatar alt="avatar" src={opponent.avatar} />
-                    <Name>{opponent.nickname}</Name>
-                    <ScoreWrapper>
-                        <Pts>{opponent.pts}</Pts>
-                        <Pts>\</Pts>
-                        <Pts>{opponent.position+'th'}</Pts>
-                    </ScoreWrapper>
-                </Info>
-            </Enemy>
-            <Text>{text}</Text>
-            <ButtonCustom width={'350px'} disabled>Отмена</ButtonCustom>
-        </>
-    )
+  return (
+    <>
+      <Enemy>
+        <Info>
+          <Avatar alt="avatar" src={opponent.avatar} />
+          <Name>{opponent.nickname}</Name>
+          <ScoreWrapper>
+            <Pts>{opponent.pts}</Pts>
+            <Pts>\</Pts>
+            <Pts>{opponent.position + 'th'}</Pts>
+          </ScoreWrapper>
+        </Info>
+      </Enemy>
+      <Text>{text}</Text>
+      <ButtonCustom width={'350px'} disabled>
+        Отмена
+      </ButtonCustom>
+    </>
+  )
 }

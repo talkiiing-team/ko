@@ -19,28 +19,27 @@ const Info = styled.div`
   align-items: center;
 `
 
-const ErrorImg = styled.img`
-`
+const ErrorImg = styled.img``
 
 export const Error = ({ setSearchType, error }) => {
-    return (
-        <>
-            <Content>
-                <Info>
-                    <ErrorImg alt="error" src={ErrorImage} />
-                    <ErrorText>{error}</ErrorText>
-                </Info>
-            </Content>
-            <ButtonCustom
-                width="327px"
-                mb={30}
-                onClick={() => {
-                    setSearchType('')
-                }}
-            >
+  return (
+    <>
+      <Content>
+        <Info>
+          <ErrorImg alt="error" src={ErrorImage} />
+          <ErrorText>{error}</ErrorText>
+        </Info>
+      </Content>
+      <ButtonCustom
+        width="327px"
+        mb={30}
+        onClick={() => {
+          setSearchType('')
+        }}
+      >
         В меню
-            </ButtonCustom>
-            <ButtonCustom width="327px">Попробовать еще раз</ButtonCustom>
-        </>
-    )
+      </ButtonCustom>
+      <ButtonCustom width="327px">Попробовать еще раз</ButtonCustom>
+    </>
+  )
 }

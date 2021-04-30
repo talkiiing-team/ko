@@ -5,7 +5,7 @@ const Btn = styled.button`
   width: ${(props) => (props.width ? props.width : '100%')};
   font-weight: ${(props) => (props.fontWeight ? props.fontWeight : 400)};
   text-align: ${(props) => (props.textAlign ? props.textAlign : 'center')};
-  font-family: "Roboto", sans-serif;
+  font-family: 'Roboto', sans-serif;
   padding: ${(props) => (props.padding ? props.padding : '0')};
   height: ${(props) => (props.height ? props.height : '62px')};
   display: block;
@@ -16,13 +16,13 @@ const Btn = styled.button`
   margin-top: ${(props) => (props.mt ? `${props.mt}px` : '0')};
   margin-bottom: ${(props) => (props.mb ? `${props.mb}px` : '0')};
   background-color: ${(props) =>
-        props.disabled
-            ? '#DEDEDE'
-            : props.backgroundColor
-                ? props.backgroundColor
-                : '#FFE3BA'};
+    props.disabled
+      ? '#DEDEDE'
+      : props.backgroundColor
+      ? props.backgroundColor
+      : '#FFE3BA'};
   color: ${(props) =>
-        props.disabled ? '#9b9b9b' : props.textColor ? props.textColor : '#000'};
+    props.disabled ? '#9b9b9b' : props.textColor ? props.textColor : '#000'};
   cursor: pointer;
   font-size: ${(props) => (props.fontSize ? props.fontSize : '28px')};
   border: none;
@@ -32,40 +32,40 @@ const Btn = styled.button`
 `
 
 export const ButtonCustom = ({
-    children,
-    width,
-    fontWeight,
-    textAlign,
-    padding,
-    height,
-    mr,
-    fontSize,
-    ml,
-    mt,
-    mb,
-    backgroundColor,
-    textColor,
-    disabled,
-    type,
-    onClick
+  children,
+  width,
+  fontWeight,
+  textAlign,
+  padding,
+  height,
+  mr,
+  fontSize,
+  ml,
+  mt,
+  mb,
+  backgroundColor,
+  textColor,
+  disabled,
+  type,
+  onClick,
 }) => (
-    <Btn
-        width={width}
-        fontWeight={fontWeight}
-        textAlign={textAlign}
-        padding={padding}
-        fontSize={fontSize}
-        height={height}
-        mr={mr}
-        ml={ml}
-        mt={mt}
-        mb={mb}
-        backgroundColor={backgroundColor}
-        textColor={textColor}
-        disabled={disabled}
-        type={type}
-        onClick={onClick}
-    >
-        {children}
-    </Btn>
+  <Btn
+    width={width}
+    fontWeight={fontWeight}
+    textAlign={textAlign}
+    padding={padding}
+    fontSize={fontSize}
+    height={height}
+    mr={mr}
+    ml={ml}
+    mt={mt}
+    mb={mb}
+    backgroundColor={backgroundColor}
+    textColor={textColor}
+    disabled={disabled}
+    type={type}
+    onClick={onClick}
+  >
+    {children}
+  </Btn>
 )

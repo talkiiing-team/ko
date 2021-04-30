@@ -20,7 +20,7 @@ const InputCustom = styled.input`
   font-size: ${(props) => (props.fontSize ? props.fontSize : '28px')};
   text-align: ${(props) => (props.textAlign ? props.textAlign : 'inherit')};
   padding: ${(props) => (props.padding ? props.padding : '0 27px')};
-  position: "relative";
+  position: 'relative';
   &::placeholder {
     font-size: ${(props) => (props.fontSize ? props.fontSize : '28px')};
     color: ${(props) => (props.color ? props.color : '#838383')};
@@ -35,46 +35,46 @@ const ErrorText = styled.p`
 `
 
 export const Input = ({
-    mb,
-    mr,
-    mt,
-    ml,
-    noError,
-    errorMessage,
-    width,
-    height,
-    outline,
-    background,
-    border,
-    fontSize,
-    color,
-    placeholder,
-    onChange,
-    disabled,
-    name,
-    value,
-    padding,
-    type,
-    textAlign,
+  mb,
+  mr,
+  mt,
+  ml,
+  noError,
+  errorMessage,
+  width,
+  height,
+  outline,
+  background,
+  border,
+  fontSize,
+  color,
+  placeholder,
+  onChange,
+  disabled,
+  name,
+  value,
+  padding,
+  type,
+  textAlign,
 }) => (
-    <InputWrapper mb={mb} ml={ml} mt={mt} mr={mr}>
-        <InputCustom
-            width={width}
-            height={height}
-            outline={outline}
-            background={background}
-            border={border}
-            fontSize={fontSize}
-            color={color}
-            name={name}
-            placeholder={placeholder}
-            padding={padding}
-            value={value}
-            disabled={disabled}
-            type={type}
-            textAlign={textAlign}
-            onChange={(event) => onChange(event.target.value, event)}
-        />
-        {noError ? <ErrorText>{errorMessage}</ErrorText> : null}
-    </InputWrapper>
+  <InputWrapper mb={mb} ml={ml} mt={mt} mr={mr}>
+    <InputCustom
+      width={width}
+      height={height}
+      outline={outline}
+      background={background}
+      border={border}
+      fontSize={fontSize}
+      color={color}
+      name={name}
+      placeholder={placeholder}
+      padding={padding}
+      value={value}
+      disabled={disabled}
+      type={type}
+      textAlign={textAlign}
+      onChange={(event) => onChange(event.target.value, event)}
+    />
+    {noError ? <ErrorText>{errorMessage}</ErrorText> : null}
+  </InputWrapper>
 )

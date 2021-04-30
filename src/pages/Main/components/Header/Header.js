@@ -88,61 +88,70 @@ const Search = styled.img`
 `
 
 export const Header = ({
-    history,
-    setSearchType,
-    searchType,
-    nickname,
-    pts,
-    winrate,
-    avatar,
-    profile,
-    setNicknameFunc
+  history,
+  setSearchType,
+  searchType,
+  nickname,
+  pts,
+  winrate,
+  avatar,
+  profile,
+  setNicknameFunc,
 }) => (
-    <Wrapper>
-        <Left
-            onClick={() => {
-                if (searchType !== 'ConnectRandom' && searchType !== 'ConnectCode') {
-                    history.push(MAIN_URL)
-                    setSearchType('')
-                }
-            }}
+  <Wrapper>
+    <Left
+      onClick={() => {
+        if (searchType !== 'ConnectRandom' && searchType !== 'ConnectCode') {
+          history.push(MAIN_URL)
+          setSearchType('')
+        }
+      }}
+    >
+      <Logotype alt="logo" src={Logo} />
+    </Left>
+    {!profile ? (
+      <Right>
+        <RightContent
+          onClick={() => {
+            if (
+              searchType !== 'ConnectRandom' &&
+              searchType !== 'ConnectCode'
+            ) {
+              history.push(PROFILE_URL)
+              setSearchType('')
+            }
+          }}
         >
-            <Logotype alt="logo" src={Logo} />
-        </Left>
-        {!profile ? (
-            <Right>
-                <RightContent onClick={() => {
-                    if (searchType !== 'ConnectRandom' && searchType !== 'ConnectCode') {
-                        history.push(PROFILE_URL)
-                        setSearchType('')
-                    }
-                }}>
-                    <Info>
-                        <Name>{nickname || ''}</Name>
-                        <ScoreWrapper>
-                            <Pts style={{ marginRight: 16 }}>{pts || 0}pts</Pts>
-                            <Pts>{winrate || ''}</Pts>
-                        </ScoreWrapper>
-                    </Info>
-                    <Avatar alt="avatar" src={avatar} />
-                </RightContent>
-            </Right>
-        ) : (
-            <RightSearch>
-                <Input
-                    onChange={(e) => setNicknameFunc(e)}
-                    width="500px"
-                    mr={40}
-                    textAlign="left"
-                    placeholder="Введите ник или номер игрока"
-                />
-                <ButtonCustom width="auto" onClick={() => {
-                    history.push(MAIN_URL)
-                    setSearchType('')
-                }} padding="0 20px">
+          <Info>
+            <Name>{nickname || ''}</Name>
+            <ScoreWrapper>
+              <Pts style={{ marginRight: 16 }}>{pts || 0}pts</Pts>
+              <Pts>{winrate || ''}</Pts>
+            </ScoreWrapper>
+          </Info>
+          <Avatar alt="avatar" src={avatar} />
+        </RightContent>
+      </Right>
+    ) : (
+      <RightSearch>
+        <Input
+          onChange={(e) => setNicknameFunc(e)}
+          width="500px"
+          mr={40}
+          textAlign="left"
+          placeholder="Введите ник или номер игрока"
+        />
+        <ButtonCustom
+          width="auto"
+          onClick={() => {
+            history.push(MAIN_URL)
+            setSearchType('')
+          }}
+          padding="0 20px"
+        >
           Меню
-                </ButtonCustom>
-            </RightSearch>
-        )}
-    </Wrapper>
+        </ButtonCustom>
+      </RightSearch>
+    )}
+  </Wrapper>
 )

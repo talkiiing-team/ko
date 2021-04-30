@@ -7,15 +7,15 @@ import { profileReducer } from './Profile/reducers'
 import { createGameReducer } from './GameCreate/reducers'
 
 export const createReduxStore = () => {
-    const reducer = combineReducers({
-        auth: authReducer,
-        board: boardReducer,
-        profile: profileReducer,
-        createGame: createGameReducer
-    })
-    const sagaMiddleware = createSagaMiddleware()
-    const middleware = [sagaMiddleware]
-    const store = createStore(reducer, compose(applyMiddleware(...middleware)))
-    sagaMiddleware.run(storyStart)
-    return store
+  const reducer = combineReducers({
+    auth: authReducer,
+    board: boardReducer,
+    profile: profileReducer,
+    createGame: createGameReducer,
+  })
+  const sagaMiddleware = createSagaMiddleware()
+  const middleware = [sagaMiddleware]
+  const store = createStore(reducer, compose(applyMiddleware(...middleware)))
+  sagaMiddleware.run(storyStart)
+  return store
 }

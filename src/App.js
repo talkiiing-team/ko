@@ -6,12 +6,11 @@ import Routes from './routes'
 const store = createReduxStore()
 
 const App = () => {
-
-    return (
-        <Provider store={store}>
-            <Routes />
-        </Provider>
-    )
+  return (
+    <Provider store={store}>
+      <Routes />
+    </Provider>
+  )
 }
 
 export default App

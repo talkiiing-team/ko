@@ -57,91 +57,91 @@ const Span = styled.p`
 `
 
 const Auth = () => {
-    const [activeTab, setActiveTab] = useState('reg')
-    const [email, setEmail] = useState('')
-    const [nickname, setNickname] = useState('')
-    const [password, setPassword] = useState('')
-    const [error, setError] = useState('')
-    const dispatch = useDispatch()
+  const [activeTab, setActiveTab] = useState('reg')
+  const [email, setEmail] = useState('')
+  const [nickname, setNickname] = useState('')
+  const [password, setPassword] = useState('')
+  const [error, setError] = useState('')
+  const dispatch = useDispatch()
 
-    const handleAuth = async (e) => {
-        e.preventDefault()
-        if (activeTab === 'reg') {
-            if (!email || !nickname) {
-                setError('Заполните все поля')
-            } else {
-                setError('')
-                await dispatch(regSubmit(nickname, email))
-            }
-        }
-        if (activeTab === 'auth') {
-            if (!email || !password) {
-                setError('Заполните все поля')
-            } else {
-                setError('')
-                // setToken(register(email, nickname)
-                await dispatch(loginSubmit(password, email))
-            }
-        }
+  const handleAuth = async (e) => {
+    e.preventDefault()
+    if (activeTab === 'reg') {
+      if (!email || !nickname) {
+        setError('Заполните все поля')
+      } else {
+        setError('')
+        await dispatch(regSubmit(nickname, email))
+      }
     }
+    if (activeTab === 'auth') {
+      if (!email || !password) {
+        setError('Заполните все поля')
+      } else {
+        setError('')
+        // setToken(register(email, nickname)
+        await dispatch(loginSubmit(password, email))
+      }
+    }
+  }
 
-    return (
-        <Wrapper>
-            <Top>
-                <Logotype alt="logo" src={Logo} />
-            </Top>
-            <Container>
-                <Form onSubmit={handleAuth}>
-                    <Tabs>
-                        <Tab
-                            onClick={() => setActiveTab('reg')}
-                            active={activeTab === 'reg'}
-                        >
+  return (
+    <Wrapper>
+      <Top>
+        <Logotype alt="logo" src={Logo} />
+      </Top>
+      <Container>
+        <Form onSubmit={handleAuth}>
+          <Tabs>
+            <Tab
+              onClick={() => setActiveTab('reg')}
+              active={activeTab === 'reg'}
+            >
               Зарегистрироваться
-                        </Tab>
-                        <Span>\</Span>
-                        <Tab
-                            onClick={() => setActiveTab('auth')}
-                            active={activeTab === 'auth'}
-                        >
+            </Tab>
+            <Span>\</Span>
+            <Tab
+              onClick={() => setActiveTab('auth')}
+              active={activeTab === 'auth'}
+            >
               Войти
-                        </Tab>
-                    </Tabs>
-                    <Input
-                        mt={20}
-                        type="email"
-                        placeholder="Email"
-                        onChange={setEmail}
-                        value={email}
-                        name="email"
-                    />
-                    {activeTab === 'reg' ? (
-                        <Input
-                            mt={10}
-                            mb={30}
-                            placeholder="Nickname"
-                            onChange={setNickname}
-                            value={nickname}
-                            errorMessage={error}
-                            name="nickname"
-                        />
-                    ) : (
-                        <Input
-                            mt={10}
-                            mb={30}
-                            placeholder="Password"
-                            onChange={setPassword}
-                            value={password}
-                            errorMessage={error}
-                            name="password"
-                            type="password"
-                        />
-                    )}
-                    <ButtonCustom type="submit">Далее</ButtonCustom>
-                </Form>
-            </Container>
-        </Wrapper>
-    )
+            </Tab>
+          </Tabs>
+          <Input
+            mt={20}
+            type="email"
+            placeholder="Email"
+            onChange={setEmail}
+            value={email}
+            name="email"
+          />
+          {activeTab === 'reg' ? (
+            <Input
+              mt={10}
+              mb={30}
+              placeholder="Nickname"
+              onChange={setNickname}
+              value={nickname}
+              errorMessage={error}
+              name="nickname"
+            />
+          ) : (
+            <Input
+              mt={10}
+              mb={30}
+              placeholder="Password"
+              onChange={setPassword}
+              value={password}
+              errorMessage={error}
+              name="password"
+              type="password"
+            />
+          )}
+          <ButtonCustom type="submit">Далее</ButtonCustom>
+        </Form>
+      </Container>
+    </Wrapper>
+  )
 }
 
 export default Auth
