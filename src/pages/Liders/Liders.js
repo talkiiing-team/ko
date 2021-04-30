@@ -40,11 +40,11 @@ const Name = styled.div`
   position: relative;
   display: flex;
   align-items: center;
-  :after {
-    content: "";
+  :after{
+    content: '';
     width: 100%;
     height: 1px;
-    background: #c4c4c4;
+    background: #C4C4C4;
     position: absolute;
     left: 0;
     z-index: -1;
@@ -55,7 +55,7 @@ const SubName = styled.div`
   font-weight: bold;
   padding: 0 10px;
   font-size: 20px;
-  background-color: #fff;
+  background-color: #FFF;
   z-index: 10;
 `;
 const Rating = styled.div`
@@ -64,8 +64,8 @@ const Rating = styled.div`
   position: relative;
   display: flex;
   align-items: center;
-  :after {
-    content: "";
+  :after{
+    content: '';
     width: 100%;
     height: 1px;
     background: #000000;
@@ -77,7 +77,7 @@ const Rating = styled.div`
 const Rate = styled.div`
   width: auto;
   color: #797979;
-  background-color: #fff;
+  background-color: #FFF;
   position: relative;
   z-index: 10;
   padding: 0 10px;
@@ -97,28 +97,23 @@ const Green = styled.div`
 `;
 
 export const Liders = ({ history }) => {
+
   const dispatch = useDispatch();
-  const [nickname, setNickname] = useState("");
-  const [list, setList] = useState([]);
+  const [nickname, setNickname] = useState('')
+  const [list, setList] = useState([])
   const liders = useSelector((state) => state.profile.liders);
 
   useEffect(() => {
-    dispatch(getLiders());
-  }, []);
+    dispatch(getLiders())
+  }, [])
 
   useEffect(() => {
-    if (nickname && nickname !== "") {
-      setList(
-        liders.filter(
-          (item) =>
-            item.nickname.indexOf(nickname) !== -1 ||
-            item.id.toString().indexOf(nickname) !== -1
-        )
-      );
+    if (nickname && (nickname !== '')) {
+      setList(liders.filter(item => item.nickname.indexOf(nickname) !== -1 || item.id.toString().indexOf(nickname) !== -1));
     } else {
-      setList(liders);
+      setList(liders)
     }
-  }, [nickname, liders]);
+  }, [nickname, liders])
 
   return (
     <Wrapper>
@@ -129,28 +124,34 @@ export const Liders = ({ history }) => {
         setNicknameFunc={(val) => setNickname(val)}
       />
       <LidersCont>
-        {list.map((item, i) => {
-          return (
-            <Lider key={i}>
-              <LiderImg src={item.avatar} />
-              <Name>
-                <SubName>
-                  {item.id} - {item.nickname}
-                </SubName>
-              </Name>
-              <Rating>
-                <Rate>
-                  {item.pts}pts / {item?.position}th
-                </Rate>
-              </Rating>
-              <Scores>
-                <Red>{item.winrate.split("/")[0]}</Red>
-                &nbsp;/&nbsp;
-                <Green>{item.winrate.split("/")[1]}</Green>
-              </Scores>
-            </Lider>
-          );
-        })}
+        {
+          list.map((item, i) => {
+            return (
+              <Lider key={i}>
+                <LiderImg src={item.avatar} />
+                <Name>
+                  <SubName>
+                    {item.id} - {item.nickname}
+                  </SubName>
+                </Name>
+                <Rating>
+                  <Rate>
+                    {item.pts}pts / {item?.position}th
+                  </Rate>
+                </Rating>
+                <Scores>
+                  <Red>
+                    {item.winrate.split('/')[0]}
+                  </Red>
+                  &nbsp;/&nbsp;
+                  <Green>
+                    {item.winrate.split('/')[1]}
+                  </Green>
+                </Scores>
+              </Lider>
+            )
+          })
+        }
       </LidersCont>
     </Wrapper>
   );

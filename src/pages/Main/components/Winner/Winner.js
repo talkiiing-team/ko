@@ -76,24 +76,24 @@ const Avatar = styled.img`
   width: 150px;
 `;
 
-export const Winner = ({ setSearchType }) => {
-  const [player, setPlayer] = useState({});
+export const Winner = ({setSearchType}) => {
+  const [player, setPlayer] = useState({})
 
   const userId = useSelector((state) => state.profile.userProfile.user.id);
   const winner = useSelector((state) => state.board.winner);
   const loser = useSelector((state) => state.board.loser);
 
-  if (!winner) {
-    setSearchType("");
+  if(!winner) {
+    setSearchType('')
   }
 
-  useEffect(() => {
+  useEffect(()=>{
     if (winner?.id === userId) {
-      setPlayer(winner);
+      setPlayer(winner)
     } else {
-      setPlayer(loser);
+      setPlayer(loser)
     }
-  }, [winner, loser]);
+  },[winner, loser])
 
   return (
     <>
@@ -104,21 +104,14 @@ export const Winner = ({ setSearchType }) => {
           <ScoreWrapper>
             <Pts>{player?.pts}</Pts>
             <Pts>\</Pts>
-            <Pts>{player?.position + "th"}</Pts>
+            <Pts>{player?.position+'th'}</Pts>
           </ScoreWrapper>
         </Info>
       </Enemy>
-      <Text>{winner?.id === userId ? "Победил!" : "Проиграл!"}</Text>
-      <ScoreText>
-        Счет: <ScoreAfter>{player?.finalScore}</ScoreAfter>
-        {/*/ <ScoreBefore>10</ScoreBefore>*/}
-      </ScoreText>
-      <ScoreText>
-        Очки по подсказкам: <ScoreAfter>{player?.hintScore}</ScoreAfter>
-      </ScoreText>
-      <ScoreText>
-        Итоговые очки: <ScoreAfter>{player?.rpScore}</ScoreAfter>
-      </ScoreText>
+      <Text>{winner?.id === userId ? 'Победил!' : 'Проиграл!'}</Text>
+      <ScoreText>Счет: <ScoreAfter>{player?.finalScore}</ScoreAfter>{/*/ <ScoreBefore>10</ScoreBefore>*/}</ScoreText>
+      <ScoreText>Очки по подсказкам: <ScoreAfter>{player?.hintScore}</ScoreAfter></ScoreText>
+      <ScoreText>Итоговые очки: <ScoreAfter>{player?.rpScore}</ScoreAfter></ScoreText>
       <ButtonCustom
         width="327px"
         mt={30}
@@ -129,9 +122,7 @@ export const Winner = ({ setSearchType }) => {
       >
         В меню
       </ButtonCustom>
-      <ButtonCustom width="327px" onClick={() => setSearchType("")}>
-        Играть еще
-      </ButtonCustom>
+      <ButtonCustom width="327px" onClick={()=>setSearchType("")}>Играть еще</ButtonCustom>
     </>
   );
 };
