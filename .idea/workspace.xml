@@ -1,11 +1,103 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="8012adfc-cb1c-42e7-9ac6-edd1a4aee782" name="Default Changelist" comment="" />
+    <list default="true" id="8012adfc-cb1c-42e7-9ac6-edd1a4aee782" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/package-lock.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/App.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/App.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Socket.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/Socket.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/api/auth.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/api/auth.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/api/base.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/api/base.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/api/board.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/api/board.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/api/gameCreate.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/api/gameCreate.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/api/profile.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/api/profile.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/ButtonCustom/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/ButtonCustom/index.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/InputCustom/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/InputCustom/index.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/Routes/LoginRoute/LoginRoute.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Routes/LoginRoute/LoginRoute.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/Routes/LoginRoute/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Routes/LoginRoute/index.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/Routes/PrivateRoute/PrivateRoute.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Routes/PrivateRoute/PrivateRoute.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/Routes/PrivateRoute/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Routes/PrivateRoute/index.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/constants/env.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/constants/env.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/constants/routes.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/constants/routes.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/constants/siteUrl.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/constants/siteUrl.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/constants/wsUri.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/constants/wsUri.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/helpers/logger.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/helpers/logger.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/helpers/session.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/helpers/session.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/history.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/history.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/index.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/index.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/index.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/index.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/pages/Auth/AuthPage.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/Auth/AuthPage.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/pages/Auth/components/Auth.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/Auth/components/Auth.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/pages/Auth/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/Auth/index.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/pages/GameBoard/GameBoard.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/GameBoard/GameBoard.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/pages/GameBoard/components/Board/Board.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/GameBoard/components/Board/Board.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/pages/GameBoard/components/Board/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/GameBoard/components/Board/index.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/pages/GameBoard/components/GameInfo/GameInfo.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/GameBoard/components/GameInfo/GameInfo.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/pages/GameBoard/components/GameInfo/components/Info/Info.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/GameBoard/components/GameInfo/components/Info/Info.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/pages/GameBoard/components/GameInfo/components/Info/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/GameBoard/components/GameInfo/components/Info/index.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/pages/GameBoard/components/GameInfo/components/Players/Players.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/GameBoard/components/GameInfo/components/Players/Players.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/pages/GameBoard/components/GameInfo/components/Players/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/GameBoard/components/GameInfo/components/Players/index.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/pages/GameBoard/components/GameInfo/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/GameBoard/components/GameInfo/index.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/pages/GameBoard/components/Header/Header.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/GameBoard/components/Header/Header.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/pages/GameBoard/components/Header/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/GameBoard/components/Header/index.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/pages/GameBoard/components/Help/Help.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/GameBoard/components/Help/Help.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/pages/GameBoard/components/Help/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/GameBoard/components/Help/index.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/pages/GameBoard/components/Help/types.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/GameBoard/components/Help/types.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/pages/GameBoard/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/GameBoard/index.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/pages/Info/Info.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/Info/Info.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/pages/Info/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/Info/index.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/pages/Liders/Liders.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/Liders/Liders.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/pages/Main/Main.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/Main/Main.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/pages/Main/components/CodeContent/CodeContent.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/Main/components/CodeContent/CodeContent.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/pages/Main/components/CodeContent/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/Main/components/CodeContent/index.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/pages/Main/components/Connect/Connect.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/Main/components/Connect/Connect.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/pages/Main/components/Connect/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/Main/components/Connect/index.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/pages/Main/components/Content/Content.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/Main/components/Content/Content.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/pages/Main/components/Content/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/Main/components/Content/index.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/pages/Main/components/Error/Error.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/Main/components/Error/Error.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/pages/Main/components/Error/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/Main/components/Error/index.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/pages/Main/components/Header/Header.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/Main/components/Header/Header.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/pages/Main/components/Header/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/Main/components/Header/index.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/pages/Main/components/LoadingGame/LoadingGame.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/Main/components/LoadingGame/LoadingGame.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/pages/Main/components/LoadingGame/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/Main/components/LoadingGame/index.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/pages/Main/components/Winner/Winner.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/Main/components/Winner/Winner.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/pages/Main/components/Winner/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/Main/components/Winner/index.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/pages/Main/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/Main/index.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/pages/Profile/Profile.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/Profile/Profile.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/pages/Profile/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/Profile/index.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/reportWebVitals.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/reportWebVitals.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/routes.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/routes.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/scss/_global.scss" beforeDir="false" afterPath="$PROJECT_DIR$/src/scss/_global.scss" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/scss/_normalize.scss" beforeDir="false" afterPath="$PROJECT_DIR$/src/scss/_normalize.scss" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/scss/main.scss" beforeDir="false" afterPath="$PROJECT_DIR$/src/scss/main.scss" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/store/Auth/actions.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/store/Auth/actions.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/store/Auth/reducers.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/store/Auth/reducers.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/store/Auth/saga.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/store/Auth/saga.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/store/Auth/types.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/store/Auth/types.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/store/Board/actions.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/store/Board/actions.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/store/Board/reducers.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/store/Board/reducers.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/store/Board/saga.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/store/Board/saga.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/store/Board/types.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/store/Board/types.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/store/GameCreate/actions.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/store/GameCreate/actions.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/store/GameCreate/reducers.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/store/GameCreate/reducers.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/store/GameCreate/saga.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/store/GameCreate/saga.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/store/GameCreate/types.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/store/GameCreate/types.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/store/Profile/actions.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/store/Profile/actions.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/store/Profile/reducers.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/store/Profile/reducers.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/store/Profile/saga.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/store/Profile/saga.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/store/Profile/types.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/store/Profile/types.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/store/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/store/index.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/store/sagas.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/store/sagas.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tsconfig.json" beforeDir="false" afterPath="$PROJECT_DIR$/tsconfig.json" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
   <component name="ProjectId" id="1rt1Yp8N8zamqR7CnU60lOOmFBA" />
   <component name="ProjectViewState">
@@ -16,9 +108,13 @@
   <component name="PropertiesComponent">
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
+    <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="node.js.detected.package.eslint" value="true" />
+    <property name="node.js.detected.package.tslint" value="true" />
     <property name="node.js.path.for.package.eslint" value="project" />
     <property name="node.js.selected.package.eslint" value="(autodetect)" />
+    <property name="node.js.selected.package.tslint" value="(autodetect)" />
     <property name="nodejs_package_manager_path" value="npm" />
     <property name="ts.external.directory.path" value="$PROJECT_DIR$/node_modules/typescript/lib" />
     <property name="vue.rearranger.settings.migration" value="true" />
@@ -32,6 +128,7 @@
       <option name="presentableId" value="Default" />
       <updated>1619780623607</updated>
       <workItem from="1619780629634" duration="613000" />
+      <workItem from="1619782587664" duration="5290000" />
     </task>
     <servers />
   </component>

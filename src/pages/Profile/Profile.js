@@ -90,7 +90,7 @@ const ButtonDownloadFile = styled.div`
   width: 90px;
   font-weight: 400;
   text-align: center;
-  font-family: "Roboto",sans-serif;
+  font-family: "Roboto", sans-serif;
   padding: 0;
   height: 20px;
   display: block;
@@ -98,7 +98,7 @@ const ButtonDownloadFile = styled.div`
   -webkit-flex-shrink: 0;
   -ms-flex-negative: 0;
   flex-shrink: 0;
-  background-color: #FFE3BA;
+  background-color: #ffe3ba;
   color: #000;
   cursor: pointer;
   font-size: 18px;
@@ -146,59 +146,67 @@ const Profile = ({ history }) => {
 
   const playerInfo = useSelector((state) => state.profile.userProfile.user);
 
-  const gameHistoryItems =
-    playerInfo?.games_history.map((item, i) => {
-      return item.scoreOpponent <= item.score ? (
-          <GameHistoryItem key={i} winner>
-            <Left>
-              <AvatarHistory alt="avatar" src={item.player.avatar} />
-              <InfoHistory>
-                <Name>{item.player.nickname}</Name>
-                <Pts>{item.player.pts} / {item.player.position+'th'}</Pts>
-              </InfoHistory>
-            </Left>
-            <Right>
-              <TriangleLeft winner />
-              <ScoreLeft winner>{item.scoreOpponent}</ScoreLeft>
-              <Span winner>/</Span>
-              <ScoreRight winner>{item.score}</ScoreRight>
-              <TriangleRight winner />
-            </Right>
-            <ButtonRow>
-              <ButtonDownloadFile onClick={()=>dispatch(getSgf(item.game_id))}>
-                Файл
-              </ButtonDownloadFile>
-              <ButtonDownloadFile onClick={()=>dispatch(getFullLog(item.game_id))}>
-                Лог
-              </ButtonDownloadFile>
-            </ButtonRow>
-          </GameHistoryItem>) : (
-          <GameHistoryItem key={i}>
-            <Left>
-              <AvatarHistory alt="avatar" src={item.player.avatar} />
-              <InfoHistory>
-                <Name>{item.player.nickname}</Name>
-                <Pts>{item.player.pts} / {item.player.position+'th'}</Pts>
-              </InfoHistory>
-            </Left>
-            <Right>
-              <TriangleLeft />
-              <ScoreLeft>{item.scoreOpponent}</ScoreLeft>
-              <Span>/</Span>
-              <ScoreRight>{item.score}</ScoreRight>
-              <TriangleRight/>
-            </Right>
-            <ButtonRow>
-              <ButtonDownloadFile onClick={()=>dispatch(getSgf(item.game_id))}>
-                Файл
-              </ButtonDownloadFile>
-              <ButtonDownloadFile onClick={()=>dispatch(getFullLog(item.game_id))}>
-                Лог
-              </ButtonDownloadFile>
-            </ButtonRow>
-          </GameHistoryItem>
-      )
-    });
+  const gameHistoryItems = playerInfo?.games_history.map((item, i) => {
+    return item.scoreOpponent <= item.score ? (
+      <GameHistoryItem key={i} winner>
+        <Left>
+          <AvatarHistory alt="avatar" src={item.player.avatar} />
+          <InfoHistory>
+            <Name>{item.player.nickname}</Name>
+            <Pts>
+              {item.player.pts} / {item.player.position + "th"}
+            </Pts>
+          </InfoHistory>
+        </Left>
+        <Right>
+          <TriangleLeft winner />
+          <ScoreLeft winner>{item.scoreOpponent}</ScoreLeft>
+          <Span winner>/</Span>
+          <ScoreRight winner>{item.score}</ScoreRight>
+          <TriangleRight winner />
+        </Right>
+        <ButtonRow>
+          <ButtonDownloadFile onClick={() => dispatch(getSgf(item.game_id))}>
+            Файл
+          </ButtonDownloadFile>
+          <ButtonDownloadFile
+            onClick={() => dispatch(getFullLog(item.game_id))}
+          >
+            Лог
+          </ButtonDownloadFile>
+        </ButtonRow>
+      </GameHistoryItem>
+    ) : (
+      <GameHistoryItem key={i}>
+        <Left>
+          <AvatarHistory alt="avatar" src={item.player.avatar} />
+          <InfoHistory>
+            <Name>{item.player.nickname}</Name>
+            <Pts>
+              {item.player.pts} / {item.player.position + "th"}
+            </Pts>
+          </InfoHistory>
+        </Left>
+        <Right>
+          <TriangleLeft />
+          <ScoreLeft>{item.scoreOpponent}</ScoreLeft>
+          <Span>/</Span>
+          <ScoreRight>{item.score}</ScoreRight>
+          <TriangleRight />
+        </Right>
+        <ButtonRow>
+          <ButtonDownloadFile onClick={() => dispatch(getSgf(item.game_id))}>
+            Файл
+          </ButtonDownloadFile>
+          <ButtonDownloadFile
+            onClick={() => dispatch(getFullLog(item.game_id))}
+          >
+            Лог
+          </ButtonDownloadFile>
+        </ButtonRow>
+      </GameHistoryItem>
+    );
+  });
 
   return (
     <Wrapper>
@@ -220,9 +228,7 @@ const Profile = ({ history }) => {
           <Input mb={10} textAlign="center" disabled value={playerInfo?.pts} />
         </InfoPlayer>
       </Info>
-      <GameHistory>
-        {gameHistoryItems}
-      </GameHistory>
+      <GameHistory>{gameHistoryItems}</GameHistory>
       <ButtonCustom
         width="400px"
         onClick={() => {

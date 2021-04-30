@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import {useDispatch, useSelector} from 'react-redux'
+import { useDispatch, useSelector } from "react-redux";
 import { Header } from "./components/Header";
 import { Content } from "./components/Content";
 import styled from "styled-components";
@@ -17,16 +17,18 @@ const Wrapper = styled.div`
 `;
 
 const Main = ({ history, location }) => {
-  const [searchType, setSearchType] = useState(location.state?.from ? location.state.from : '');
+  const [searchType, setSearchType] = useState(
+    location.state?.from ? location.state.from : ""
+  );
   const dispatch = useDispatch();
   const playerInfo = useSelector((state) => state.profile.userProfile.user);
 
   useEffect(() => {
     dispatch(getProfile());
     dispatch(getCurrentGame());
-  }, [])
+  }, []);
 
-  if(!playerInfo) {
+  if (!playerInfo) {
     return null;
   }
 
