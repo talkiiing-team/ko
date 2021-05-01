@@ -6,6 +6,7 @@ import {
   LOSER_USER,
   SET_BLOCKED,
   MAP_STONES,
+  GET_SCORES_SUPERIOR,
 } from './types'
 import { HintTypes } from './decl'
 
@@ -85,3 +86,13 @@ export const hintHeatmapZone = (game_id, isQuarter) => ({
   type: HintTypes.GET_HINT_HEATMAP_ZONE,
   payload: { game_id: game_id, isQuarter },
 })
+
+export const clearSuperiority = () => {
+  return {
+    type: GET_SCORES_SUPERIOR,
+    payload: {
+      winner: undefined,
+      score: undefined,
+    },
+  }
+}

@@ -1,8 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import Board from './components/Board/Board'
-import GameInfo from './components/GameInfo/GameInfo'
-import styled from 'styled-components'
 import { Header } from './components/Header'
 import Help from './components/Help/Help'
 import {
@@ -18,6 +16,7 @@ import {
   hintBestMoves,
   hintBestMovesEnemy,
   setScoresSuperior,
+  clearSuperiority,
 } from '../../store/Board/actions'
 
 import { DateTime } from 'luxon'
@@ -26,6 +25,8 @@ import { client, token } from '../../socket.js'
 import { HelpTypes } from './components/Help/decl'
 import LoaderPage from '../../components/Loader/LoaderPage'
 import Players from './components/GameInfo/components/Players/Players'
+import { Toast } from '../../components/Toast'
+import GameInfo from './components/GameInfo/GameInfo'
 
 const GameBoard = ({ history }) => {
   const game_id = useSelector((state) => state.createGame.id)
@@ -52,6 +53,9 @@ const GameBoard = ({ history }) => {
   const [classNames, setClassNames] = useState({})
   const dispatch = useDispatch()
   const [times, setTimes] = useState({ playerOne: 0, playerTwo: 0 })
+
+  const superiority = useSelector((state) => state.board.superiority)
+  const scoresWinner = useSelector((state) => state.board.scoresWinner)
 
   useEffect(() => {
     if (Object.keys(multipleHint).length === multipleCount) {
@@ -81,72 +85,72 @@ const GameBoard = ({ history }) => {
         ])
       )
     }
-  }, [])
-
-  client.onmessage = function (e) {
-    setEnemyPass(false)
-    if (typeof e.data === 'string') {
-      let jsonData = JSON.parse(e.data)
-      if (jsonData.payload) {
-        if (jsonData.payload.currentMap) {
-          setCoordinates(mapMap(jsonData.payload.currentMap))
-        }
-        if (jsonData.payload.type === 'currentMap') {
-          setYou(jsonData.payload.you)
-          setOpponent(jsonData.payload.opponent)
-        }
-        if (jsonData.payload.player) {
-          if (typeof jsonData.payload.player === 'string') {
-            setYourColor(jsonData.payload.player === 'w' ? 'white' : 'black')
+    client.onmessage = function (e) {
+      setEnemyPass(false)
+      if (typeof e.data === 'string') {
+        const jsonData = JSON.parse(e.data)
+        console.log(jsonData.payload)
+        if (jsonData.payload) {
+          if (jsonData.payload.currentMap) {
+            setCoordinates(mapMap(jsonData.payload.currentMap))
           }
-        }
-        if (jsonData.payload.type && jsonData.payload.type === 'endGame') {
-          let winner = jsonData.payload.winnerPlayer
-          let loser = jsonData.payload.loserPlayer
-          winner.finalScore = jsonData.payload.finalScore
-          dispatch(setWinnerUser(winner))
-          dispatch(setLoserUser(loser))
-          history.push('/', { from: 'Win' })
-          dispatch(clearGameId())
-        }
-        if (jsonData.payload.turn) {
-          setStepColor(jsonData.payload.turn)
-        }
-        if (jsonData.payload.move) {
-          setTurns((turns) => [
-            ...turns,
-            timeConverter(jsonData.time) + ': ' + jsonData.payload.move,
-          ])
-        }
-        if (jsonData.payload.type === 'newTurn') {
-          setLastMarkers({ [jsonData.payload.place]: 'circle' })
-        }
-        if (jsonData.payload.moveType === 'pass') {
-          if (stepColor !== yourColor) {
-            setEnemyPass(true)
+          if (jsonData.payload.type === 'currentMap') {
+            setYou(jsonData.payload.you)
+            setOpponent(jsonData.payload.opponent)
           }
-        }
-        if (
-          jsonData.payload.turnBlackEndedAt &&
-          jsonData.payload.turnWhiteEndedAt
-        ) {
-          setTimes({
-            playerOne: Math.floor(
-              (Number(jsonData.payload.turnBlackEndedAt) -
-                new Date().getTime()) /
-                1000
-            ),
-            playerTwo: Math.floor(
-              (Number(jsonData.payload.turnWhiteEndedAt) -
-                new Date().getTime()) /
-                1000
-            ),
-          })
+          if (jsonData.payload.player) {
+            if (typeof jsonData.payload.player === 'string') {
+              setYourColor(jsonData.payload.player === 'w' ? 'white' : 'black')
+            }
+          }
+          if (jsonData.payload.type && jsonData.payload.type === 'endGame') {
+            let winner = jsonData.payload.winnerPlayer
+            let loser = jsonData.payload.loserPlayer
+            winner.finalScore = jsonData.payload.finalScore
+            dispatch(setWinnerUser(winner))
+            dispatch(setLoserUser(loser))
+            history.push('/', { from: 'Win' })
+            dispatch(clearGameId())
+          }
+          if (jsonData.payload.turn) {
+            setStepColor(jsonData.payload.turn)
+          }
+          if (jsonData.payload.move) {
+            setTurns((turns) => [
+              ...turns,
+              timeConverter(jsonData.time) + ': ' + jsonData.payload.move,
+            ])
+          }
+          if (jsonData.payload.type === 'newTurn') {
+            setLastMarkers({ [jsonData.payload.place]: 'circle' })
+          }
+          if (jsonData.payload.moveType === 'pass') {
+            if (stepColor !== yourColor) {
+              setEnemyPass(true)
+            }
+          }
+          if (
+            jsonData.payload.turnBlackEndedAt &&
+            jsonData.payload.turnWhiteEndedAt
+          ) {
+            setTimes({
+              playerOne: Math.floor(
+                (Number(jsonData.payload.turnBlackEndedAt) -
+                  new Date().getTime()) /
+                  1000
+              ),
+              playerTwo: Math.floor(
+                (Number(jsonData.payload.turnWhiteEndedAt) -
+                  new Date().getTime()) /
+                  1000
+              ),
+            })
+          }
         }
       }
+      dispatch(setBlocked(false))
     }
-    dispatch(setBlocked(false))
-  }
+  }, [])
 
   const mapMap = (map) => {
     let coords = {}
@@ -311,6 +315,19 @@ const GameBoard = ({ history }) => {
         timeOut={() => alert('End Time')}
         timer={stepColor === yourColor}
       />
+      {superiority && (
+        <Toast
+          heading={'Разрыв в очках'}
+          description={
+            <>
+              Лидируют <span className="font-bold">{scoresWinner === 'W' ? 'белые' : 'черные'}</span> с
+              отрывом в <span className="font-bold">{superiority}</span> очков!
+            </>
+          }
+          onClose={() => dispatch(clearSuperiority())}
+        />
+      )}
+
       <div className="flex flex-col lg:flex-row justify-between w-full items-stretch px-8 mx-auto mt-32">
         <Board
           lastMarkers={lastMarkers}

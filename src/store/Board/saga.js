@@ -4,7 +4,8 @@ import {
   SINGLE_HELP,
   MAP_HELP,
   SCORES_WINNER,
-  GET_SCORES_WINNER, GET_SCORES_SUPERIOR,
+  GET_SCORES_WINNER,
+  GET_SCORES_SUPERIOR,
 } from './types'
 import {
   helpBestMoves,
@@ -142,10 +143,13 @@ export function* boardSaga() {
     takeLatest(HintTypes.GET_HINT_HEATMAP_FULL, fetchGetHintHeatmapFull_saga),
     takeLatest(HintTypes.GET_HINT_HEATMAP_ZONE, fetchGetHintHeatmapZone_saga),
     takeLatest(HintTypes.GET_HINT_SHOW_WINNER, fetchGetHintScoresWinner_saga),
-    takeLatest(HintTypes.GET_HINT_SHOW_SUPERIOR, fetchGetHintScoresSuperior_saga),
+    takeLatest(
+      HintTypes.GET_HINT_SHOW_SUPERIOR,
+      fetchGetHintScoresSuperior_saga
+    ),
     takeLatest(
       HintTypes.GET_HINT_BEST_MOVES_ENEMY,
       fetchGetHintBestMovesEnemy_saga
-    ),
+    )
   ])
 }

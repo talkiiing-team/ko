@@ -15,6 +15,9 @@ module.exports = {
       center: true,
     },
     extend: {
+      inset: {
+        '-full': '-100%',
+      },
       gridTemplateColumns: {
         userRating: '4rem 2rem 2fr 2fr 1fr',
       },

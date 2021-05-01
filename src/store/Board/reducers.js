@@ -64,12 +64,12 @@ export const boardReducer = (state = initialState, action) => {
       }
     case MAP_HELP:
       if (action.payload.zone) {
-        var { mapStones, classNamesMapStones } = action.payload.isQuarter
+        const { mapStones, classNamesMapStones } = action.payload.isQuarter
           ? MAP_QUARTERS[action.payload.zone]
           : MAP_HALF[action.payload.zone]
       } else {
-        var mapStones = {}
-        var classNamesMapStones = {}
+        const mapStones = {}
+        const classNamesMapStones = {}
         let alpha = 'ABCDEFGHJKLMNOPQRSTUV'
         action.payload.map((row, rowId) => {
           row.map((cell, colId) => {
@@ -112,6 +112,7 @@ export const boardReducer = (state = initialState, action) => {
         blocked: false,
       }
     case GET_SCORES_SUPERIOR:
+      console.log('payload be like', action.payload)
       return {
         ...state,
         scoresWinner: action.payload.winner,
