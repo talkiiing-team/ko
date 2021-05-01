@@ -3,11 +3,6 @@ import styled from 'styled-components'
 import Players from '../GameInfo/components/Players/Players'
 import { HelpTypes } from './decl'
 
-const Wrapper = styled.div`
-  width: 46%;
-  margin-left: 25px;
-`
-
 const HelpWrapper = styled.div`
   margin-top: 23px;
   max-height: 508px;
@@ -41,7 +36,7 @@ const Help = ({
   times,
 }) => {
   return (
-    <Wrapper>
+    <div className="w-1/2 max-w-2xl mx-4">
       <Players
         enemyPass={enemyPass}
         opponent={opponent}
@@ -155,7 +150,7 @@ const Help = ({
           Кого можно назвать победителем сейчас?
         </HelpItem>
       </HelpWrapper>
-    </Wrapper>
+    </div>
   )
 }
 
