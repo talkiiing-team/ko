@@ -4,10 +4,9 @@ import { Goban } from 'react-goban'
 import styled from 'styled-components'
 import { markersClear, setMapStones } from '../../../../store/Board/actions'
 import { client } from '../../../../socket'
+import classNames from 'classnames'
 
 const Wrapper = styled.div`
-  width: 50%;
-  position: relative;
   & > div {
     position: absolute;
     top: 0;
@@ -37,7 +36,7 @@ const Board = ({
   setActiveHelpId,
   setMapType,
   setStonePosition,
-  classNames,
+  className,
   mapStones,
 }) => {
   const dispatch = useDispatch()
@@ -92,17 +91,16 @@ const Board = ({
     }
   }
 
-  let className
+  let classNameIn
   if (currentColor !== yourColor) {
-    className = 'disabled'
+    classNameIn = 'disabled'
   } else {
-    className = ''
+    classNameIn = ''
   }
 
   return (
-    <Wrapper className={className}>
+    <Wrapper className={classNames(classNameIn, className, 'w-1/2 relative')}>
       <Goban
-        style={{ position: 'absolute' }}
         stones={coordinates}
         markers={markers}
         lastMarkers={lastMarkers}

@@ -15,34 +15,17 @@ import {
   setBlocked,
   hintShowBest,
   setScoresWinner,
-  hintBestMoves, hintBestMovesEnemy, setScoresSuperior,
+  hintBestMoves,
+  hintBestMovesEnemy,
+  setScoresSuperior,
 } from '../../store/Board/actions'
 
+import { DateTime } from 'luxon'
 import { clearGameId } from '../../store/GameCreate/actions'
-
 import { client, token } from '../../socket.js'
 import { HelpTypes } from './components/Help/decl'
+import LoaderPage from '../../components/Loader/LoaderPage'
 
-const Wrapper = styled.div`
-  max-width: 1377px;
-  margin: 0 auto;
-`
-const Flex = styled.div`
-  display: flex;
-  justify-content: space-between;
-  width: 100%;
-  align-items: stretch;
-  height: calc(100vh - 129px);
-`
-const Wrap = styled.div`
-  width: 100%;
-  height: 100%;
-  position: absolute;
-  left: 0;
-  top: 0;
-  background-color: rgba(255, 255, 255, 0.5);
-  z-index: 99999999;
-`
 
 const GameBoard = ({ history }) => {
   const game_id = useSelector((state) => state.createGame.id)
@@ -294,14 +277,7 @@ const GameBoard = ({ history }) => {
   }
 
   const timeConverter = (UNIX_timestamp) => {
-    let a = new Date(UNIX_timestamp)
-    let year = a.getFullYear().toString().substr(-2)
-    let month = ('0' + (a.getMonth() + 1)).slice(-2)
-    let date = ('0' + a.getDate()).slice(-2)
-    let hour = ('0' + a.getHours()).slice(-2)
-    let min = ('0' + a.getMinutes()).slice(-2)
-    let time = `${date}/${month}/${year} ${hour}:${min}`
-    return time
+    return DateTime.fromMillis(UNIX_timestamp).toFormat('dd/MM/yy HH:mm')
   }
 
   const setMultipleHintFunc = (val) => {
@@ -318,9 +294,8 @@ const GameBoard = ({ history }) => {
       setMultipleHint(mapStones)
     }
   }
-
   return (
-    <Wrapper>
+    <div className="mx-auto">
       <Header
         hint={hint}
         setPass={pass}
@@ -334,8 +309,8 @@ const GameBoard = ({ history }) => {
         timeOut={() => alert('End Time')}
         timer={stepColor === yourColor}
       />
-      <Flex>
-        {blocked && <Wrap />}
+      <div className="flex justify-between w-full items-stretch px-8">
+        {blocked && <LoaderPage />}
         <Board
           lastMarkers={lastMarkers}
           hint={hint}
@@ -353,7 +328,7 @@ const GameBoard = ({ history }) => {
           setMapType={setMapType}
           setMultipleType={setMultipleType}
           setActiveHelpId={setActiveHelpId}
-          classNames={classNames}
+          className={classNames}
           mapStones={mapStones}
         />
         {!hint ? (
@@ -389,8 +364,8 @@ const GameBoard = ({ history }) => {
             scores={stepColor !== yourColor ? false : true}
           />
         )}
-      </Flex>
-    </Wrapper>
+      </div>
+    </div>
   )
 }
 

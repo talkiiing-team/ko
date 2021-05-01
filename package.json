@@ -15,6 +15,7 @@
     "classnames": "^2.3.1",
     "history": "^4.10.1",
     "husky": "^6.0.0",
+    "luxon": "^1.26.0",
     "node-sass": "^5.0.0",
     "postcss": "^7.0.35",
     "prettier": "^2.2.1",
