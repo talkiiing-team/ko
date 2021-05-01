@@ -350,7 +350,17 @@ const GameBoard = ({ history }) => {
               scores={stepColor === yourColor}
             />
           ) : (
-            <></>
+            <GameInfo
+              enemyPass={enemyPass}
+              opponent={opponent}
+              you={you}
+              stepColor={stepColor}
+              yourColor={yourColor}
+              stepMain={stepMain}
+              stepTwo={stepTwo}
+              times={times}
+              turns={turns}
+            />
           )}
         </div>
       </div>

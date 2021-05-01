@@ -1,6 +1,4 @@
 import React from 'react'
-import styled from 'styled-components'
-import Players from './components/Players/Players'
 import Info from './components/Info/Info'
 
 const GameInfo = ({
