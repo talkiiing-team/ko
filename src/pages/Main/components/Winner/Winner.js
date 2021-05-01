@@ -3,85 +3,11 @@ import styled from 'styled-components'
 import { ButtonCustom } from '../../../../components/ButtonCustom'
 import { useSelector } from 'react-redux'
 
-const Text = styled.p`
-  font-size: 36px;
-  line-height: 42px;
-  text-align: center;
-`
-
-const ScoreText = styled.p`
-  font-size: 36px;
-  line-height: 42px;
-  text-align: center;
-  display: flex;
-  margin-top: 15px;
-`
-
-const Enemy = styled.div`
-  margin-bottom: 20px;
-`
-
-const Info = styled.div`
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-`
-
-const Name = styled.p`
-  font-size: 48px;
-  line-height: 56px;
-  font-weight: 700;
-`
-
-const Score = styled.p`
-  font-size: 36px;
-  line-height: 42px;
-  font-weight: 700;
-  position: relative;
-  margin-left: 5px;
-  margin-right: 5px;
-`
-const ScoreAfter = styled(Score)`
-  &:before {
-    position: absolute;
-    content: '';
-    width: 100%;
-    height: 3px;
-    background: #ffc164;
-    bottom: 0;
-  }
-`
-const ScoreBefore = styled(Score)`
-  &:before {
-    position: absolute;
-    content: '';
-    width: 100%;
-    height: 3px;
-    background: #dd3f65;
-    bottom: 0;
-  }
-`
-
-const ScoreWrapper = styled.div`
-  display: flex;
-`
-
-const Pts = styled.p`
-  font-size: 20px;
-  color: #c1c1c1;
-`
-
-const Avatar = styled.img`
-  border-radius: 100px;
-  width: 150px;
-`
-
 export const Winner = ({ setSearchType }) => {
   const [player, setPlayer] = useState({})
 
   const userId = useSelector((state) => state.profile.userProfile.user.id)
-  const winner = useSelector((state) => state.board.winner)
-  const loser = useSelector((state) => state.board.loser)
+  const {winner, loser} = useSelector((state) => state.board)
 
   if (!winner) {
     setSearchType('')
@@ -97,30 +23,26 @@ export const Winner = ({ setSearchType }) => {
 
   return (
     <>
-      <Enemy>
-        <Info>
-          <Avatar alt="avatar" src={player?.avatar} />
-          <Name>{player?.nickname}</Name>
-          <ScoreWrapper>
-            <Pts>{player?.pts}</Pts>
-            <Pts>\</Pts>
-            <Pts>{player?.position + 'th'}</Pts>
-          </ScoreWrapper>
-        </Info>
-      </Enemy>
-      <Text>{winner?.id === userId ? 'Победил!' : 'Проиграл!'}</Text>
-      <ScoreText>
-        Счет: <ScoreAfter>{player?.finalScore}</ScoreAfter>
-        {/*/ <ScoreBefore>10</ScoreBefore>*/}
-      </ScoreText>
-      <ScoreText>
-        Очки по подсказкам: <ScoreAfter>{player?.hintScore}</ScoreAfter>
-      </ScoreText>
-      <ScoreText>
-        Итоговые очки: <ScoreAfter>{player?.rpScore}</ScoreAfter>
-      </ScoreText>
-      <ButtonCustom onClick={() => setSearchType('')}>Играть еще</ButtonCustom>
-      <ButtonCustom onClick={() => setSearchType('')}>В меню</ButtonCustom>
+      <p className="text-5xl font-extrabold mx-auto mb-8 leading-tight">{winner?.id === userId ? 'Победа!' : 'Поражение!'}</p>
+      <div className="mx-auto flex flex-col items-center justify-center gap-y-3">
+        <img className="rounded-full w-40" alt="avatar" src={player?.avatar} />
+        <p className="text-5xl font-bold">{player?.nickname}</p>
+        <p className="text-xl text-gray-500">
+          {player?.pts}
+          {' \\ '}
+          {player?.position + 'th'}
+        </p>
+      </div>
+      <div className="text-2xl font-medium">
+        Счет: <p className="inline border-b-4 border-yellow-500">{player?.finalScore}</p>
+      </div>
+      <div className="text-2xl font-medium">
+        Очки по подсказкам: <p className="inline border-b-4 border-yellow-500">{player?.hintScore}</p>
+      </div>
+      <div className="text-2xl font-medium">
+        Итоговые очки: <p className="inline border-b-4 border-yellow-500">{player?.rpScore}</p>
+      </div>
+      <ButtonCustom className="mt-16" onClick={() => setSearchType('')}>Выйти</ButtonCustom>
     </>
   )
 }

@@ -4,7 +4,7 @@ import {
   SINGLE_HELP,
   MAP_HELP,
   SCORES_WINNER,
-  GET_SCORES_WINNER,
+  GET_SCORES_WINNER, GET_SCORES_SUPERIOR,
 } from './types'
 import {
   helpBestMoves,
@@ -12,9 +12,11 @@ import {
   helpHeatmapFull,
   helpHeatmapZone,
   scoresWinner,
+  scoresSuperiority,
   helpBestMovesEnemy,
 } from '../../api/board'
 import { HintTypes } from './decl'
+import { HelpTypes } from '../../pages/GameBoard/components/Help/decl'
 
 function* fetchGetHintBestMoves_saga(action) {
   const { payload } = action
@@ -109,12 +111,24 @@ function* fetchGetHintHeatmapZone_saga(action) {
   }
 }
 
+function* fetchGetHintScoresSuperior_saga(action) {
+  const { payload } = action
+  try {
+    const res = yield call(scoresSuperiority, getToken(), payload.game_id)
+    if (res.hint) {
+      yield put({ type: GET_SCORES_SUPERIOR, payload: res.hint })
+    }
+  } catch (e) {
+    //throw e;
+  }
+}
+
 function* fetchGetHintScoresWinner_saga(action) {
   const { payload } = action
   try {
     const res = yield call(scoresWinner, getToken(), payload.game_id)
     if (res.hint) {
-      yield put({ type: SCORES_WINNER, payload: res.hint })
+      yield put({ type: GET_SCORES_WINNER, payload: res.hint })
     }
   } catch (e) {
     //throw e;
@@ -127,7 +141,8 @@ export function* boardSaga() {
     takeLatest(HintTypes.GET_HINT_SHOW_BEST, fetchGetHintShowBest_saga),
     takeLatest(HintTypes.GET_HINT_HEATMAP_FULL, fetchGetHintHeatmapFull_saga),
     takeLatest(HintTypes.GET_HINT_HEATMAP_ZONE, fetchGetHintHeatmapZone_saga),
-    takeLatest(GET_SCORES_WINNER, fetchGetHintScoresWinner_saga),
+    takeLatest(HintTypes.GET_HINT_SHOW_WINNER, fetchGetHintScoresWinner_saga),
+    takeLatest(HintTypes.GET_HINT_SHOW_SUPERIOR, fetchGetHintScoresSuperior_saga),
     takeLatest(
       HintTypes.GET_HINT_BEST_MOVES_ENEMY,
       fetchGetHintBestMovesEnemy_saga

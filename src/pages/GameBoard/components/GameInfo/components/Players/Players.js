@@ -4,9 +4,79 @@ import Avatar1 from '../../../../../../assets/img/avatar.png'
 import Avatar2 from '../../../../../../assets/img/avatar-2.png'
 import { useSelector, useStore } from 'react-redux'
 
-const Wrapper = styled.div`
-  display: flex;
-`
+let timesPlayerOneCall = null
+let timesPlayerTwoCall = null
+
+const Players = ({
+  yourColor,
+  enemyPass,
+  stepColor,
+  you,
+  opponent,
+  stepMain,
+  stepTwo,
+  times,
+}) => {
+  const scores = useSelector((state) => state.board.scores)
+  const winner = useSelector((state) => state.board.scoresWinner)
+
+  const [timerParseOne, setTimerParseOne] = useState('')
+  const [timerParseTwo, setTimerParseTwo] = useState('')
+
+  useEffect(async () => {
+    await clearTimeout(timesPlayerOneCall)
+    await clearTimeout(timesPlayerTwoCall)
+    timesPlayerOne(times.playerOne, stepColor === 'black')
+    timesPlayerTwo(times.playerTwo, stepColor === 'white')
+  }, [times])
+
+  const timesPlayerOne = (t, start) => {
+    if (t >= 0) {
+      timesPlayerOneCall = setTimeout(() => {
+        const time = t - 1
+        const hours = Math.floor(t / 60 / 60)
+        const minutes = Math.floor(t / 60) - hours * 60
+        const seconds = Math.floor(t % 60)
+        setTimerParseOne(
+          `${
+            hours > 0 ? hours.toString().padStart(2, '0') + ':' : ''
+          }${minutes.toString().padStart(2, '0')}:${seconds
+            .toString()
+            .padStart(2, '0')}`
+        )
+        if (start) {
+          timesPlayerOne(time, start)
+        }
+      }, 1000)
+    } else {
+      clearTimeout(timesPlayerOneCall)
+    }
+  }
+
+  const timesPlayerTwo = (t, start) => {
+    if (t >= 0) {
+      timesPlayerTwoCall = setTimeout(() => {
+        const time = t - 1
+        const hours = Math.floor(t / 60 / 60)
+        const minutes = Math.floor(t / 60) - hours * 60
+        const seconds = Math.floor(t % 60)
+        setTimerParseTwo(
+          `${
+            hours > 0 ? hours.toString().padStart(2, '0') + ':' : ''
+          }${minutes.toString().padStart(2, '0')}:${seconds
+            .toString()
+            .padStart(2, '0')}`
+        )
+        if (start) {
+          timesPlayerTwo(time, start)
+        }
+      }, 1000)
+    } else {
+      clearTimeout(timesPlayerTwoCall)
+    }
+  }
+
+  /*
 const Player = styled.div`
   display: flex;
   width: 50%;
@@ -110,133 +180,58 @@ const TimeRight = styled.p`
   position: absolute;
   bottom: 10px;
   left: 50px;
-`
 
-let timesPlayerOneCall = null
-let timesPlayerTwoCall = null
-
-const Players = ({
-  yourColor,
-  enemyPass,
-  stepColor,
-  you,
-  opponent,
-  stepMain,
-  stepTwo,
-  times,
-}) => {
-  const scores = useSelector((state) => state.board.scores)
-  const winner = useSelector((state) => state.board.scoresWinner)
-
-  const [timerParseOne, setTimerParseOne] = useState('')
-  const [timerParseTwo, setTimerParseTwo] = useState('')
-
-  useEffect(async () => {
-    await clearTimeout(timesPlayerOneCall)
-    await clearTimeout(timesPlayerTwoCall)
-    timesPlayerOne(times.playerOne, stepColor === 'black')
-    timesPlayerTwo(times.playerTwo, stepColor === 'white')
-  }, [times])
-
-  const timesPlayerOne = (t, start) => {
-    if (t >= 0) {
-      timesPlayerOneCall = setTimeout(() => {
-        const time = t - 1
-        const hours = Math.floor(t / 60 / 60)
-        const minutes = Math.floor(t / 60) - hours * 60
-        const seconds = Math.floor(t % 60)
-        setTimerParseOne(
-          `${
-            hours > 0 ? hours.toString().padStart(2, '0') + ':' : ''
-          }${minutes.toString().padStart(2, '0')}:${seconds
-            .toString()
-            .padStart(2, '0')}`
-        )
-        if (start) {
-          timesPlayerOne(time, start)
-        }
-      }, 1000)
-    } else {
-      clearTimeout(timesPlayerOneCall)
-    }
-  }
-
-  const timesPlayerTwo = (t, start) => {
-    if (t >= 0) {
-      timesPlayerTwoCall = setTimeout(() => {
-        const time = t - 1
-        const hours = Math.floor(t / 60 / 60)
-        const minutes = Math.floor(t / 60) - hours * 60
-        const seconds = Math.floor(t % 60)
-        setTimerParseTwo(
-          `${
-            hours > 0 ? hours.toString().padStart(2, '0') + ':' : ''
-          }${minutes.toString().padStart(2, '0')}:${seconds
-            .toString()
-            .padStart(2, '0')}`
-        )
-        if (start) {
-          timesPlayerTwo(time, start)
-        }
-      }, 1000)
-    } else {
-      clearTimeout(timesPlayerTwoCall)
-    }
-  }
+`*/
 
   return (
-    <Wrapper>
-      <Player
-        active={yourColor === 'black'}
-        winner={winner && winner.winner === 'B'}
-      >
-        <Avatar
+    <div className="flex">
+      <div className={`flex w-1/2 px-8 py-4 relative`}>
+        <img
           alt="avatar"
           src={yourColor === 'black' ? you.avatar : opponent.avatar}
+          className='rounded-full w-28 h-28'
         />
-        <Info>
-          <Name>
+        <div>
+          <div>
             {yourColor === 'black' ? you.nickname : opponent.nickname}
-          </Name>
-          <Pts>
+          </div>
+          <div>
             {yourColor === 'black' ? you.pts : opponent.pts}/
             {yourColor === 'black'
               ? you.position + 'th'
               : opponent.position + 'th'}
-          </Pts>
-          {scores && scores.winner === 'B' && <Scores>+ {scores.score}</Scores>}
-        </Info>
-        {enemyPass && yourColor !== 'black' && <Pass>Пас</Pass>}
-        <Time>{timerParseOne}</Time>
-        <Score>{stepMain}</Score>
-        <Treangle active={stepColor === 'black'} />
-      </Player>
-      <PlayerRight
-        active={yourColor === 'white'}
-        winner={winner && winner.winner === 'W'}
-      >
-        <Info>
-          <Name>
+          </div>
+          {scores && scores.winner === 'B' && <div>+ {scores.score}</div>}
+        </div>
+        {enemyPass && yourColor !== 'black' && <div>Пас</div>}
+        <div>{timerParseOne}</div>
+        <div>{stepMain}</div>
+        <div active={stepColor === 'black'} />
+      </div>
+      <div className="flex w-1/2 px-8 py-4 relative">
+        <div>
+          <div>
             {yourColor !== 'white' ? opponent.nickname : you.nickname}
-          </Name>
-          <Pts>
+          </div>
+          <div>
             {yourColor !== 'white' ? opponent.pts : you.pts}/
             {yourColor !== 'white'
               ? opponent.position + 'th'
               : you.position + 'th'}
-          </Pts>
-          {scores && scores.winner === 'W' && <Scores>+ {scores.score}</Scores>}
-        </Info>
-        {enemyPass && yourColor !== 'white' && <PassRight>Пас</PassRight>}
-        <TimeRight>{timerParseTwo}</TimeRight>
-        <ScoreRight>{stepTwo}</ScoreRight>
-        <AvatarRight
+          </div>
+          {scores && scores.winner === 'W' && <div>+ {scores.score}</div>}
+        </div>
+        {enemyPass && yourColor !== 'white' && <div>Пас</div>}
+        <div>{timerParseTwo}</div>
+        <div>{stepTwo}</div>
+        <img
           alt="avatar"
           src={yourColor !== 'white' ? opponent.avatar : you.avatar}
+          className='rounded-full w-28 h-28'
         />
-        <TreangleRight active={stepColor === 'white'} />
-      </PlayerRight>
-    </Wrapper>
+        <div active={stepColor === 'white'} />
+      </div>
+    </div>
   )
 }
 

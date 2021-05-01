@@ -28,10 +28,8 @@ const CreateGame = ({ setSearchType, cancelGame, code }) => (
     <p className="text-4xl text-center">Код вашей игры:</p>
     <Input
       value={code || 'Ожидайте'}
-      textAlign="center"
-      disabled
-      mt={40}
-      mb={30}
+      className={'text-center'}
+      readonly
     />
     <ButtonCustom mb={30} onClick={() => setSearchType('CodeEnter')}>
       Начать игру

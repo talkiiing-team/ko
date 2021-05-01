@@ -1,9 +1,8 @@
 import React from 'react'
 import { Provider } from 'react-redux'
-import { createReduxStore } from './store'
+import store from './store'
 import Routes from './routes'
 import { Footer } from './components/Footer'
-const store = createReduxStore()
 
 const App = () => {
   return (

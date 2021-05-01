@@ -22,30 +22,12 @@ const HelpItem = styled.div`
 `*/
 
 const Help = ({
-  enemyPass,
-  stepColor,
-  yourColor,
-  you,
-  opponent,
-  stepMain,
-  stepTwo,
   handleHelp,
   activeHelpId,
   scores,
-  times,
 }) => {
   return (
     <div className="w-full">
-      <Players
-        enemyPass={enemyPass}
-        opponent={opponent}
-        you={you}
-        stepColor={stepColor}
-        yourColor={yourColor}
-        stepMain={stepMain}
-        stepTwo={stepTwo}
-        times={times}
-      />
       <div>
         <div
           active={activeHelpId === HelpTypes.BEST_MOVES}
@@ -140,13 +122,13 @@ const Help = ({
           active={activeHelpId === HelpTypes.PRED_SUPERIOR}
           onClick={() => scores && handleHelp({ type: 'score', id: HelpTypes.PRED_SUPERIOR })}
         >
-          Кто лидирует?
+          Какой разрыв в очках?
         </div>
         <div
           active={activeHelpId === HelpTypes.PRED_WINNER}
           onClick={() => scores && handleHelp({ type: 'score', id: HelpTypes.PRED_WINNER })}
         >
-          Кого можно назвать победителем сейчас?
+          Кто побеждает?
         </div>
       </div>
     </div>

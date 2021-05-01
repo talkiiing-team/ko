@@ -25,15 +25,17 @@ export const Header = ({
       <div className="w-full flex flex-row justify-between">
         <div>
           <div className="flex flex-row gap-x-4 text-2xl ml-4">
-            {viewPass && (
-              <ButtonCustom onClick={() => setPass()}>Пас</ButtonCustom>
-            )}
+            <ButtonCustom onClick={() => setPass()} disabled={!viewPass}>
+              Пас
+            </ButtonCustom>
             <ButtonCustom onClick={() => setResign()}>Сдаться</ButtonCustom>
-            {view && (
-              <ButtonCustom onClick={() => setHint(!hint)} active={hint || false}>
-                Взять подсказку
-              </ButtonCustom>
-            )}
+            <ButtonCustom
+              onClick={() => setHint(!hint)}
+              active={hint || false}
+              disabled={!view}
+            >
+              Взять подсказку
+            </ButtonCustom>
           </div>
         </div>
         <p className="text-xl my-2">ID игры: {gameId}</p>

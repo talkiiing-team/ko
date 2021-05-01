@@ -8,7 +8,8 @@ import {
   SET_BLOCKED,
   MAP_STONES,
   SCORES,
-  SCORES_WINNER,
+  GET_SCORES_WINNER,
+  GET_SCORES_SUPERIOR,
 } from './types'
 import {
   MAP_HALF,
@@ -24,6 +25,7 @@ const initialState = {
   blocked: false,
   scores: null,
   scoresWinner: null,
+  superiority: null,
 }
 
 export const boardReducer = (state = initialState, action) => {
@@ -103,10 +105,17 @@ export const boardReducer = (state = initialState, action) => {
         scores: action.payload,
         blocked: false,
       }
-    case SCORES_WINNER:
+    case GET_SCORES_WINNER:
       return {
         ...state,
-        scoresWinner: action.payload,
+        scoresWinner: action.payload.winner,
+        blocked: false,
+      }
+    case GET_SCORES_SUPERIOR:
+      return {
+        ...state,
+        scoresWinner: action.payload.winner,
+        superiority: action.payload.score,
         blocked: false,
       }
     default:

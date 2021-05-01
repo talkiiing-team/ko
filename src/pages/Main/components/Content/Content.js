@@ -1,5 +1,4 @@
 import React, { useEffect, useState } from 'react'
-import styled from 'styled-components'
 import { ButtonCustom } from '../../../../components/ButtonCustom'
 import { CodeContent } from '../CodeContent'
 import { Connect } from '../Connect'

@@ -16,16 +16,6 @@ const GameInfo = ({
 }) => {
   return (
     <div className="w-full">
-      <Players
-        enemyPass={enemyPass}
-        opponent={opponent}
-        you={you}
-        stepColor={stepColor}
-        yourColor={yourColor}
-        stepMain={stepMain}
-        stepTwo={stepTwo}
-        times={times}
-      />
       <Info turns={turns} />
     </div>
   )

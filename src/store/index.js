@@ -6,7 +6,7 @@ import { boardReducer } from './Board/reducers'
 import { profileReducer } from './Profile/reducers'
 import { createGameReducer } from './GameCreate/reducers'
 
-export const createReduxStore = () => {
+const createReduxStore = () => {
   const reducer = combineReducers({
     auth: authReducer,
     board: boardReducer,
@@ -19,3 +19,7 @@ export const createReduxStore = () => {
   sagaMiddleware.run(storyStart)
   return store
 }
+
+const store = createReduxStore()
+
+export default store

@@ -13,7 +13,7 @@ const Wrapper = styled.div`
   position: relative;
   display: flex;
   align-items: center;
-  padding-top: 170px;
+  padding-top: 150px;
 `
 
 const Main = ({ history, location }) => {
@@ -33,7 +33,7 @@ const Main = ({ history, location }) => {
   }
 
   return (
-    <Wrapper>
+    <div className="w-full max-w-7xl pt-24 relative h-screen mx-auto flex items-center">
       <Header
         history={history}
         setSearchType={setSearchType}
@@ -48,7 +48,7 @@ const Main = ({ history, location }) => {
         searchType={searchType}
         setSearchType={setSearchType}
       />
-    </Wrapper>
+    </div>
   )
 }
 

@@ -25,6 +25,7 @@ import { clearGameId } from '../../store/GameCreate/actions'
 import { client, token } from '../../socket.js'
 import { HelpTypes } from './components/Help/decl'
 import LoaderPage from '../../components/Loader/LoaderPage'
+import Players from './components/GameInfo/components/Players/Players'
 
 const GameBoard = ({ history }) => {
   const game_id = useSelector((state) => state.createGame.id)
@@ -222,6 +223,7 @@ const GameBoard = ({ history }) => {
     dispatch(markersClear())
     setMultipleHint({})
     setActiveHelpId(id)
+    console.log('working on game with id ', game_id)
     if (type === 'single') {
       dispatch(setBlocked(true))
       setHelpType('single')
@@ -330,39 +332,25 @@ const GameBoard = ({ history }) => {
           className={classNames}
           mapStones={mapStones}
         />
-        <div className="mt-7 px-4 w-full lg:w-1/2">
-          {!hint ? (
-            <GameInfo
-              you={you}
-              opponent={opponent}
-              stepColor={stepColor}
-              yourColor={yourColor}
-              turns={turns}
-              enemyPass={enemyPass}
-              stepMain={stepMain}
-              times={times}
-              stepTwo={stepTwo}
+        <div className="mt-9 px-4 w-full lg:w-1/2">
+          <Players
+            enemyPass={enemyPass}
+            opponent={opponent}
+            you={you}
+            stepColor={stepColor}
+            yourColor={yourColor}
+            stepMain={stepMain}
+            stepTwo={stepTwo}
+            times={times}
+          />
+          {hint ? (
+            <Help
+              handleHelp={handleHelp}
+              activeHelpId={activeHelpId}
+              scores={stepColor === yourColor}
             />
           ) : (
-            <Help
-              you={you}
-              opponent={opponent}
-              stepColor={stepColor}
-              yourColor={yourColor}
-              turns={turns}
-              enemyPass={enemyPass}
-              stepMain={stepMain}
-              stepTwo={stepTwo}
-              currentColor={yourColor}
-              setHint={setHint}
-              handleHelp={handleHelp}
-              helpType={helpType}
-              multipleType={multipleType}
-              mapType={mapType}
-              activeHelpId={activeHelpId}
-              times={times}
-              scores={stepColor !== yourColor ? false : true}
-            />
+            <></>
           )}
         </div>
       </div>

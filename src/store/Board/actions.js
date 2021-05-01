@@ -6,7 +6,6 @@ import {
   LOSER_USER,
   SET_BLOCKED,
   MAP_STONES,
-  GET_SCORES_WINNER,
 } from './types'
 import { HintTypes } from './decl'
 
