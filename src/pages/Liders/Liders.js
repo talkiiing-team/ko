@@ -1,100 +1,7 @@
 import React, { useState, useEffect } from 'react'
-import styled from 'styled-components'
 import { Header } from '../Main/components/Header'
 import { useDispatch, useSelector } from 'react-redux'
 import { getLiders } from '../../store/Profile/actions'
-
-const Wrapper = styled.div`
-  max-width: 1300px;
-  margin: 0 auto;
-  height: 100vh;
-  position: relative;
-  display: flex;
-  align-items: flex-start;
-  padding-top: 200px;
-`
-
-const LidersCont = styled.div`
-  width: 100%;
-  max-height: 590px;
-  overflow-y: scroll;
-  display: flex;
-  flex-wrap: wrap;
-`
-
-const Lider = styled.div`
-  width: 50%;
-  display: flex;
-  margin-bottom: 30px;
-  align-items: center;
-  padding: 0 20px;
-`
-
-const LiderImg = styled.img`
-  width: 53px;
-  height: 53px;
-  border-radius: 50%;
-`
-const Name = styled.div`
-  width: 50%;
-  position: relative;
-  display: flex;
-  align-items: center;
-  :after {
-    content: '';
-    width: 100%;
-    height: 1px;
-    background: #c4c4c4;
-    position: absolute;
-    left: 0;
-    z-index: -1;
-  }
-`
-const SubName = styled.div`
-  width: auto;
-  font-weight: bold;
-  padding: 0 10px;
-  font-size: 20px;
-  background-color: #fff;
-  z-index: 10;
-`
-const Rating = styled.div`
-  width: 30%;
-  font-size: 20px;
-  position: relative;
-  display: flex;
-  align-items: center;
-  :after {
-    content: '';
-    width: 100%;
-    height: 1px;
-    background: #000000;
-    position: absolute;
-    left: 0;
-    z-index: 0;
-  }
-`
-const Rate = styled.div`
-  width: auto;
-  color: #797979;
-  background-color: #fff;
-  position: relative;
-  z-index: 10;
-  padding: 0 10px;
-`
-const Scores = styled.div`
-  width: 20%;
-  font-size: 22px;
-  padding-left: 10px;
-  display: flex;
-  align-items: center;
-`
-const Red = styled.div`
-  color: red;
-`
-const Green = styled.div`
-  color: green;
-`
 
 export const Liders = ({ history }) => {
   const dispatch = useDispatch()
@@ -121,38 +28,45 @@ export const Liders = ({ history }) => {
   }, [nickname, liders])
 
   return (
-    <Wrapper>
+    <div className="container px-6 pt-32">
       <Header
         history={history}
         profile={true}
         setSearchType={() => console.log()}
         setNicknameFunc={(val) => setNickname(val)}
       />
-      <LidersCont>
+      <div className="grid grid-cols-1 lg:grid-cols-2 gap-y-7 gap-x-12">
+        <div className="grid grid-cols-userRating gap-x-5 text-gray-500 items-end">
+          <div className="text-right col-start-2">№</div>
+          <div>Никнейм</div>
+          <div className="text-right">Очки</div>
+          <div>Коэф. побед</div>
+        </div>
+        <div className="hidden lg:grid! grid-cols-userRating gap-x-5 text-gray-500 items-end">
+          <div className="text-right col-start-2">№</div>
+          <div>Никнейм</div>
+          <div className="text-right">Очки</div>
+          <div>Коэф. побед</div>
+        </div>
         {list.map((item, i) => {
           return (
-            <Lider key={i}>
-              <LiderImg src={item.avatar} />
-              <Name>
-                <SubName>
-                  {item.id} - {item.nickname}
-                </SubName>
-              </Name>
-              <Rating>
-                <Rate>
-                  {item.pts}pts / {item?.position}th
-                </Rate>
-              </Rating>
-              <Scores>
-                <Red>{item.winrate.split('/')[0]}</Red>
+            <div className="grid grid-cols-userRating gap-x-5 text-lg items-center" key={i}>
+              <img className="w-12 h-12 rounded-full" src={item.avatar} />
+              <div className="font-thin text-lg text-right">{i+1}</div>
+              <div>{item.nickname} ({item.id})</div>
+              <div className="text-right">
+                {item.pts}pts / {item?.position}th
+              </div>
+              <div>
+                <span className="text-red-500">{item.winrate.split('/')[0]}</span>
                 &nbsp;/&nbsp;
-                <Green>{item.winrate.split('/')[1]}</Green>
-              </Scores>
-            </Lider>
+                <span className="text-green-500">{item.winrate.split('/')[1]}</span>
+              </div>
+            </div>
           )
         })}
-      </LidersCont>
-    </Wrapper>
+      </div>
+    </div>
   )
 }
 

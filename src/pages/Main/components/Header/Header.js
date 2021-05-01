@@ -1,91 +1,10 @@
 import React from 'react'
 import styled from 'styled-components'
 import Logo from '../../../../assets/img/logo.png'
-import AvatarImage from '../../../../assets/img/avatar.png'
 import { MAIN_URL, PROFILE_URL } from '../../../../constants/routes'
 import { ButtonCustom } from '../../../../components/ButtonCustom'
 import { Input } from '../../../../components/InputCustom'
-
-const Wrapper = styled.div`
-  max-width: 1300px;
-  margin: 0 auto;
-  padding-top: 35px;
-  display: flex;
-  justify-content: flex-start;
-  position: absolute;
-  width: 100%;
-  top: 0;
-`
-
-const Left = styled.div`
-  display: flex;
-  align-items: center;
-  cursor: pointer;
-  width: auto;
-  flex-shrink: 1;
-`
-const Right = styled.div`
-  width: 100%;
-  display: flex;
-  align-items: center;
-  justify-content: flex-end;
-`
-const RightContent = styled.div`
-  width: auto;
-  display: flex;
-  align-items: center;
-  justify-content: flex-end;
-  cursor: pointer;
-`
-
-const RightSearch = styled.div`
-  display: flex;
-  align-items: center;
-  justify-content: flex-end;
-  flex-wrap: no-wrap;
-  cursor: pointer;
-  width: 100%;
-`
-
-const Info = styled.div`
-  display: flex;
-  flex-direction: column;
-  align-items: flex-end;
-`
-
-const Logotype = styled.img`
-  width: 405px;
-  height: auto;
-  margin-right: 14px;
-`
-
-const Name = styled.p`
-  font-size: 48px;
-  line-height: 56px;
-  font-weight: 700;
-`
-
-const ScoreWrapper = styled.div`
-  display: flex;
-`
-
-const Pts = styled.p`
-  font-size: 20px;
-  line-height: 23px;
-  color: #5b5b5b;
-`
-
-const Avatar = styled.img`
-  border-radius: 100px;
-  margin-left: 20px;
-  width: 115px;
-`
-
-const Search = styled.img`
-  border-radius: 100px;
-  margin-left: 20px;
-  width: 115px;
-`
+import { MenuIcon } from '@heroicons/react/outline'
 
 export const Header = ({
   history,
@@ -98,8 +17,8 @@ export const Header = ({
   profile,
   setNicknameFunc,
 }) => (
-  <Wrapper>
-    <Left
+  <div className="fixed bg-white backdrop-filter backdrop-blur-lg z-50 top-0 left-0 w-full h-20 flex justify-between p-6 ">
+    <div
       onClick={() => {
         if (searchType !== 'ConnectRandom' && searchType !== 'ConnectCode') {
           history.push(MAIN_URL)
@@ -107,11 +26,12 @@ export const Header = ({
         }
       }}
     >
-      <Logotype alt="logo" src={Logo} />
-    </Left>
+      <img className="w-full max-w-xl h-auto" alt="logo" src={Logo} />
+    </div>
     {!profile ? (
-      <Right>
-        <RightContent
+      <div>
+        <div
+          className="grid grid-flow-col"
           onClick={() => {
             if (
               searchType !== 'ConnectRandom' &&
@@ -122,18 +42,22 @@ export const Header = ({
             }
           }}
         >
-          <Info>
-            <Name>{nickname || ''}</Name>
-            <ScoreWrapper>
-              <Pts style={{ marginRight: 16 }}>{pts || 0}pts</Pts>
-              <Pts>{winrate || ''}</Pts>
-            </ScoreWrapper>
-          </Info>
-          <Avatar alt="avatar" src={avatar} />
-        </RightContent>
-      </Right>
+          <div className="flex items-center">
+            <div className="grid grid-flow-row gap-y-1 text-right">
+              <div className="font-bold text-4xl">{nickname || ''}</div>
+              <div>{pts || 0}pts</div>
+              <div>{winrate || ''}</div>
+            </div>
+          </div>
+          <img
+            className="ml-3 w-24 h-24 rounded-full"
+            alt="avatar"
+            src={avatar}
+          />
+        </div>
+      </div>
     ) : (
-      <RightSearch>
+      <>
         <Input
           onChange={(e) => setNicknameFunc(e)}
           width="500px"
@@ -142,16 +66,15 @@ export const Header = ({
           placeholder="Введите ник или номер игрока"
         />
         <ButtonCustom
-          width="auto"
+          className="w-12 h-12"
           onClick={() => {
             history.push(MAIN_URL)
             setSearchType('')
           }}
-          padding="0 20px"
         >
-          Меню
+          <MenuIcon className="w-8 h-8" />
         </ButtonCustom>
-      </RightSearch>
+      </>
     )}
-  </Wrapper>
+  </div>
 )

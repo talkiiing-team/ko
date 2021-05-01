@@ -13,14 +13,6 @@ import {
 } from '../../../../store/GameCreate/actions'
 import { useDispatch, useSelector } from 'react-redux'
 
-const Wrapper = styled.div`
-  width: 613px;
-  margin: 0 auto;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-`
-
 const ContentMainBoard = (setSearchType, searchType, history, gameId) => {
   const [opponent, setOpponent] = useState({})
   const [code, setCode] = useState('')
@@ -91,13 +83,13 @@ export const Content = ({ history, searchType, setSearchType }) => {
   const dispatch = useDispatch()
   const gameId = useSelector((state) => state.createGame.id)
 
-  useEffect(async () => {
-    if (searchType === 'Random') await dispatch(createRandomGame())
-    if (searchType === 'WithAi') await dispatch(createGameWithAi())
+  useEffect(() => {
+    if (searchType === 'Random') dispatch(createRandomGame())
+    if (searchType === 'WithAi') dispatch(createGameWithAi())
   }, [searchType])
 
   return (
-    <Wrapper>
+    <div className="grid grid-flow-row gap-y-5 w-full max-w-xl mx-auto">
       {!searchType ? (
         <>
           <ButtonCustom
@@ -142,6 +134,6 @@ export const Content = ({ history, searchType, setSearchType }) => {
         </>
       ) : null}
       {ContentMainBoard(setSearchType, searchType, history, gameId)}
-    </Wrapper>
+    </div>
   )
 }
