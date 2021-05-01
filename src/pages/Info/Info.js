@@ -384,7 +384,7 @@ const Info = ({ history }) => {
         </Text>
       </Content>
       <ButtonCustom
-        width="327px"
+        className="w-full max-w-2xl h-12 p-4 self-center"
         onClick={() => {
           history.push(MAIN_URL)
         }}

@@ -137,7 +137,7 @@ const Auth = () => {
               type="password"
             />
           )}
-          <ButtonCustom type="submit">Далее</ButtonCustom>
+          <ButtonCustom className="w-full" type="submit">Далее</ButtonCustom>
         </Form>
       </Container>
     </Wrapper>

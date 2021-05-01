@@ -28,7 +28,7 @@ export const Liders = ({ history }) => {
   }, [nickname, liders])
 
   return (
-    <div className="container px-6 pt-32">
+    <div className="container px-6 pt-48">
       <Header
         history={history}
         profile={true}
