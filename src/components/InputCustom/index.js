@@ -16,16 +16,23 @@ export const Input = ({
   placeholder,
   className,
   value,
+  readonly,
+  disabled,
 }) => (
   <>
     <input
       className={classNames(
         'w-full h-12 py-3 px-6 shadow-innerXl rounded-xl focus:shadow-innerXxl outline-none focus:bg-gray-50 transition-all duration-200',
-        className
+        className,
+        {
+          'opacity-50 pointer-events-none': disabled,
+        }
       )}
       type={type}
       placeholder={placeholder}
       value={value}
+      readOnly={!!readonly}
+      disabled={!!disabled}
       onChange={(event) => onChange(event.target.value, event)}
     />
     {noError ? <ErrorText>{errorMessage}</ErrorText> : null}
