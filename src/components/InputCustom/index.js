@@ -15,6 +15,7 @@ export const Input = ({
   type,
   placeholder,
   className,
+  value,
 }) => (
   <>
     <input
@@ -24,6 +25,7 @@ export const Input = ({
       )}
       type={type}
       placeholder={placeholder}
+      value={value}
       onChange={(event) => onChange(event.target.value, event)}
     />
     {noError ? <ErrorText>{errorMessage}</ErrorText> : null}
