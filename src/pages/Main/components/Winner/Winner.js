@@ -119,19 +119,8 @@ export const Winner = ({ setSearchType }) => {
       <ScoreText>
         Итоговые очки: <ScoreAfter>{player?.rpScore}</ScoreAfter>
       </ScoreText>
-      <ButtonCustom
-        width="327px"
-        mt={30}
-        mb={30}
-        onClick={() => {
-          setSearchType('')
-        }}
-      >
-        В меню
-      </ButtonCustom>
-      <ButtonCustom width="327px" onClick={() => setSearchType('')}>
-        Играть еще
-      </ButtonCustom>
+      <ButtonCustom onClick={() => setSearchType('')}>Играть еще</ButtonCustom>
+      <ButtonCustom onClick={() => setSearchType('')}>В меню</ButtonCustom>
     </>
   )
 }

@@ -6,19 +6,6 @@ import { markersClear, setMapStones } from '../../../../store/Board/actions'
 import { client } from '../../../../socket'
 import classNames from 'classnames'
 
-const Wrapper = styled.div`
-  & > div {
-    position: absolute;
-    top: 0;
-    right: 0;
-    left: 0;
-  }
-  & svg {
-    width: 100%;
-    height: 100%;
-  }
-`
-
 const Board = ({
   lastMarkers,
   socket,
@@ -99,7 +86,7 @@ const Board = ({
   }
 
   return (
-    <Wrapper className={classNames(classNameIn, className, 'w-1/2 relative')}>
+    <div className={classNames(classNameIn, className, 'w-full lg:max-w-3xl')}>
       <Goban
         stones={coordinates}
         markers={markers}
@@ -109,9 +96,10 @@ const Board = ({
         onIntersectionClick={
           helpType !== 'multiple' ? handleTurn : handleMultipleTurn
         }
+
         nextToPlay={yourColor}
       />
-    </Wrapper>
+    </div>
   )
 }
 

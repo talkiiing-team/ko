@@ -26,7 +26,6 @@ import { client, token } from '../../socket.js'
 import { HelpTypes } from './components/Help/decl'
 import LoaderPage from '../../components/Loader/LoaderPage'
 
-
 const GameBoard = ({ history }) => {
   const game_id = useSelector((state) => state.createGame.id)
   const blocked = useSelector((state) => state.board.blocked)
@@ -295,7 +294,8 @@ const GameBoard = ({ history }) => {
     }
   }
   return (
-    <div className="mx-auto">
+    <>
+      {blocked && <LoaderPage />}
       <Header
         hint={hint}
         setPass={pass}
@@ -309,8 +309,7 @@ const GameBoard = ({ history }) => {
         timeOut={() => alert('End Time')}
         timer={stepColor === yourColor}
       />
-      <div className="flex justify-between w-full items-stretch px-8">
-        {blocked && <LoaderPage />}
+      <div className="flex flex-col lg:flex-row justify-between w-full items-stretch px-8 mx-auto mt-32">
         <Board
           lastMarkers={lastMarkers}
           hint={hint}
@@ -331,41 +330,43 @@ const GameBoard = ({ history }) => {
           className={classNames}
           mapStones={mapStones}
         />
-        {!hint ? (
-          <GameInfo
-            you={you}
-            opponent={opponent}
-            stepColor={stepColor}
-            yourColor={yourColor}
-            turns={turns}
-            enemyPass={enemyPass}
-            stepMain={stepMain}
-            times={times}
-            stepTwo={stepTwo}
-          />
-        ) : (
-          <Help
-            you={you}
-            opponent={opponent}
-            stepColor={stepColor}
-            yourColor={yourColor}
-            turns={turns}
-            enemyPass={enemyPass}
-            stepMain={stepMain}
-            stepTwo={stepTwo}
-            currentColor={yourColor}
-            setHint={setHint}
-            handleHelp={handleHelp}
-            helpType={helpType}
-            multipleType={multipleType}
-            mapType={mapType}
-            activeHelpId={activeHelpId}
-            times={times}
-            scores={stepColor !== yourColor ? false : true}
-          />
-        )}
+        <div className="mt-7 px-4 w-full lg:w-1/2">
+          {!hint ? (
+            <GameInfo
+              you={you}
+              opponent={opponent}
+              stepColor={stepColor}
+              yourColor={yourColor}
+              turns={turns}
+              enemyPass={enemyPass}
+              stepMain={stepMain}
+              times={times}
+              stepTwo={stepTwo}
+            />
+          ) : (
+            <Help
+              you={you}
+              opponent={opponent}
+              stepColor={stepColor}
+              yourColor={yourColor}
+              turns={turns}
+              enemyPass={enemyPass}
+              stepMain={stepMain}
+              stepTwo={stepTwo}
+              currentColor={yourColor}
+              setHint={setHint}
+              handleHelp={handleHelp}
+              helpType={helpType}
+              multipleType={multipleType}
+              mapType={mapType}
+              activeHelpId={activeHelpId}
+              times={times}
+              scores={stepColor !== yourColor ? false : true}
+            />
+          )}
+        </div>
       </div>
-    </div>
+    </>
   )
 }
 

@@ -3,13 +3,6 @@ import styled from 'styled-components'
 import Players from './components/Players/Players'
 import Info from './components/Info/Info'
 
-const Wrapper = styled.div`
-  width: 46%;
-  margin-left: 25px;
-  display: flex;
-  flex-direction: column;
-`
-
 const GameInfo = ({
   stepColor,
   enemyPass,
@@ -22,7 +15,7 @@ const GameInfo = ({
   times,
 }) => {
   return (
-    <Wrapper>
+    <div className="w-full">
       <Players
         enemyPass={enemyPass}
         opponent={opponent}
@@ -34,7 +27,7 @@ const GameInfo = ({
         times={times}
       />
       <Info turns={turns} />
-    </Wrapper>
+    </div>
   )
 }
 
