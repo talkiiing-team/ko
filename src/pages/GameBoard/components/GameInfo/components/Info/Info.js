@@ -1,28 +1,21 @@
 import React, { useEffect } from 'react'
 import styled from 'styled-components'
 
-const Wrapper = styled.div`
-  margin-top: 23px;
-  min-height: 508px;
-  overflow-y: scroll;
-`
-const TextBlock = styled.div`
-  background: #f7f7f7;
-  padding: 20px 40px;
-`
-const Text = styled.p`
-  font-size: 18px;
-`
-
 const Info = ({ turns }) => {
   return (
-    <Wrapper>
-      <TextBlock>
+    <div className="overflow-y-scroll mt-8 h-full max-h-96">
+      <div className="px-4 py-4 bg-gray-100 rounded-md m-1">
         {turns.map((item) => {
-          return <Text>{item}</Text>
+          const [time, text] = item.split(": ")
+          return (
+            <p>
+              <span className="text-lg font-light text-gray-800">{time}</span>
+              <span className="text-lg font-light">: {text}</span>
+            </p>
+          )
         })}
-      </TextBlock>
-    </Wrapper>
+      </div>
+    </div>
   )
 }
 

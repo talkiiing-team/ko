@@ -39,7 +39,10 @@ const Card = ({
       <img
         alt="avatar"
         src={yourColor === cardColor ? you.avatar : opponent.avatar}
-        className="rounded-full w-24 h-24"
+        className={classNames(
+          'rounded-full w-24 h-24 border-4 shadow-md',
+          cardColor === 'black' ? 'border-black' : 'border-white'
+        )}
       />
       <div className="absolute top-2 left-28">
         <div className="font-bold text-xl">

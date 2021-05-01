@@ -96,7 +96,7 @@ const Board = ({
         onIntersectionClick={
           helpType !== 'multiple' ? handleTurn : handleMultipleTurn
         }
-
+        theme={'paper'}
         nextToPlay={yourColor}
       />
     </div>

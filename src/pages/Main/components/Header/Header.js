@@ -28,7 +28,7 @@ export const Header = ({
   return (
     <div
       className={classNames(
-        'fixed bg-white shadow-lg transition-all duration-200 opacity-90 backdrop-filter backdrop-blur-lg z-50 top-0 left-0 w-full h-32 flex justify-between gap-x-4 items-center p-6',
+        'fixed bg-white border-b-2 border-gray-100 transition-all duration-200 opacity-90 backdrop-filter backdrop-blur-lg z-50 top-0 left-0 w-full h-32 flex justify-between gap-x-4 items-center p-6',
       )}
     >
       <a

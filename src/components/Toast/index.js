@@ -17,7 +17,7 @@ export const Toast = ({ heading, description, onClose }) => {
   return (
     <div
       className={classNames(
-        'h-28 px-5 w-full max-w-sm fixed bottom-0 -left-full m-4 bg-white rounded-xl flex flex-row gap-x-5 bg-gray-100 items-center justify-between shadow-xl transition-all duration-500'
+        'h-28 px-5 border-2 border-gray-100  w-full max-w-sm fixed bottom-0 -left-full m-4 bg-white rounded-xl flex flex-row gap-x-5 bg-gray-50 items-center justify-between shadow-2xl transition-all duration-500'
       )}
       style={{
         left: visible && '0',
