@@ -42,7 +42,7 @@ export const Liders = ({ history }) => {
           <div className="text-right">Очки</div>
           <div>Коэф. побед</div>
         </div>
-        <div className="hidden lg:grid! grid-cols-userRating gap-x-5 text-gray-500 items-end">
+        <div className="hidden lg:grid grid-cols-userRating gap-x-5 text-gray-500 items-end">
           <div className="text-right col-start-2">№</div>
           <div>Никнейм</div>
           <div className="text-right">Очки</div>

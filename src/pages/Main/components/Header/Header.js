@@ -17,13 +17,13 @@ export const Header = ({
   profile,
   setNicknameFunc,
 }) => {
-  const [showShadow, setShowShadow] = useState(false)
+    const [showShadow, setShowShadow] = useState(false)
 
-  useEffect(() => {
-    window.addEventListener('scroll', () => {
-      setShowShadow(window.scrollY > 30)
-    })
-  }, [])
+    useEffect(() => {
+      window.addEventListener('scroll', () => {
+        setShowShadow(window.scrollY > 30)
+      })
+    }, [])
 
   return (
     <div

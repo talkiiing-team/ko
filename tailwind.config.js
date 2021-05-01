@@ -1,3 +1,5 @@
+const plugin = require('tailwindcss/plugin')
+
 module.exports = {
   purge: ['./src/**/*.{js,jsx,ts,tsx}', './public/index.html'],
   darkMode: false, // or 'media' or 'class'
@@ -20,5 +22,17 @@ module.exports = {
   variants: {
     extend: {},
   },
-  plugins: [],
+  plugins: [
+    plugin(({ addUtilities }) => {
+      const sizes = Object.fromEntries(
+        Array.from({ length: 128 }, (_, i) => [
+          `.size-${i + 1}`,
+          {
+            r: `${1.03125 + i * 0.03125}% !important`,
+          },
+        ])
+      )
+      return addUtilities(sizes)
+    }),
+  ],
 }
