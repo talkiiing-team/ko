@@ -48,7 +48,12 @@ export const setMapStones = (stones) => ({
 })
 
 export const setScoresWinner = (game_id) => ({
-  type: GET_SCORES_WINNER,
+  type: HintTypes.GET_HINT_SHOW_WINNER,
+  payload: { game_id },
+})
+
+export const setScoresSuperior = (game_id) => ({
+  type: HintTypes.GET_HINT_SHOW_SUPERIOR,
   payload: { game_id },
 })
 
@@ -63,6 +68,11 @@ export const hintBestMovesEnemy = (game_id, count) => ({
 })
 
 export const hintShowBest = (game_id, moves) => ({
+  type: HintTypes.GET_HINT_SHOW_BEST,
+  payload: { game_id: game_id, moves: moves },
+})
+
+export const hintShowBestEnemy = (game_id, moves) => ({
   type: HintTypes.GET_HINT_SHOW_BEST,
   payload: { game_id: game_id, moves: moves },
 })

@@ -3,7 +3,7 @@ import { useDispatch, useSelector } from 'react-redux'
 import { Goban } from 'react-goban'
 import styled from 'styled-components'
 import { markersClear, setMapStones } from '../../../../store/Board/actions'
-import { client } from '../../../../Socket'
+import { client } from '../../../../socket'
 
 const Wrapper = styled.div`
   width: 50%;

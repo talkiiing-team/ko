@@ -15,12 +15,13 @@ import {
   setBlocked,
   hintShowBest,
   setScoresWinner,
-  hintBestMoves, hintBestMovesEnemy,
+  hintBestMoves, hintBestMovesEnemy, setScoresSuperior,
 } from '../../store/Board/actions'
 
 import { clearGameId } from '../../store/GameCreate/actions'
 
-import { client, token } from '../../Socket.js'
+import { client, token } from '../../socket.js'
+import { HelpTypes } from './components/Help/decl'
 
 const Wrapper = styled.div`
   max-width: 1377px;
@@ -271,7 +272,14 @@ const GameBoard = ({ history }) => {
     }
     if (type === 'score') {
       dispatch(setBlocked(true))
-      dispatch(setScoresWinner(game_id))
+      switch (id) {
+        case HelpTypes.PRED_WINNER:
+          dispatch(setScoresWinner(game_id))
+          break
+        case HelpTypes.PRED_SUPERIOR:
+          dispatch(setScoresSuperior(game_id))
+          break
+      }
     }
   }
 

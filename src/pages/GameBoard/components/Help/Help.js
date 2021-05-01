@@ -62,12 +62,60 @@ const Help = ({
           Лучший ход
         </HelpItem>
         <HelpItem
+          active={activeHelpId === HelpTypes.BEST_2_MOVES}
+          onClick={() =>
+            scores && handleHelp({ type: 'single', id: HelpTypes.BEST_2_MOVES, count: 2 })
+          }
+        >
+          Два лучших хода
+        </HelpItem>
+        <HelpItem
+          active={activeHelpId === HelpTypes.BEST_3_MOVES}
+          onClick={() =>
+            scores && handleHelp({ type: 'single', id: HelpTypes.BEST_3_MOVES, count: 3 })
+          }
+        >
+          Три лучших хода
+        </HelpItem>
+        <HelpItem
+          active={activeHelpId === HelpTypes.BEST_4_MOVES}
+          onClick={() =>
+            scores && handleHelp({ type: 'single', id: HelpTypes.BEST_4_MOVES, count: 4 })
+          }
+        >
+          Четыре лучших хода
+        </HelpItem>
+        <HelpItem
           active={activeHelpId === HelpTypes.BEST_MOVES_ENEMY}
           onClick={() =>
             scores && handleHelp({ type: 'single', id: HelpTypes.BEST_MOVES_ENEMY, count: 1 })
           }
         >
           Лучший ход соперника
+        </HelpItem>
+        <HelpItem
+          active={activeHelpId === HelpTypes.BEST_2_MOVES_ENEMY}
+          onClick={() =>
+            scores && handleHelp({ type: 'single', id: HelpTypes.BEST_2_MOVES_ENEMY, count: 2 })
+          }
+        >
+          Два лучших хода соперника
+        </HelpItem>
+        <HelpItem
+          active={activeHelpId === HelpTypes.BEST_3_MOVES_ENEMY}
+          onClick={() =>
+            scores && handleHelp({ type: 'single', id: HelpTypes.BEST_3_MOVES_ENEMY, count: 3 })
+          }
+        >
+          Три лучших хода соперника
+        </HelpItem>
+        <HelpItem
+          active={activeHelpId === HelpTypes.BEST_4_MOVES_ENEMY}
+          onClick={() =>
+            scores && handleHelp({ type: 'single', id: HelpTypes.BEST_4_MOVES_ENEMY, count: 4 })
+          }
+        >
+          Четыре лучших хода соперника
         </HelpItem>
         <HelpItem
           active={activeHelpId === HelpTypes.HEATMAP_FULL}

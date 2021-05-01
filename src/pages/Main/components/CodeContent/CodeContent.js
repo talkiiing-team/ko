@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from 'react'
-import { useDispatch, useSelector, useStore } from 'react-redux'
-import styled from 'styled-components'
+import { useDispatch, useSelector } from 'react-redux'
 import { ButtonCustom } from '../../../../components/ButtonCustom'
 import { Input } from '../../../../components/InputCustom'
 import {
@@ -8,30 +7,25 @@ import {
   createGameCode,
   joinGameWithCode,
 } from '../../../../store/GameCreate/actions'
-import { client, token } from '../../../../Socket'
+import { client, token } from '../../../../socket'
 
-const Text = styled.p`
-  font-size: 36px;
-  line-height: 42px;
-  text-align: center;
-`
 
 const CustomCodeContent = ({ setSearchType, setContentType }) => (
   <>
-    <Text>«Закрытая игра»</Text>
-    <ButtonCustom mt={40} mb={30} onClick={() => setContentType('CreateGame')}>
+    <p className="text-4xl text-center">«Закрытая игра»</p>
+    <ButtonCustom className="mt-12" onClick={() => setContentType('CreateGame')}>
       Создать игру
     </ButtonCustom>
-    <ButtonCustom mb={30} onClick={() => setContentType('JoinGame')}>
+    <ButtonCustom onClick={() => setContentType('JoinGame')}>
       Присоединиться
     </ButtonCustom>
-    <ButtonCustom onClick={() => setSearchType('')}>Отмена</ButtonCustom>
+    <ButtonCustom className="mt-8" onClick={() => setSearchType('')}>Отмена</ButtonCustom>
   </>
 )
 
 const CreateGame = ({ setSearchType, cancelGame, code }) => (
   <>
-    <Text>Код вашей игры:</Text>
+    <p className="text-4xl text-center">Код вашей игры:</p>
     <Input
       value={code || 'Ожидайте'}
       textAlign="center"
@@ -48,7 +42,7 @@ const CreateGame = ({ setSearchType, cancelGame, code }) => (
 
 const JoinGame = ({ setSearchType, cancelGame, code, setCode }) => (
   <>
-    <Text>Укажите код игры:</Text>
+    <p className="text-4xl text-center">Укажите код игры:</p>
     <Input mt={30} mb={30} onChange={setCode} name="code" />
     <ButtonCustom
       mb={30}

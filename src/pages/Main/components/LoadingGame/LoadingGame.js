@@ -5,7 +5,7 @@ import 'react-loader-spinner/dist/loader/css/react-spinner-loader.css'
 import Loader from 'react-loader-spinner'
 import { useDispatch, useSelector } from 'react-redux'
 
-import { client, token } from '../../../../Socket.js'
+import { client, token } from '../../../../socket.js'
 import { clearGameId } from '../../../../store/GameCreate/actions'
 import { Input } from '../../../../components/InputCustom'
 
