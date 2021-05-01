@@ -1,16 +1,3 @@
-@tailwind base;
-@tailwind components;
-
-@layer utilities {
-  @variants responsive {
-    .grid\! {
-      display: grid !important;
-    }
-  }
-}
-
-@tailwind utilities;
-
 body {
   margin: 0;
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
@@ -563,3 +550,16 @@ code {
     top: 24px;
   }
 }
+
+@tailwind base;
+@tailwind components;
+
+@layer utilities {
+  @variants responsive {
+    .grid\! {
+      display: grid !important;
+    }
+  }
+}
+
+@tailwind utilities;

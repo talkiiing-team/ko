@@ -28,10 +28,7 @@ export const Header = ({
   return (
     <div
       className={classNames(
-        'fixed bg-white opacity-90 backdrop-filter backdrop-blur-lg z-50 top-0 left-0 w-full h-32 flex justify-between gap-x-4 items-center p-6',
-        {
-          'shadow-md': showShadow,
-        }
+        'fixed bg-white shadow-lg transition-all duration-200 opacity-90 backdrop-filter backdrop-blur-lg z-50 top-0 left-0 w-full h-32 flex justify-between gap-x-4 items-center p-6',
       )}
     >
       <a
