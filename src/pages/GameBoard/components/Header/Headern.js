@@ -38,7 +38,7 @@ export const Header = ({
             </ButtonCustom>
           </div>
         </div>
-        <p className="text-xl my-2">ID игры: {gameId}</p>
+        <p className="text-lg my-2 text-gray-400">ID игры: {gameId}</p>
       </div>
     </div>
   )

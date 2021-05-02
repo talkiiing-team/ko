@@ -233,9 +233,15 @@ const GameBoard = ({ history }) => {
       setHelpType('single')
       switch (id) {
         case HelpTypes.BEST_MOVES:
+        case HelpTypes.BEST_2_MOVES:
+        case HelpTypes.BEST_3_MOVES:
+        case HelpTypes.BEST_4_MOVES:
           dispatch(hintBestMoves(game_id, count))
           break
         case HelpTypes.BEST_MOVES_ENEMY:
+        case HelpTypes.BEST_2_MOVES_ENEMY:
+        case HelpTypes.BEST_3_MOVES_ENEMY:
+        case HelpTypes.BEST_4_MOVES_ENEMY:
           dispatch(hintBestMovesEnemy(game_id, count))
           break
       }
@@ -259,6 +265,7 @@ const GameBoard = ({ history }) => {
       }
     }
     if (type === 'score') {
+      dispatch(clearSuperiority())
       dispatch(setBlocked(true))
       switch (id) {
         case HelpTypes.PRED_WINNER:
