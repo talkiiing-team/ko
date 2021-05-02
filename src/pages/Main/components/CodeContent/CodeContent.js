@@ -9,28 +9,28 @@ import {
 } from '../../../../store/GameCreate/actions'
 import { client, token } from '../../../../socket'
 
-
 const CustomCodeContent = ({ setSearchType, setContentType }) => (
   <>
     <p className="text-4xl text-center">«Закрытая игра»</p>
-    <ButtonCustom className="mt-12" onClick={() => setContentType('CreateGame')}>
+    <ButtonCustom
+      className="mt-12"
+      onClick={() => setContentType('CreateGame')}
+    >
       Создать игру
     </ButtonCustom>
     <ButtonCustom onClick={() => setContentType('JoinGame')}>
       Присоединиться
     </ButtonCustom>
-    <ButtonCustom className="mt-8" onClick={() => setSearchType('')}>Отмена</ButtonCustom>
+    <ButtonCustom className="mt-8" onClick={() => setSearchType('')}>
+      Отмена
+    </ButtonCustom>
   </>
 )
 
 const CreateGame = ({ setSearchType, cancelGame, code }) => (
   <>
     <p className="text-4xl text-center">Код вашей игры:</p>
-    <Input
-      value={code || 'Ожидайте'}
-      className={'text-center'}
-      readonly
-    />
+    <Input value={code || 'Ожидайте'} className={'text-center'} readonly />
     <ButtonCustom mb={30} onClick={() => setSearchType('CodeEnter')}>
       Начать игру
     </ButtonCustom>

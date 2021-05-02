@@ -22,7 +22,7 @@ module.exports = {
         userRating: '4rem 2rem 2fr 2fr 1fr',
       },
       margin: {
-        '7.5': '1.8125rem'
+        7.5: '1.8125rem',
       },
       boxShadow: {
         innerXl:
