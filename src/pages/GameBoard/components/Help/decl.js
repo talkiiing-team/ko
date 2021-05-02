@@ -12,8 +12,19 @@ export const HelpTypes = {
   PRED_WINNER: 30,
   PRED_SUPERIOR: 35,
   HEATMAP_FULL: 50,
+  HEATMAP_SIMPLE: 53,
   HEATMAP_ZONE: 51,
   HEATMAP_ZONE_ENEMY: 52,
   HEATMAP_ZONE_QUARTER: 54,
   HEATMAP_ZONE_2_QUARTERS: 58,
+}
+
+export const GameStage = {
+  START: 1,
+  MIDDLE: 2,
+  END: 3,
+  WIDE: 4,
+  FIRST: 5,
+  SECOND: 6,
+  NOT_START: 7,
 }

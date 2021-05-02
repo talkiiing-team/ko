@@ -331,7 +331,7 @@ const GameBoard = ({ history }) => {
         timer={stepColor === yourColor}
       />
       <Toast
-        heading={'Разрыв в очках'}
+        heading={'Превосходство'}
         description={
           <>
             Лидируют{' '}
@@ -387,6 +387,7 @@ const GameBoard = ({ history }) => {
               handleHelp={handleHelp}
               activeHelpId={activeHelpId}
               scores={stepColor === yourColor}
+              counter={cunter}
             />
           ) : (
             <GameInfo
