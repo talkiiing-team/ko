@@ -2,12 +2,16 @@ import React, { useEffect, useState } from 'react'
 import { QuestionMarkCircleIcon, XIcon } from '@heroicons/react/outline'
 import classNames from 'classnames'
 
-export const Toast = ({ heading, description, onClose }) => {
+export const Toast = ({ heading, description, onClose, show }) => {
   const [visible, setVisible] = useState(false)
 
   useEffect(() => {
-    setTimeout(() => setVisible(true), 1)
-  }, [])
+    if (show) {
+      setTimeout(() => setVisible(true), 1)
+    } else {
+      handleClose()
+    }
+  }, [show])
 
   const handleClose = () => {
     setVisible(false)

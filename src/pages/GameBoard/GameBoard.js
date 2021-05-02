@@ -32,7 +32,7 @@ const GameBoard = ({ history }) => {
   const game_id = useSelector((state) => state.createGame.id)
   const blocked = useSelector((state) => state.board.blocked)
   const mapStones = useSelector((state) => state.board.mapStones)
-
+  console.log(mapStones)
   const [hint, setHint] = useState(false)
   const [enemyPass, setEnemyPass] = useState(false)
   const [lastMarkers, setLastMarkers] = useState(null)
@@ -56,6 +56,12 @@ const GameBoard = ({ history }) => {
 
   const superiority = useSelector((state) => state.board.superiority)
   const scoresWinner = useSelector((state) => state.board.scoresWinner)
+
+  const [cunter, setCunter] = useState(0)
+
+  useEffect(() => {
+    setCunter(Object.keys(coordinates).length)
+  }, [coordinates])
 
   useEffect(() => {
     if (Object.keys(multipleHint).length === multipleCount) {
@@ -265,7 +271,9 @@ const GameBoard = ({ history }) => {
       }
     }
     if (type === 'score') {
-      dispatch(clearSuperiority())
+      if (superiority) {
+        dispatch(clearSuperiority())
+      }
       dispatch(setBlocked(true))
       switch (id) {
         case HelpTypes.PRED_WINNER:
@@ -322,18 +330,25 @@ const GameBoard = ({ history }) => {
         timeOut={() => alert('End Time')}
         timer={stepColor === yourColor}
       />
-      {superiority && (
-        <Toast
-          heading={'Разрыв в очках'}
-          description={
-            <>
-              Лидируют <span className="font-bold">{scoresWinner === 'W' ? 'белые' : 'черные'}</span> с
-              отрывом в <span className="font-bold">{superiority}</span> очков!
-            </>
-          }
-          onClose={() => dispatch(clearSuperiority())}
-        />
-      )}
+      <Toast
+        heading={'Разрыв в очках'}
+        description={
+          <>
+            Лидируют{' '}
+            <span className="font-bold">
+              {scoresWinner === 'W' ? 'белые' : 'черные'}
+            </span>{' '}
+            {!!superiority && (
+              <>
+                с отрывом в <span className="font-bold">{superiority}</span>{' '}
+                очков!
+              </>
+            )}
+          </>
+        }
+        show={!!superiority || !!scoresWinner}
+        onClose={() => dispatch(clearSuperiority())}
+      />
 
       <div className="flex flex-col lg:flex-row justify-between w-full items-stretch px-8 mx-auto mt-32">
         <Board
