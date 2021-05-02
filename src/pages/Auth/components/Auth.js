@@ -87,7 +87,7 @@ const Auth = () => {
   }
 
   return (
-    <div className="flex flex-col items-center pt-80">
+    <div className="flex flex-col items-center pt-80 px-6">
       {/*<div className="m-8 mb-48">*/}
       {/*  <img className="w-30 h-auto" alt="logo" src={Logo} />*/}
       {/*</div>*/}
