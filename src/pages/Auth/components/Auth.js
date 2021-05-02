@@ -1,10 +1,11 @@
 import React, { useState } from 'react'
 import { useDispatch } from 'react-redux'
 import styled from 'styled-components'
-import Logo from '../../../assets/img/logo.png'
+import Logo from '../../../assets/img/mindgame.png'
 import { ButtonCustom } from '../../../components/ButtonCustom'
 import { Input } from '../../../components/InputCustom'
 import { regSubmit, loginSubmit } from '../../../store/Auth/actions'
+import { Header } from '../../Main/components/Header'
 
 const Wrapper = styled.div`
   height: 100vh;
@@ -86,13 +87,14 @@ const Auth = () => {
   }
 
   return (
-    <Wrapper>
-      <Top>
-        <Logotype alt="logo" src={Logo} />
-      </Top>
-      <Container>
+    <div className="flex flex-col items-center pt-80">
+      {/*<div className="m-8 mb-48">*/}
+      {/*  <img className="w-30 h-auto" alt="logo" src={Logo} />*/}
+      {/*</div>*/}
+      <Header onlyLogo />
+      <div className="w-full mx-auto max-w-xl mb-40">
         <Form onSubmit={handleAuth}>
-          <Tabs>
+          <Tabs className="mb-8">
             <Tab
               onClick={() => setActiveTab('reg')}
               active={activeTab === 'reg'}
@@ -108,6 +110,7 @@ const Auth = () => {
             </Tab>
           </Tabs>
           <Input
+            className="mb-4"
             mt={20}
             type="email"
             placeholder="Email"
@@ -117,6 +120,7 @@ const Auth = () => {
           />
           {activeTab === 'reg' ? (
             <Input
+              className="mb-4"
               mt={10}
               mb={30}
               placeholder="Nickname"
@@ -129,6 +133,7 @@ const Auth = () => {
             <Input
               mt={10}
               mb={30}
+              className="mb-4"
               placeholder="Password"
               onChange={setPassword}
               value={password}
@@ -139,8 +144,8 @@ const Auth = () => {
           )}
           <ButtonCustom className="w-full" type="submit">Далее</ButtonCustom>
         </Form>
-      </Container>
-    </Wrapper>
+      </div>
+    </div>
   )
 }
 

@@ -26,7 +26,7 @@ export const Toast = ({ heading, description, onClose }) => {
       <QuestionMarkCircleIcon className="h-16 w-16" />
       <div className="flex-shrink-0 flex-1">
         <h1 className="text-2xl font-thin">{heading}</h1>
-        <p>{description}</p>
+        <p className="font-light">{description}</p>
       </div>
       <div
         className="w-5 h-5 mb-8 opacity-50 hover:opacity-100 transition-all duration-200 cursor-pointer"
