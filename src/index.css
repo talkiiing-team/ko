@@ -30,3 +30,15 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+@layer utilities {
+  .drag-none {
+    -webkit-user-drag: none;
+  }
+}
+
+@layer base {
+  img {
+    @apply select-none drag-none;
+  }
+}
