@@ -1,94 +1,80 @@
-# Структура проекта
+# ko. - Go Game Client
 
-index.ts - Входная точка проекта
+## Installation and running
 
-routes.js - Роутинг,все роты приватные, выкидывают на логин, если нет токена
+### `npm install`
 
-Папка src/api - содержит запросы для работы с сервером
+Run for installing all the dependencies
 
-Папка src/assests - Иконки, картинки
-
-Папка src/components - Содержит компоненты, например кастомные кнопки и т.д
-
-Папка src/constants - константы проекта
-
-Папка src/helpers - вспомогательные функции, которые используются на проекте
-
-Папка src/pages - страницы проекта, могут содержать в себе компоненты, необходимые для страницы
-
-Папка src/scss - Общие стили проекта
-
-Папка src/store - Работа с тором проекта, используется redux + redux-saga, redux-saga используется для работы с api.
-
-На проекте используется библиотека styled-components, предназначена для работы со стилями.
-
-# Getting Started with Create React App
-
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
-
-## Available Scripts
-
-In the project directory, you can run:
-
-### `yarn start`
+### `npm start`
 
 Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+Open [http://localhost:3000](http://localhost:3000) to play Go Game in the browser.
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+### `npm build`
 
-### `yarn test`
+Builds the app for production to the `build` folder.
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+## Profits Of Using [ru]
 
-### `yarn build`
+### Подсказки
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+В нашем клиенте реализовано более 10 различных подсказок.\
+Некоторые из них используют схожую логику работы и взамодействия, \
+но имеют разную ценность для игрока в разный момент игры.
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+Например, есть подсказки типа `"Лучших N ходов"`, от 1 до 4\
+Созданы они для того, чтобы в начале игры предоставлять\
+кентавру множество ходов для размышления, но под конец игры\
+иметь возможность выйти из затруднительного положения.
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+Отметим, что...\
+**Другие типы подсказок могут быть спрятаны или недоступны**
 
-### `yarn eject`
+Такой же логике подвергаются и другие подсказки, из них:
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+- Тепловая Карта
+- Лучшие ходы соперника
+- Расчёт преимущества и влияния
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+**Также внедрена система оповещений в углу экрана**
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
+### Архитектурные решения
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
+Само приложение реализовано с помощью:
 
-## Learn More
+- React.js,
+- Redux-Saga,
+- Tailwind,
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+Где на последний хотелось бы обратить особое внимание.
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+Вместо использования **_Styled Components_**, мы прибегли\
+к помощи одного мощного инструмента, который позволил уменьшать\
+размер исходного файла **более чем в 5 раз!**
 
-### Code Splitting
+Теперь же, вместо генерации множества CSS-файлов с дублирующими\
+стилями, мы имеем лишь 1 CSS-файл, в котором **переиспользуем** стили.
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+Текущее решение доступно по ссылке ниже:\
+http://talkiiing-ko.s3-website.us-east-2.amazonaws.com
 
-### Analyzing the Bundle Size
+Оно размещено на хостинге AWS.
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
+Также, есть определенное количество амбиций по поводу\
+оптимизации работы бэкенда, который мы пока не видели.
 
-### Making a Progressive Web App
+### Команда
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
+Команду проще всего описать одним регулярным выражением\
+`/^Виталий (Шаталов|Лёвкин)$/`
 
-### Advanced Configuration
+Команда из двух Fullstack веб разработчиков, специализирующихся\
+на комплексной разработке облачных сервисов и систем.
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
+Оба человека на роли fullstack разработчиков, занимавшихся\
+разными разделами приложения при его оптимизации и донастройке.
 
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `yarn build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+GitHub Organisation: https://github.com/talkiiing \
+@talkenson / @roamiiing\
+https://t.me/talkenson / https://t.me/roamiiing
