@@ -32,7 +32,7 @@ const GameBoard = ({ history }) => {
   const game_id = useSelector((state) => state.createGame.id)
   const blocked = useSelector((state) => state.board.blocked)
   const mapStones = useSelector((state) => state.board.mapStones)
-  console.log(mapStones)
+
   const [hint, setHint] = useState(false)
   const [enemyPass, setEnemyPass] = useState(false)
   const [lastMarkers, setLastMarkers] = useState(null)
@@ -95,7 +95,7 @@ const GameBoard = ({ history }) => {
       setEnemyPass(false)
       if (typeof e.data === 'string') {
         const jsonData = JSON.parse(e.data)
-        console.log(jsonData.payload)
+
         if (jsonData.payload) {
           if (jsonData.payload.currentMap) {
             setCoordinates(mapMap(jsonData.payload.currentMap))
@@ -233,7 +233,7 @@ const GameBoard = ({ history }) => {
     dispatch(markersClear())
     setMultipleHint({})
     setActiveHelpId(id)
-    console.log('working on game with id ', game_id)
+
     if (type === 'single') {
       dispatch(setBlocked(true))
       setHelpType('single')

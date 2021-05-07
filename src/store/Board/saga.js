@@ -150,6 +150,6 @@ export function* boardSaga() {
     takeLatest(
       HintTypes.GET_HINT_BEST_MOVES_ENEMY,
       fetchGetHintBestMovesEnemy_saga
-    )
+    ),
   ])
 }

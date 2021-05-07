@@ -48,7 +48,6 @@ export const Header = ({
                   searchType !== 'ConnectCode'
                 ) {
                   history.push(PROFILE_URL)
-                  setSearchType('')
                 }
               }}
             >
@@ -78,7 +77,6 @@ export const Header = ({
               className="w-12 h-12 flex-shrink-0"
               onClick={() => {
                 history.push(MAIN_URL)
-                setSearchType('')
               }}
             >
               <HomeIcon className="w-8 h-8" />

@@ -112,7 +112,6 @@ export const boardReducer = (state = initialState, action) => {
         blocked: false,
       }
     case GET_SCORES_SUPERIOR:
-      console.log('payload be like', action.payload)
       return {
         ...state,
         scoresWinner: action.payload.winner,

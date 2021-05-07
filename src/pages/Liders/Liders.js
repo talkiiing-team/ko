@@ -32,7 +32,6 @@ export const Liders = ({ history }) => {
       <Header
         history={history}
         profile={true}
-        setSearchType={() => console.log()}
         setNicknameFunc={(val) => setNickname(val)}
       />
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-y-7 gap-x-12">
