@@ -8,6 +8,7 @@ import { useDispatch, useSelector } from 'react-redux'
 import { client, token } from '../../../../socket.js'
 import { clearGameId } from '../../../../store/GameCreate/actions'
 import { Input } from '../../../../components/InputCustom'
+import { useTranslation } from 'react-i18next'
 
 const Text = styled.p`
   font-size: 36px;
@@ -32,7 +33,7 @@ export const LoadingGame = ({
   const dispatch = useDispatch()
   const user_id = useSelector((state) => state.profile.userProfile.user.id)
   const codeGame = useSelector((state) => state.createGame.code)
-
+  const { t } = useTranslation()
   useEffect(() => {
     if (gameId) {
       client.send(JSON.stringify([5, 'go/game']))
@@ -84,7 +85,7 @@ export const LoadingGame = ({
     if (codeGame) {
       return (
         <Input
-          value={codeGame || 'Ожидайте'}
+          value={codeGame || t('common.wait')}
           textAlign="center"
           disabled
           mt={40}
@@ -101,7 +102,9 @@ export const LoadingGame = ({
       </Spinner>
       <Text>{text}</Text>
       {codeBlock()}
-      <ButtonCustom onClick={() => cancelGame()}>Отмена</ButtonCustom>
+      <ButtonCustom onClick={() => cancelGame()}>
+        {t('common.cancel')}
+      </ButtonCustom>
     </>
   )
 }

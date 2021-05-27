@@ -3,6 +3,7 @@ import styled from 'styled-components'
 import { ButtonCustom } from '../../../../components/ButtonCustom'
 import AvatarImage from '../../../../assets/img/avatar-2.png'
 import { GAME_URL } from '../../../../constants/routes'
+import { useTranslation } from 'react-i18next'
 
 const Text = styled.p`
   font-size: 36px;
@@ -43,6 +44,7 @@ const Avatar = styled.img`
 export const Connect = ({ text, history, opponent }) => {
   const [seconds, setSeconds] = useState(0)
 
+  const { t } = useTranslation()
   useEffect(() => {
     const interval = setInterval(() => {
       setSeconds((seconds) => seconds + 1)
@@ -71,7 +73,7 @@ export const Connect = ({ text, history, opponent }) => {
       </Enemy>
       <Text>{text}</Text>
       <ButtonCustom width={'350px'} disabled>
-        Отмена
+        {t('common.cancel')}
       </ButtonCustom>
     </>
   )

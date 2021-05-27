@@ -1,0 +1,105 @@
+{
+  "lang": "Русский",
+  "langSign": "ru",
+  "gameEnter": {
+    "WaitingRandom": "Поиск случайного игрока",
+    "WaitingSecondPlayer": "Ожидание второго игрока",
+    "OpponentFound": "Оппонент найден",
+    "OpponentConnected": "Второй игрок подключается...",
+    "ErrorCantConnect": "Невозможно подключиться к игре"
+  },
+  "menu": {
+    "continue": "Продолжить игру",
+    "playWithRandom": "Игра со случайным игроком",
+    "playWithBot": "Игра с Alpha Go",
+    "playPrivateGame": "Приватная игра",
+    "leaderboard": "Рейтинговая таблица"
+  },
+  "auth": {
+    "error": {
+      "fillAll": "Заполните все поля"
+    },
+    "next": "Далее",
+    "register": "Зарегистрироваться",
+    "signIn": "Войти",
+    "email": "Почта",
+    "nickname": "Имя пользователя",
+    "password": "Пароль"
+  },
+  "leaders": {
+    "points": "Очки",
+    "nickname": "Никнейм",
+    "winrate": "Коэф. игр",
+    "enterNameOrNumber": "Введите имя или номер игрока"
+  },
+  "common": {
+    "downloading": "Загружаем...",
+    "us": {
+      "madeWith": "Сделано с",
+      "byTeam": "командой"
+    },
+    "toTheMenu": "Назад в меню",
+    "toMenu": "В меню",
+    "tryAgain": "Попробовать еще раз",
+    "cancel": "Отмена",
+    "wait": "Ожидайте",
+    "exit": "Выйти"
+  },
+  "profile": {
+    "downloadFile": "Файл",
+    "logs": "Лог"
+  },
+  "games": {
+    "createNewGame": "Создать новую игру",
+    "joinGame": "Присоединиться к игре",
+    "join": "Присоединиться",
+    "typeGameCode": "Введите код игры",
+    "yourGameCode": "Код вашей игры",
+    "startGame": "Начать игру",
+    "privateGameLabel": "Приватная игра"
+  },
+  "winner": {
+    "youWon": "Вы выиграли",
+    "winner": "Победитель",
+    "win": "Победа!",
+    "lose": "Поражение!",
+    "score": "Счёт",
+    "scoreHints": "Счёт по подсказкам",
+    "totalScore": "Итоговый счёт"
+  },
+  "game": {
+    "sup": {
+      "leads": "Лидируют",
+      "gap": "с отрывом",
+      "points": "очков"
+    },
+    "btn": {
+      "pass": "Пас",
+      "takeHint": "Взять помощь",
+      "giveUp": "Сдаться"
+    },
+    "whites": "Белые",
+    "blacks": "Черные",
+    "hints": {
+      "bestOne": "Лучший ход",
+      "bestTwo": "Два лучших хода",
+      "bestThree": "Три лучших хода",
+      "bestFour": "Четыре лучших хода",
+      "bestOneOp": "Лучший ход соперника",
+      "bestTwoOp": "Два лучших хода соперника",
+      "bestThreeOp": "Три лучших хода соперника",
+      "bestFourOp": "Четыре лучших хода соперника",
+      "heatmapDetailed": "Тепловая карта детализированная",
+      "heatmapRegular": "Тепловая карта обычная",
+      "bestOfThree": "Выбрать лучший ход из трех",
+      "bestQuarter": "Выбор лучшей четверти для игры",
+      "getGap": "Узнать разрыв в очках",
+      "getSuper": "Узнать превосходство"
+    },
+    "weRecommend": "Рекомендуем",
+    "theyWillBeUseful": "Эти подсказки будут наиболее полезными",
+    "allHints": "Все подсказки",
+    "superiority": "Превосходство",
+    "loader": "Применение..."
+  }
+}

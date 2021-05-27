@@ -11,10 +11,14 @@ import {
   createGameWithAi,
 } from '../../../../store/GameCreate/actions'
 import { useDispatch, useSelector } from 'react-redux'
+import { useTranslation } from 'react-i18next'
 
 const ContentMainBoard = (setSearchType, searchType, history, gameId) => {
   const [opponent, setOpponent] = useState({})
   const [code, setCode] = useState('')
+
+  const { t } = useTranslation()
+
 
   switch (searchType) {
     case 'Code':
@@ -25,7 +29,7 @@ const ContentMainBoard = (setSearchType, searchType, history, gameId) => {
         <LoadingGame
           gameId={gameId}
           setSearchType={setSearchType}
-          text="Ожидание случайного соперника"
+          text={t('gameEnter.WaitingRandom')}
           setOpponent={setOpponent}
           searchType={searchType}
         />
@@ -38,7 +42,7 @@ const ContentMainBoard = (setSearchType, searchType, history, gameId) => {
           setSearchType={setSearchType}
           setOpponent={setOpponent}
           code={code}
-          text="Ожидание второго игрока"
+          text={t('gameEnter.WaitingSecondPlayer')}
           searchType={searchType}
         />
       )
@@ -49,7 +53,7 @@ const ContentMainBoard = (setSearchType, searchType, history, gameId) => {
           history={history}
           opponent={opponent}
           setSearchType={setSearchType}
-          text="Противник найден!"
+          text={t('gameEnter.OpponentFound')}
         />
       )
 
@@ -59,7 +63,7 @@ const ContentMainBoard = (setSearchType, searchType, history, gameId) => {
           history={history}
           opponent={opponent}
           setSearchType={setSearchType}
-          text="Игрок подключился!"
+          text={t('gameEnter.OpponentConnected')}
         />
       )
 
@@ -69,7 +73,7 @@ const ContentMainBoard = (setSearchType, searchType, history, gameId) => {
     case 'Error':
       return (
         <Error
-          error="Не удалось подключиться к запрашиваемой игре"
+          error={t('gameEnter.ErrorCantConnect')}
           setSearchType={setSearchType}
         />
       )
@@ -81,6 +85,8 @@ const ContentMainBoard = (setSearchType, searchType, history, gameId) => {
 export const Content = ({ history, searchType, setSearchType }) => {
   const dispatch = useDispatch()
   const gameId = useSelector((state) => state.createGame.id)
+
+  const { t } = useTranslation()
 
   useEffect(() => {
     if (searchType === 'Random') dispatch(createRandomGame())
@@ -96,39 +102,32 @@ export const Content = ({ history, searchType, setSearchType }) => {
             onClick={() => history.push('/gameBoard')}
             disabled={gameId === null}
           >
-            Продолжить игру
+            {t('menu.continue')}
           </ButtonCustom>
           <ButtonCustom
             mb={30}
             onClick={() => setSearchType('Random')}
             disabled={gameId !== null}
           >
-            Игра со случайным соперником
+
+            {t('menu.playWithRandom')}
           </ButtonCustom>
           <ButtonCustom
             mb={30}
             onClick={() => setSearchType('WithAi')}
             disabled={gameId !== null}
           >
-            Игра с ИИ
+            {t('menu.playWithBot')}
           </ButtonCustom>
           <ButtonCustom
             onClick={() => setSearchType('Code')}
             mb={30}
             disabled={gameId !== null}
           >
-            Закрытая игра
+            {t('menu.playPrivateGame')}
           </ButtonCustom>
           <ButtonCustom mb={30} onClick={() => history.push('/liders')}>
-            Рейтинг игроков
-          </ButtonCustom>{' '}
-          <ButtonCustom
-            onClick={() => {
-              history.push(INFO_URL)
-              setSearchType('')
-            }}
-          >
-            Информация для участников
+            {t('menu.leaderboard')}
           </ButtonCustom>{' '}
         </>
       ) : null}

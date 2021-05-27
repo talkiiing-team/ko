@@ -2,29 +2,9 @@ import React, { useEffect } from 'react'
 import { useSelector, useDispatch } from 'react-redux'
 import styled from 'styled-components'
 import { ButtonCustom } from '../../components/ButtonCustom'
-import { Input } from '../../components/InputCustom'
 import { MAIN_URL } from '../../constants/routes'
 import { getProfile, getSgf, getFullLog } from '../../store/Profile/actions'
-
-const Wrapper = styled.div`
-  height: 100vh;
-  position: relative;
-  justify-content: space-between;
-  flex-direction: column;
-  display: flex;
-  align-items: center;
-  width: 100%;
-  padding: 100px 0;
-`
-const Info = styled.div`
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  max-width: 635px;
-  width: 100%;
-  margin-bottom: 70px;
-`
-const InfoPlayer = styled.div``
+import { useTranslation } from 'react-i18next'
 
 const Left = styled.div`
   display: flex;
@@ -34,16 +14,6 @@ const Left = styled.div`
 const Right = styled.div`
   display: flex;
   align-items: center;
-`
-
-const GameHistory = styled.div`
-  height: auto;
-  min-height: 200px;
-  overflow: hidden;
-  overflow-y: scroll;
-  max-width: 635px;
-  width: 100%;
-  margin-bottom: 70px;
 `
 
 const Avatar = styled.img`
@@ -140,6 +110,7 @@ const TriangleRight = styled.div`
 const Profile = ({ history }) => {
   const dispatch = useDispatch()
 
+  const { t } = useTranslation()
   useEffect(() => {
     dispatch(getProfile())
   }, [])
@@ -167,12 +138,12 @@ const Profile = ({ history }) => {
         </Right>
         <ButtonRow>
           <ButtonDownloadFile onClick={() => dispatch(getSgf(item.game_id))}>
-            Файл
+            {t('profile.downloadFile')}
           </ButtonDownloadFile>
           <ButtonDownloadFile
             onClick={() => dispatch(getFullLog(item.game_id))}
           >
-            Лог
+            {t('profile.logs')}
           </ButtonDownloadFile>
         </ButtonRow>
       </GameHistoryItem>
@@ -196,12 +167,12 @@ const Profile = ({ history }) => {
         </Right>
         <ButtonRow>
           <ButtonDownloadFile onClick={() => dispatch(getSgf(item.game_id))}>
-            Файл
+            {t('profile.downloadFile')}
           </ButtonDownloadFile>
           <ButtonDownloadFile
             onClick={() => dispatch(getFullLog(item.game_id))}
           >
-            Лог
+            {t('profile.logs')}
           </ButtonDownloadFile>
         </ButtonRow>
       </GameHistoryItem>
@@ -209,35 +180,26 @@ const Profile = ({ history }) => {
   })
 
   return (
-    <Wrapper>
-      <Info>
+    <div className="flex flex-col w-full items-center max-w-2xl mx-auto pt-32 h-screen mb-24">
+      <div className="flex flex-row gap-8 mb-4 p-4 w-full items-center">
         <Avatar alt="avatar" src={playerInfo?.avatar} />
-        <InfoPlayer>
-          <Input
-            mb={10}
-            textAlign="center"
-            disabled
-            value={playerInfo?.nickname}
-          />
-          <Input
-            mb={10}
-            textAlign="center"
-            disabled
-            value={playerInfo?.email}
-          />
-          <Input mb={10} textAlign="center" disabled value={playerInfo?.pts} />
-        </InfoPlayer>
-      </Info>
-      <GameHistory>{gameHistoryItems}</GameHistory>
+        <div className="flex flex-col gap-4 flex-grow text-2xl">
+          <div className="border-b-2">{playerInfo?.nickname}</div>
+          <div className="border-b-2">{playerInfo?.email}</div>
+          <div className="border-b-2">{playerInfo?.pts}</div>
+        </div>
+      </div>
+      <div className="flex flex-col gap-2 w-full overflow-hidden overflow-y-scroll mb-4 p-2 mx-4">
+        {gameHistoryItems}
+      </div>
       <ButtonCustom
-        width="400px"
         onClick={() => {
           history.push(MAIN_URL)
         }}
       >
-        В меню
+        {t('common.toTheMenu')}
       </ButtonCustom>
-    </Wrapper>
+    </div>
   )
 }
 

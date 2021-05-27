@@ -2,6 +2,7 @@ import React from 'react'
 import styled from 'styled-components'
 import { ButtonCustom } from '../../../../components/ButtonCustom'
 import ErrorImage from '../../../../assets/img/error.png'
+import { useTranslation } from 'react-i18next'
 
 const ErrorText = styled.p`
   font-size: 28px;
@@ -22,6 +23,8 @@ const Info = styled.div`
 const ErrorImg = styled.img``
 
 export const Error = ({ setSearchType, error }) => {
+
+  const { t } = useTranslation()
   return (
     <>
       <Content>
@@ -37,9 +40,9 @@ export const Error = ({ setSearchType, error }) => {
           setSearchType('')
         }}
       >
-        В меню
+        {t('common.toMenu')}
       </ButtonCustom>
-      <ButtonCustom width="327px">Попробовать еще раз</ButtonCustom>
+      <ButtonCustom width="327px">{t('common.tryAgain')}</ButtonCustom>
     </>
   )
 }

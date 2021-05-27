@@ -6,36 +6,9 @@ import { ButtonCustom } from '../../../components/ButtonCustom'
 import { Input } from '../../../components/InputCustom'
 import { regSubmit, loginSubmit } from '../../../store/Auth/actions'
 import { Header } from '../../Main/components/Header'
-
-const Wrapper = styled.div`
-  height: 100vh;
-  position: relative;
-  padding: 230px 0;
-  display: flex;
-  align-items: center;
-`
-
-const Container = styled.div`
-  width: 513px;
-  margin: 0 auto;
-`
+import { useTranslation } from 'react-i18next'
 
 const Form = styled.form``
-
-const Top = styled.div`
-  display: flex;
-  align-self: flex-start;
-  margin-bottom: 49px;
-  margin-left: 50px;
-  position: absolute;
-  top: 50px;
-`
-
-const Logotype = styled.img`
-  height: auto;
-  width: 405px;
-  margin-right: 94px;
-`
 
 const Tabs = styled.div`
   display: flex;
@@ -65,11 +38,13 @@ const Auth = () => {
   const [error, setError] = useState('')
   const dispatch = useDispatch()
 
+  const { t } = useTranslation()
+
   const handleAuth = async (e) => {
     e.preventDefault()
     if (activeTab === 'reg') {
       if (!email || !nickname) {
-        setError('Заполните все поля')
+        setError(t('auth.error.fillAll'))
       } else {
         setError('')
         await dispatch(regSubmit(nickname, email))
@@ -77,7 +52,7 @@ const Auth = () => {
     }
     if (activeTab === 'auth') {
       if (!email || !password) {
-        setError('Заполните все поля')
+        setError(t('auth.error.fillAll'))
       } else {
         setError('')
         // setToken(register(email, nickname)
@@ -88,9 +63,6 @@ const Auth = () => {
 
   return (
     <div className="flex flex-col items-center pt-80 px-6">
-      {/*<div className="m-8 mb-48">*/}
-      {/*  <img className="w-30 h-auto" alt="logo" src={Logo} />*/}
-      {/*</div>*/}
       <Header onlyLogo />
       <div className="w-full mx-auto max-w-xl mb-40">
         <Form onSubmit={handleAuth}>
@@ -99,21 +71,21 @@ const Auth = () => {
               onClick={() => setActiveTab('reg')}
               active={activeTab === 'reg'}
             >
-              Зарегистрироваться
+              {t('auth.register')}
             </Tab>
             <Span>\</Span>
             <Tab
               onClick={() => setActiveTab('auth')}
               active={activeTab === 'auth'}
             >
-              Войти
+              {t('auth.signIn')}
             </Tab>
           </Tabs>
           <Input
             className="mb-4"
             mt={20}
             type="email"
-            placeholder="Email"
+            placeholder={t('auth.email')}
             onChange={setEmail}
             value={email}
             name="email"
@@ -123,7 +95,7 @@ const Auth = () => {
               className="mb-4"
               mt={10}
               mb={30}
-              placeholder="Nickname"
+              placeholder={t('auth.nickname')}
               onChange={setNickname}
               value={nickname}
               errorMessage={error}
@@ -134,7 +106,7 @@ const Auth = () => {
               mt={10}
               mb={30}
               className="mb-4"
-              placeholder="Password"
+              placeholder={t('auth.password')}
               onChange={setPassword}
               value={password}
               errorMessage={error}
@@ -143,7 +115,7 @@ const Auth = () => {
             />
           )}
           <ButtonCustom className="w-full" type="submit">
-            Далее
+            {t('auth.next')}
           </ButtonCustom>
         </Form>
       </div>

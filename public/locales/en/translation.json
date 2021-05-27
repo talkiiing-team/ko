@@ -1,0 +1,105 @@
+{
+  "lang": "English",
+  "langSign": "en",
+  "gameEnter": {
+    "WaitingRandom": "Finding an opponent...",
+    "WaitingSecondPlayer": "Waiting for second player...",
+    "OpponentFound": "Opponent found",
+    "OpponentConnected": "Second player is connecting...",
+    "ErrorCantConnect": "Unable to connect to game"
+  },
+  "menu": {
+    "continue": "Continue game",
+    "playWithRandom": "Play with random",
+    "playWithBot": "Play with Alpha Go",
+    "playPrivateGame": "Private game",
+    "leaderboard": "Leaderboard"
+  },
+  "auth": {
+    "error": {
+      "fillAll": "Fill in all the fields"
+    },
+    "next": "Next",
+    "register": "Sign Up",
+    "signIn": "Sign In",
+    "email": "E-mail",
+    "nickname": "Nickname",
+    "password": "Password"
+  },
+  "leaders": {
+    "points": "Points",
+    "nickname": "Nickname",
+    "winrate": "Winrate",
+    "enterNameOrNumber": "Type name or number of player"
+  },
+  "common": {
+    "downloading": "Loading...",
+    "us": {
+      "madeWith": "Made with ",
+      "byTeam": "by"
+    },
+    "toTheMenu": "Back to the menu",
+    "toMenu": "To menu",
+    "tryAgain": "Try again",
+    "cancel": "Cancel",
+    "wait": "Wait, please...",
+    "exit": "Quit"
+  },
+  "profile": {
+    "downloadFile": "File",
+    "logs": "Logs"
+  },
+  "games": {
+    "createNewGame": "Create new game",
+    "joinGame": "Join existing game",
+    "join": "Join",
+    "typeGameCode": "Type the game code",
+    "yourGameCode": "Your game code",
+    "startGame": "Go-go-go!",
+    "privateGameLabel": "Private Game"
+  },
+  "winner": {
+    "youWon": "You won",
+    "winner": "Winner is",
+    "win": "You won!",
+    "lose": "You loosed!",
+    "score": "Score",
+    "scoreHints": "Score on hints",
+    "totalScore": "Total"
+  },
+  "game": {
+    "sup": {
+      "leads": "The leader is",
+      "gap": "with score gap in",
+      "points": ""
+    },
+    "btn" : {
+      "pass": "Pass",
+      "takeHint": "Take Hint",
+      "giveUp": "Stop"
+    },
+    "whites": "White",
+    "blacks": "Black",
+    "hints" : {
+      "bestOne" : "Best Move",
+      "bestTwo" : "Best Two Moves",
+      "bestThree" : "Best Three Moves",
+      "bestFour" : "Best Four Moves",
+      "bestOneOp" : "Best Move of enemy",
+      "bestTwoOp" : "Best Two Moves of enemy",
+      "bestThreeOp" : "Best Three Moves of enemy",
+      "bestFourOp" : "Best Four Moves of enemy",
+      "heatmapDetailed" : "Detailed Heatmap",
+      "heatmapRegular" : "Regular Heatmap",
+      "bestOfThree" : "Best of Three",
+      "bestQuarter" : "Best Quarter to play",
+      "getGap" : "Get score gap",
+      "getSuper" : "Superiority?"
+    },
+    "weRecommend": "We recommend",
+    "theyWillBeUseful": "It might be helpful",
+    "allHints": "All Hints",
+    "superiority": "Superiority",
+    "loader": "Applying..."
+  }
+}

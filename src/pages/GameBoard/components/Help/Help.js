@@ -6,13 +6,14 @@ import {
   ChevronRightIcon,
   ChevronUpIcon,
 } from '@heroicons/react/outline'
+import { useTranslation } from 'react-i18next'
 
 const HelpButton = ({ active, onClick, children }) => {
   return (
     <div className="group w-1/2 cursor-pointer " onClick={onClick}>
       <div
         className={classNames(
-          'bg-gray-100 m-1 rounded-md group-hover:bg-gray-200 p-2',
+          'bg-gray-100 m-1 rounded-md group-hover:bg-gray-200 p-2 select-none',
           { 'bg-yellow-200': active }
         )}
       >
@@ -25,6 +26,7 @@ const HelpButton = ({ active, onClick, children }) => {
 const Help = ({ handleHelp, activeHelpId, scores, counter }) => {
   const [hintShow, setHintShow] = useState(false)
 
+  const { t } = useTranslation()
   const totalParts = 16
   const helpersList = [
     {
@@ -32,7 +34,7 @@ const Help = ({ handleHelp, activeHelpId, scores, counter }) => {
       handler: () =>
         scores &&
         handleHelp({ type: 'single', id: HelpTypes.BEST_MOVES, count: 1 }),
-      text: 'Лучший ход',
+      text: t('game.hints.bestOne'),
       stage: GameStage.SECOND,
       relevant: (i) => i >= totalParts * 0.6,
     },
@@ -41,7 +43,7 @@ const Help = ({ handleHelp, activeHelpId, scores, counter }) => {
       handler: () =>
         scores &&
         handleHelp({ type: 'single', id: HelpTypes.BEST_2_MOVES, count: 2 }),
-      text: 'Два лучших хода',
+      text: t('game.hints.bestTwo'),
       stage: GameStage.SECOND,
       relevant: (i) => i >= totalParts * 0.4 && i <= totalParts * 0.6,
     },
@@ -50,7 +52,7 @@ const Help = ({ handleHelp, activeHelpId, scores, counter }) => {
       handler: () =>
         scores &&
         handleHelp({ type: 'single', id: HelpTypes.BEST_3_MOVES, count: 3 }),
-      text: 'Три лучших хода',
+      text: t('game.hints.bestThree'),
       stage: GameStage.WIDE,
       relevant: (i) => i >= totalParts * 0.1 && i < totalParts * 0.4,
     },
@@ -59,7 +61,7 @@ const Help = ({ handleHelp, activeHelpId, scores, counter }) => {
       handler: () =>
         scores &&
         handleHelp({ type: 'single', id: HelpTypes.BEST_4_MOVES, count: 4 }),
-      text: 'Четыре лучших хода',
+      text: t('game.hints.bestFour'),
       stage: GameStage.START,
       relevant: (i) => i <= totalParts * 0.4,
     },
@@ -72,7 +74,7 @@ const Help = ({ handleHelp, activeHelpId, scores, counter }) => {
           id: HelpTypes.BEST_MOVES_ENEMY,
           count: 1,
         }),
-      text: 'Лучший ход соперника',
+      text: t('game.hints.bestOneOp'),
       stage: GameStage.SECOND,
       relevant: (i) => i >= totalParts * 0.65,
     },
@@ -85,7 +87,7 @@ const Help = ({ handleHelp, activeHelpId, scores, counter }) => {
           id: HelpTypes.BEST_2_MOVES_ENEMY,
           count: 2,
         }),
-      text: 'Два лучших хода соперника',
+      text: t('game.hints.bestTwoOp'),
       stage: GameStage.END,
       relevant: (i) => i >= totalParts * 0.3 && i <= totalParts * 0.7,
     },
@@ -98,7 +100,7 @@ const Help = ({ handleHelp, activeHelpId, scores, counter }) => {
           id: HelpTypes.BEST_3_MOVES_ENEMY,
           count: 3,
         }),
-      text: 'Три лучших хода соперника',
+      text: t('game.hints.bestThreeOp'),
       stage: GameStage.WIDE,
       relevant: (i) => i >= totalParts * 0.1 && i <= totalParts * 0.5,
     },
@@ -111,7 +113,7 @@ const Help = ({ handleHelp, activeHelpId, scores, counter }) => {
           id: HelpTypes.BEST_4_MOVES_ENEMY,
           count: 4,
         }),
-      text: 'Четыре лучших хода соперника',
+      text: t('game.hints.bestFourOp'),
       stage: GameStage.START,
       relevant: (i) => i <= totalParts * 0.3,
     },
@@ -119,7 +121,7 @@ const Help = ({ handleHelp, activeHelpId, scores, counter }) => {
       id: HelpTypes.HEATMAP_FULL,
       handler: () =>
         scores && handleHelp({ type: 'map', id: HelpTypes.HEATMAP_FULL }),
-      text: 'Тепловая карта детализированная',
+      text: t('game.hints.heatmapDetailed'),
       stage: GameStage.WIDE,
       relevant: (i) => i >= totalParts * 0.1 && i <= totalParts * 0.9,
     },
@@ -127,7 +129,7 @@ const Help = ({ handleHelp, activeHelpId, scores, counter }) => {
       id: HelpTypes.HEATMAP_SIMPLE,
       handler: () =>
         scores && handleHelp({ type: 'map', id: HelpTypes.HEATMAP_SIMPLE }),
-      text: 'Тепловая карта обычная',
+      text: t('game.hints.heatmapRegular'),
       stage: GameStage.WIDE,
       relevant: (i) => true,
     },
@@ -140,7 +142,7 @@ const Help = ({ handleHelp, activeHelpId, scores, counter }) => {
           id: HelpTypes.SELECT_BEST_MOVES,
           multipleHandleCount: 4,
         }),
-      text: 'Выбрать лучший ход из трех',
+      text: t('game.hints.bestOfThree'),
       stage: GameStage.SECOND,
       relevant: (i) => i >= totalParts * 0.5,
     },
@@ -152,7 +154,7 @@ const Help = ({ handleHelp, activeHelpId, scores, counter }) => {
           type: 'map',
           id: HelpTypes.HEATMAP_ZONE_QUARTER,
         }),
-      text: 'Выбор лучшей четверти для игры',
+      text: t('game.hints.bestQuarter'),
       stage: GameStage.NOT_START,
       relevant: (i) => i >= totalParts * 0.2,
     },
@@ -164,7 +166,7 @@ const Help = ({ handleHelp, activeHelpId, scores, counter }) => {
           type: 'score',
           id: HelpTypes.PRED_SUPERIOR,
         }),
-      text: 'Узнать разрыв в очках',
+      text: t('game.hints.getGap'),
       stage: GameStage.NOT_START,
       relevant: (i) => i >= totalParts * 0.2,
     },
@@ -176,7 +178,7 @@ const Help = ({ handleHelp, activeHelpId, scores, counter }) => {
           type: 'score',
           id: HelpTypes.PRED_WINNER,
         }),
-      text: 'Узнать превосходство',
+      text: t('game.hints.getSuper'),
       stage: GameStage.SECOND,
       relevant: (i) => i >= totalParts * 0.4,
     },
@@ -186,9 +188,9 @@ const Help = ({ handleHelp, activeHelpId, scores, counter }) => {
     <div className="w-full mt-8">
       <div className="flex flex-row flex-wrap justify-between items-stretch">
         <p className="w-full p-2 mb-2 text-2xl text-gray-700 font-bold select-none bg-transparent">
-          Рекомендуем{' '}
+          {t("game.weRecommend")}{' '}
           <p className="inline text-sm font-light text-gray-500 ">
-            Эти подсказки будут наиболее полезными
+            {t("game.theyWillBeUseful")}
           </p>
         </p>
         {helpersList
@@ -202,7 +204,7 @@ const Help = ({ handleHelp, activeHelpId, scores, counter }) => {
       <div className="mt-4">
         <p
           className="w-full flex items-center gap-x-4 mb-2 text-xl text-gray-700 font-bold cursor-pointer
-          select-none transition-all duration-100 p-2 hover:bg-gray-50 "
+          select-none transition-all duration-100 p-2 hover:bg-gray-50"
           onClick={() => setHintShow((v) => !v)}
         >
           {hintShow ? (
@@ -210,12 +212,12 @@ const Help = ({ handleHelp, activeHelpId, scores, counter }) => {
           ) : (
             <ChevronRightIcon className="w-5 h-5 inline" />
           )}{' '}
-          Все подсказки
+          {t("game.allHints")}
         </p>
         <div
           className={classNames(
             'transition-all duration-200 flex flex-row flex-wrap justify-between items-stretch overflow-y-hidden overflow-x-hidden',
-            hintShow ? 'opacity-100' : 'opacity-0'
+            hintShow ? 'opacity-100' : 'opacity-0 pointer-events-none'
           )}
         >
           {helpersList

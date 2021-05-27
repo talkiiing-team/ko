@@ -8,57 +8,71 @@ import {
   joinGameWithCode,
 } from '../../../../store/GameCreate/actions'
 import { client, token } from '../../../../socket'
+import { useTranslation } from 'react-i18next'
 
-const CustomCodeContent = ({ setSearchType, setContentType }) => (
-  <>
-    <p className="text-4xl text-center">«Закрытая игра»</p>
-    <ButtonCustom
-      className="mt-12"
-      onClick={() => setContentType('CreateGame')}
-    >
-      Создать игру
-    </ButtonCustom>
-    <ButtonCustom onClick={() => setContentType('JoinGame')}>
-      Присоединиться
-    </ButtonCustom>
-    <ButtonCustom className="mt-8" onClick={() => setSearchType('')}>
-      Отмена
-    </ButtonCustom>
-  </>
-)
+const CustomCodeContent = ({ setSearchType, setContentType }) => {
+  const { t } = useTranslation()
+  return (
+    <>
+      <p className="text-4xl text-center">«{t('games.privateGameLabel')}»</p>
+      <ButtonCustom
+        className="mt-12"
+        onClick={() => setContentType('CreateGame')}
+      >
+        {t('games.createNewGame')}
+      </ButtonCustom>
+      <ButtonCustom onClick={() => setContentType('JoinGame')}>
+        {t('games.joinGame')}
+      </ButtonCustom>
+      <ButtonCustom className="mt-8" onClick={() => setSearchType('')}>
+        {t('common.cancel')}
+      </ButtonCustom>
+    </>
+  )
+}
 
-const CreateGame = ({ setSearchType, cancelGame, code }) => (
-  <>
-    <p className="text-4xl text-center">Код вашей игры:</p>
-    <Input value={code || 'Ожидайте'} className={'text-center'} readonly />
-    <ButtonCustom mb={30} onClick={() => setSearchType('CodeEnter')}>
-      Начать игру
-    </ButtonCustom>
-    <ButtonCustom onClick={() => cancelGame()}>Отмена</ButtonCustom>
-  </>
-)
+const CreateGame = ({ setSearchType, cancelGame, code }) => {
+  const { t } = useTranslation()
+  return (
+    <>
+      <p className="text-4xl text-center">{t('games.yourGameCode')}:</p>
+      <Input value={code || t('common.wait')} className={'text-center'} readonly />
+      <ButtonCustom mb={30} onClick={() => setSearchType('CodeEnter')}>
+        {t('games.startGame')}
+      </ButtonCustom>
+      <ButtonCustom onClick={() => cancelGame()}>
+        {t('common.cancel')}
+      </ButtonCustom>
+    </>
+  )
+}
 
-const JoinGame = ({ setSearchType, cancelGame, code, setCode }) => (
-  <>
-    <p className="text-4xl text-center">Укажите код игры:</p>
-    <Input mt={30} mb={30} onChange={setCode} name="code" />
-    <ButtonCustom
-      mb={30}
-      disabled={!code}
-      onClick={() => code && setSearchType('CodeEnter')}
-    >
-      Присоединиться
-    </ButtonCustom>
-    <ButtonCustom onClick={() => cancelGame()}>Отмена</ButtonCustom>
-  </>
-)
+const JoinGame = ({ setSearchType, cancelGame, code, setCode }) => {
+  const { t } = useTranslation()
+  return (
+    <>
+      <p className="text-4xl text-center">{t('games.typeGameCode')}:</p>
+      <Input mt={30} mb={30} onChange={setCode} name="code" />
+      <ButtonCustom
+        mb={30}
+        disabled={!code}
+        onClick={() => code && setSearchType('CodeEnter')}
+      >
+        {t('games.join')}
+      </ButtonCustom>
+      <ButtonCustom onClick={() => cancelGame()}>
+        {t('common.cancel')}
+      </ButtonCustom>
+    </>
+  )
+}
 
 export const CodeContent = ({ gameId, setSearchType }) => {
   const [code, setCode] = useState('')
   const [contentType, setContentType] = useState('')
   const dispatch = useDispatch()
   const codeGame = useSelector((state) => state.createGame.code)
-
+  const { t } = useTranslation()
   useEffect(() => {
     if (contentType === 'CreateGame') {
       dispatch(createGameCode())

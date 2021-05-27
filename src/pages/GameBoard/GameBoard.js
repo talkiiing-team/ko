@@ -27,11 +27,14 @@ import LoaderPage from '../../components/Loader/LoaderPage'
 import Players from './components/GameInfo/components/Players/Players'
 import { Toast } from '../../components/Toast'
 import GameInfo from './components/GameInfo/GameInfo'
+import { useTranslation } from 'react-i18next'
 
 const GameBoard = ({ history }) => {
   const game_id = useSelector((state) => state.createGame.id)
   const blocked = useSelector((state) => state.board.blocked)
   const mapStones = useSelector((state) => state.board.mapStones)
+
+  const { t } = useTranslation()
 
   const [hint, setHint] = useState(false)
   const [enemyPass, setEnemyPass] = useState(false)
@@ -316,7 +319,7 @@ const GameBoard = ({ history }) => {
   }
   return (
     <>
-      {blocked && <LoaderPage />}
+      {blocked && <LoaderPage text={t("game.loader")}/>}
       <Header
         hint={hint}
         setPass={pass}
@@ -331,17 +334,18 @@ const GameBoard = ({ history }) => {
         timer={stepColor === yourColor}
       />
       <Toast
-        heading={'Превосходство'}
+        heading={t('game.superiority')}
         description={
           <>
-            Лидируют{' '}
+            {t('game.sup.leads')}{' '}
             <span className="font-bold">
-              {scoresWinner === 'W' ? 'белые' : 'черные'}
+              {scoresWinner === 'W' ? t('game.whites') : t('game.blacks')}
             </span>{' '}
             {!!superiority && (
               <>
-                с отрывом в <span className="font-bold">{superiority}</span>{' '}
-                очков!
+                {t('game.sup.gap')}{' '}
+                <span className="font-bold">{superiority}</span>{' '}
+                {t('game.sup.points')}!
               </>
             )}
           </>

@@ -3,6 +3,7 @@ import { Provider } from 'react-redux'
 import store from './store'
 import Routes from './routes'
 import { Footer } from './components/Footer'
+import { LangSelector } from './components/LangSelector'
 
 const App = () => {
   return (
@@ -11,6 +12,7 @@ const App = () => {
         <Routes />
       </Provider>
       <Footer />
+      <LangSelector />
     </>
   )
 }

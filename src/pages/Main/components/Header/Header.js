@@ -5,6 +5,7 @@ import { ButtonCustom } from '../../../../components/ButtonCustom'
 import { Input } from '../../../../components/InputCustom'
 import { HomeIcon } from '@heroicons/react/outline'
 import classNames from 'classnames'
+import { useTranslation } from 'react-i18next'
 
 export const Header = ({
   history,
@@ -18,6 +19,9 @@ export const Header = ({
   setNicknameFunc,
   onlyLogo,
 }) => {
+
+  const { t } = useTranslation()
+
   return (
     <div
       className={classNames(
@@ -71,7 +75,7 @@ export const Header = ({
               className="max-w-3xl self-center"
               onChange={(e) => setNicknameFunc(e)}
               textAlign="left"
-              placeholder="Введите ник или номер игрока"
+              placeholder={t('leaders.enterNameOrNumber')}
             />
             <ButtonCustom
               className="w-12 h-12 flex-shrink-0"
