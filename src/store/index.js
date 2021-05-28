@@ -15,7 +15,7 @@ const createReduxStore = () => {
   })
   const sagaMiddleware = createSagaMiddleware()
   const middleware = [sagaMiddleware]
-  const store = createStore(reducer, compose(applyMiddleware(...middleware)))
+  const store = createStore(reducer, compose(applyMiddleware(...middleware), window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__()))
   sagaMiddleware.run(storyStart)
   return store
 }

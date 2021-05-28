@@ -126,14 +126,6 @@ const Help = ({ handleHelp, activeHelpId, scores, counter }) => {
       relevant: (i) => i >= totalParts * 0.1 && i <= totalParts * 0.9,
     },
     {
-      id: HelpTypes.HEATMAP_SIMPLE,
-      handler: () =>
-        scores && handleHelp({ type: 'map', id: HelpTypes.HEATMAP_SIMPLE }),
-      text: t('game.hints.heatmapRegular'),
-      stage: GameStage.WIDE,
-      relevant: (i) => true,
-    },
-    {
       id: HelpTypes.SELECT_BEST_MOVES,
       handler: () =>
         scores &&

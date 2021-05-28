@@ -374,6 +374,7 @@ const GameBoard = ({ history }) => {
           setActiveHelpId={setActiveHelpId}
           className={classNames}
           mapStones={mapStones}
+          gameId={game_id}
         />
         <div className="mt-9 px-4 w-full lg:w-1/2">
           <Players

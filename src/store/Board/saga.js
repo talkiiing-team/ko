@@ -85,7 +85,7 @@ function* fetchGetHintHeatmapFull_saga(action) {
   try {
     const res = yield call(helpHeatmapFull, getToken(), payload.game_id)
     if (res.hint) {
-      yield put({ type: MAP_HELP, payload: res.hint })
+      yield put({ type: MAP_HELP, payload: { zone: res.hint } })
     }
   } catch (e) {
     //throw e;

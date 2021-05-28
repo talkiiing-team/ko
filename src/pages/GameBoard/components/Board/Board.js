@@ -25,6 +25,7 @@ const Board = ({
   setStonePosition,
   className,
   mapStones,
+  gameId,
 }) => {
   const dispatch = useDispatch()
   const markers = useSelector((state) => state.board.markers)
@@ -39,9 +40,9 @@ const Board = ({
         'go/game',
         {
           command: 'move',
-          token: '1cfc52aacaba0507e66d74cd878020f071457220',
+          token: localStorage.getItem('GoGameToken'),
           place: stonePosition.toString().toLowerCase(),
-          game_id: 8,
+          game_id: gameId,
         },
       ])
     )
