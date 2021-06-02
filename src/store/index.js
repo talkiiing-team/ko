@@ -7,6 +7,7 @@ import { profileReducer } from './Profile/reducers'
 import { createGameReducer } from './GameCreate/reducers'
 
 const createReduxStore = () => {
+
   const reducer = combineReducers({
     auth: authReducer,
     board: boardReducer,
@@ -15,7 +16,14 @@ const createReduxStore = () => {
   })
   const sagaMiddleware = createSagaMiddleware()
   const middleware = [sagaMiddleware]
-  const store = createStore(reducer, compose(applyMiddleware(...middleware)))
+
+  const composeEnhancers =  typeof window === 'object' && window['__REDUX_DEVTOOLS_EXTENSION_COMPOSE__'] ?
+    window['__REDUX_DEVTOOLS_EXTENSION_COMPOSE__']({ }) : compose;
+  const enhancer = composeEnhancers(
+    applyMiddleware(...middleware),
+  );
+
+  const store = createStore(reducer, enhancer)
   sagaMiddleware.run(storyStart)
   return store
 }

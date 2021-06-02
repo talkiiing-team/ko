@@ -62,34 +62,38 @@ export const boardReducer = (state = initialState, action) => {
         mapStones: action.payload,
         blocked: false,
       }
-    case MAP_HELP:
+    case MAP_HELP: {
+      console.log(action.payload)
       let _mapStones = {}
       let _classNamesMapStones = {}
-      if (action.payload.zone) {
+      if (typeof action.payload.zone === 'number') {
+        console.log('its number')
         const { mapStones, classNamesMapStones } = action.payload.isQuarter
           ? MAP_QUARTERS[action.payload.zone]
           : MAP_HALF[action.payload.zone]
         _mapStones = mapStones
         _classNamesMapStones = classNamesMapStones
-      }
-      let alpha = 'ABCDEFGHJKLMNOPQRSTUV'
-      action.payload.map((row, rowId) => {
-        row.map((cell, colId) => {
-          if (parseInt(cell) !== 0) {
-            let sign = alpha[rowId]
-            let coord = `${sign}${colId + 1}`
-            _mapStones[coord] = 'circle'
-            _classNamesMapStones[coord] = `redstone size-${cell}`
-          }
+      } else {
+        let alpha = 'ABCDEFGHJKLMNOPQRSTUV'
+        action.payload.zone.map((row, rowId) => {
+          row.map((cell, colId) => {
+            if (parseInt(cell) !== 0) {
+              let sign = alpha[rowId]
+              let coord = `${sign}${colId + 1}`
+              _mapStones[coord] = 'circle'
+              _classNamesMapStones[coord] = `redstone size-${cell}`
+            }
+          })
         })
-      })
 
+      }
       return {
         ...state,
         mapStones: _mapStones,
         classNamesMapStones: _classNamesMapStones,
         blocked: false,
       }
+    }
     case WINNER_USER:
       return {
         ...state,
