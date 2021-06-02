@@ -192,6 +192,7 @@ const GameBoard = ({ history }) => {
 
   const move = (coord) => {
     if (stepColor === yourColor) {
+      console.log('move!')
       dispatch(markersClear())
       setActiveHelpId(null)
       setHelpType('')

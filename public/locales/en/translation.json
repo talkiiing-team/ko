@@ -76,7 +76,7 @@
     "btn" : {
       "pass": "Pass",
       "takeHint": "Take Hint",
-      "giveUp": "Stop"
+      "giveUp": "Give Up"
     },
     "whites": "White",
     "blacks": "Black",

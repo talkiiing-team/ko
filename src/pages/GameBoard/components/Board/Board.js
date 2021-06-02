@@ -34,18 +34,6 @@ const Board = ({
   )
 
   const handleTurn = (stonePosition) => {
-    client.send(
-      JSON.stringify([
-        7,
-        'go/game',
-        {
-          command: 'move',
-          token: localStorage.getItem('GoGameToken'),
-          place: stonePosition.toString().toLowerCase(),
-          game_id: gameId,
-        },
-      ])
-    )
     let valid = true
     for (const key in coordinates) {
       if (key === stonePosition) {
