@@ -18,7 +18,7 @@ export const Header = ({
   const { t } = useTranslation()
 
   return (
-    <div className="fixed bg-white border-b-2 border-gray-100  opacity-95 backdrop-filter backdrop-blur-lg z-50 top-0 left-0 w-full h-32 flex justify-between gap-x-4 items-center p-6">
+    <div className="fixed bg-white border-b-2 border-gray-100 bg-opacity-95 backdrop-filter backdrop-blur-lg z-50 top-0 left-0 w-full h-32 flex justify-between gap-x-4 items-center p-6">
       <a href={MAIN_URL}>
         <img className="w-auto max-w-xl h-16" alt="Mind Games" src={Logo} />
       </a>

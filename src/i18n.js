@@ -6,17 +6,18 @@ import { initReactI18next } from 'react-i18next'
 i18n
   .use(Backend)
   .use(LanguageDetector)
-  .use (initReactI18next)
+  .use(initReactI18next)
   .init({
     fallbackLng: 'en',
-    debug: true,
+    //debug: true,
     detection: {
-      order: ['queryString', 'cookie'],
-      cache: ['cookie']
+      order: ['localStorage', 'queryString', 'cookie'],
+      cache: ['localStorage', 'cookie'],
+      lookupLocalStorage: 'i18nextLng',
     },
     interpolation: {
-      escapeValue: false
-    }
+      escapeValue: false,
+    },
   })
 
-export default i18n;
+export default i18n

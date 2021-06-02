@@ -67,7 +67,6 @@ export const boardReducer = (state = initialState, action) => {
       let _mapStones = {}
       let _classNamesMapStones = {}
       if (typeof action.payload.zone === 'number') {
-        console.log('its number')
         const { mapStones, classNamesMapStones } = action.payload.isQuarter
           ? MAP_QUARTERS[action.payload.zone]
           : MAP_HALF[action.payload.zone]
@@ -81,7 +80,7 @@ export const boardReducer = (state = initialState, action) => {
               let sign = alpha[rowId]
               let coord = `${sign}${colId + 1}`
               _mapStones[coord] = 'circle'
-              _classNamesMapStones[coord] = `redstone size-${cell}`
+              _classNamesMapStones[coord] = `fill-current text-red-500 size-${cell}`
             }
           })
         })

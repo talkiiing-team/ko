@@ -3,9 +3,11 @@ import { QuestionMarkCircleIcon, XIcon } from '@heroicons/react/outline'
 import classNames from 'classnames'
 
 export const Toast = ({ heading, description, onClose, show }) => {
+  const [recentTimeout, setRecentTimeout] = useState();
   const [visible, setVisible] = useState(false)
 
   useEffect(() => {
+    clearTimeout(recentTimeout)
     if (show) {
       setTimeout(() => setVisible(true), 1)
     } else {
@@ -15,7 +17,7 @@ export const Toast = ({ heading, description, onClose, show }) => {
 
   const handleClose = () => {
     setVisible(false)
-    setTimeout(onClose, 500)
+    setRecentTimeout(setTimeout(onClose, 500))
   }
 
   return (

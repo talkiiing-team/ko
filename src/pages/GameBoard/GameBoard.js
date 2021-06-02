@@ -280,7 +280,7 @@ const GameBoard = ({ history }) => {
     }
     if (type === 'score') {
       if (superiority) {
-        dispatch(clearSuperiority())
+        // dispatch(clearSuperiority())
       }
       dispatch(setBlocked(true))
       switch (id) {
@@ -340,7 +340,8 @@ const GameBoard = ({ history }) => {
           <>
             {t('game.sup.leads')}{' '}
             <span className="font-bold">
-              {scoresWinner === 'W' ? t('game.whites') : t('game.blacks')}
+              {scoresWinner &&
+                (scoresWinner === 'W' ? t('game.whites') : t('game.blacks'))}
             </span>{' '}
             {!!superiority && (
               <>
@@ -351,7 +352,7 @@ const GameBoard = ({ history }) => {
             )}
           </>
         }
-        show={!!superiority || !!scoresWinner}
+        show={!!scoresWinner}
         onClose={() => dispatch(clearSuperiority())}
       />
 

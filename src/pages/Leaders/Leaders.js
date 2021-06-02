@@ -18,12 +18,12 @@ export const Leaders = ({ history }) => {
   }, [])
 
   useEffect(() => {
-    if (nickname && nickname !== '') {
+    if (nickname !== '') {
       setList(
         leaders.filter(
           (item) =>
-            item.nickname.indexOf(nickname) !== -1 ||
-            item.id.toString().indexOf(nickname) !== -1
+            item.nickname.toLowerCase().includes(nickname.toLowerCase()) ||
+            item.id.toString() === nickname
         )
       )
     } else {
@@ -51,7 +51,7 @@ export const Leaders = ({ history }) => {
           <div className="text-right">{t('leaders.points')}</div>
           <div>{t('leaders.winrate')}</div>
         </div>
-        {list.length ? (
+        {(list.length > 0 || nickname) ? (
           list.map((item, i) => {
             return (
               <div
