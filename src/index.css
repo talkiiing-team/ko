@@ -49,4 +49,7 @@
   img {
     @apply select-none drag-none;
   }
+  .\!fill-current {
+    fill: currentColor !important;
+  }
 }

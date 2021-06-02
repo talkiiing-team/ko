@@ -80,7 +80,7 @@ export const boardReducer = (state = initialState, action) => {
               let sign = alpha[rowId]
               let coord = `${sign}${colId + 1}`
               _mapStones[coord] = 'circle'
-              _classNamesMapStones[coord] = `fill-current text-red-500 size-${cell}`
+              _classNamesMapStones[coord] = `!fill-current stroke-0 opacity-80 text-green-500 size-${cell}`
             }
           })
         })

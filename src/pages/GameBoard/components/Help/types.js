@@ -16,7 +16,7 @@ const getZone = (
   alpha.map((char) => {
     digits.map((digit) => {
       mapStones[`${char}${digit}`] = type
-      classNamesMapStones[`${char}${digit}`] = `${size} ${color}`
+      classNamesMapStones[`${char}${digit}`] = `!fill-current stroke-0 opacity-70 text-green-300 ${size} ${color}`
     })
   })
 

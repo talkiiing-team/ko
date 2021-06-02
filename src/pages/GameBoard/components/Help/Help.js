@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useMemo, useState } from 'react'
 import { GameStage, HelpTypes } from './decl'
 import classNames from 'classnames'
 import {
@@ -180,9 +180,9 @@ const Help = ({ handleHelp, activeHelpId, scores, counter }) => {
     <div className="w-full mt-8">
       <div className="flex flex-row flex-wrap justify-between items-stretch">
         <p className="w-full p-2 mb-2 text-2xl text-gray-700 font-bold select-none bg-transparent">
-          {t("game.weRecommend")}{' '}
+          {t('game.weRecommend')}{' '}
           <p className="inline text-sm font-light text-gray-500 ">
-            {t("game.theyWillBeUseful")}
+            {t('game.theyWillBeUseful')}
           </p>
         </p>
         {helpersList
@@ -199,12 +199,8 @@ const Help = ({ handleHelp, activeHelpId, scores, counter }) => {
           select-none transition-all duration-100 p-2 hover:bg-gray-50"
           onClick={() => setHintShow((v) => !v)}
         >
-          {hintShow ? (
-            <ChevronDownIcon className="w-5 h-5 inline " />
-          ) : (
-            <ChevronRightIcon className="w-5 h-5 inline" />
-          )}{' '}
-          {t("game.allHints")}
+          <ChevronDownIcon className={classNames('w-5 h-5 inline transform transition-transform duration-150', { '-rotate-90': !hintShow })} />{' '}
+          {t('game.allHints')}
         </p>
         <div
           className={classNames(
