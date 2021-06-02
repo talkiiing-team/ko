@@ -19,7 +19,6 @@ import {
   clearSuperiority,
 } from '../../store/Board/actions'
 
-import { DateTime } from 'luxon'
 import { clearGameId } from '../../store/GameCreate/actions'
 import { client, token } from '../../socket.js'
 import { HelpTypes } from './components/Help/decl'
@@ -127,7 +126,12 @@ const GameBoard = ({ history }) => {
           if (jsonData.payload.move) {
             setTurns((turns) => [
               ...turns,
-              timeConverter(jsonData.time) + ': ' + jsonData.payload.move,
+              {
+                time: jsonData.time,
+                text: jsonData.payload.move,
+                place: jsonData.payload.place,
+                turn: jsonData.payload.turn,
+              },
             ])
           }
           if (jsonData.payload.type === 'newTurn') {
@@ -299,10 +303,6 @@ const GameBoard = ({ history }) => {
     }
   }
 
-  const timeConverter = (UNIX_timestamp) => {
-    return DateTime.fromMillis(UNIX_timestamp).toFormat('dd/MM/yy HH:mm')
-  }
-
   const setMultipleHintFunc = (val) => {
     if (Object.keys(mapStones).length === multipleCount - 2) {
       dispatch(markersClear())
@@ -319,7 +319,7 @@ const GameBoard = ({ history }) => {
   }
   return (
     <>
-      {blocked && <LoaderPage text={t("game.loader")}/>}
+      {blocked && <LoaderPage text={t('game.loader')} />}
       <Header
         hint={hint}
         setPass={pass}

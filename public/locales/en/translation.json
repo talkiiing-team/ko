@@ -11,7 +11,7 @@
   "menu": {
     "continue": "Continue game",
     "playWithRandom": "Play with random",
-    "playWithBot": "Play with Alpha Go",
+    "playWithBot": "Play with AI",
     "playPrivateGame": "Private game",
     "leaderboard": "Leaderboard"
   },
@@ -101,5 +101,9 @@
     "allHints": "All Hints",
     "superiority": "Superiority",
     "loader": "Applying..."
-  }
+  },
+  "white": "White",
+  "black": "Black",
+  "madeAMove": "made a move to",
+  "timeFormat": "MM/dd/yy HH:mm"
 }

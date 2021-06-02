@@ -11,7 +11,7 @@
   "menu": {
     "continue": "Продолжить игру",
     "playWithRandom": "Игра со случайным игроком",
-    "playWithBot": "Игра с Alpha Go",
+    "playWithBot": "Игра с ИИ",
     "playPrivateGame": "Приватная игра",
     "leaderboard": "Рейтинговая таблица"
   },
@@ -101,5 +101,9 @@
     "allHints": "Все подсказки",
     "superiority": "Превосходство",
     "loader": "Применение..."
-  }
+  },
+  "white": "Белые",
+  "black": "Черные",
+  "madeAMove": "сделали ход в",
+  "timeFormat": "dd.MM.yy HH:mm"
 }
