@@ -75,7 +75,7 @@ const Board = ({
   }
 
   return (
-    <div className={classNames(classNameIn, className, 'w-full lg:max-w-3xl')}>
+    <div className={classNames(classNameIn, className, 'w-full lg:max-w-4xl select-none')}>
       <Goban
         stones={coordinates}
         markers={markers}

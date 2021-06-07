@@ -13,14 +13,15 @@
     "playWithRandom": "Игра со случайным игроком",
     "playWithBot": "Игра с ИИ",
     "playPrivateGame": "Приватная игра",
-    "leaderboard": "Рейтинговая таблица"
+    "leaderboard": "Рейтинговая таблица",
+    "logOut": "Выйти"
   },
   "auth": {
     "error": {
       "fillAll": "Заполните все поля"
     },
     "next": "Далее",
-    "register": "Зарегистрироваться",
+    "register": "Создать",
     "signIn": "Войти",
     "email": "Почта",
     "nickname": "Имя пользователя",
@@ -29,13 +30,13 @@
   "leaders": {
     "points": "Очки",
     "nickname": "Никнейм",
-    "winrate": "Коэф. игр",
+    "winrate": "WR",
     "enterNameOrNumber": "Введите имя или номер игрока"
   },
   "common": {
     "downloading": "Загружаем...",
     "us": {
-      "madeWith": "Сделано с",
+      "madeWith": "Сделано с ",
       "byTeam": "командой"
     },
     "toTheMenu": "Назад в меню",
@@ -64,7 +65,7 @@
     "win": "Победа!",
     "lose": "Поражение!",
     "score": "Счёт",
-    "scoreHints": "Счёт по советам",
+    "scoreHints": "Стоимость советов",
     "totalScore": "Итоговый счёт"
   },
   "game": {
@@ -75,7 +76,7 @@
     },
     "btn": {
       "pass": "Пас",
-      "takeHint": "Получить совет",
+      "takeHint": "Взять совет",
       "giveUp": "Сдаться"
     },
     "whites": "Белые",
@@ -105,5 +106,8 @@
   "white": "Белые",
   "black": "Черные",
   "madeAMove": "сделали ход в",
-  "timeFormat": "dd.MM.yy HH:mm"
+  "timeFormat": "dd.MM.yy HH:mm",
+  "gameHistory": "История игры",
+  "points": "Очки: ",
+  "winrate": "Рейтинг: "
 }

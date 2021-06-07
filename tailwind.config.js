@@ -19,7 +19,7 @@ module.exports = {
         '-full': '-100%',
       },
       gridTemplateColumns: {
-        userRating: '4rem 2rem 2fr 2fr 1fr',
+        userRating: '3rem 2rem 1fr 3.5rem 4rem',
       },
       margin: {
         7.5: '1.8125rem',
@@ -29,6 +29,9 @@ module.exports = {
           'inset 0 3px 6px 0 rgba(0, 0, 0, 0.05), inset -1px -3px 4px 0 rgba(0, 0, 0, 0.04)',
         innerXxl:
           'inset 0 4px 6px 0 rgba(0, 0, 0, 0.08), inset -2px -4px 4px 0 rgba(0, 0, 0, 0.07)',
+      },
+      maxWidth: {
+        xxs: '12rem',
       },
     },
   },

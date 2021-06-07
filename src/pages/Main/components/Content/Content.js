@@ -19,7 +19,6 @@ const ContentMainBoard = (setSearchType, searchType, history, gameId) => {
 
   const { t } = useTranslation()
 
-
   switch (searchType) {
     case 'Code':
       return <CodeContent gameId={gameId} setSearchType={setSearchType} />
@@ -94,26 +93,22 @@ export const Content = ({ history, searchType, setSearchType }) => {
   }, [searchType])
 
   return (
-    <div className="grid grid-flow-row gap-y-5 w-full max-w-xl mx-auto">
+    <div className="grid grid-flow-row gap-y-5 w-full max-w-xl mx-auto px-6">
       {!searchType ? (
         <>
           <ButtonCustom
-            mb={30}
             onClick={() => history.push('/gameBoard')}
             disabled={gameId === null}
           >
             {t('menu.continue')}
           </ButtonCustom>
           <ButtonCustom
-            mb={30}
             onClick={() => setSearchType('Random')}
             disabled={gameId !== null}
           >
-
             {t('menu.playWithRandom')}
           </ButtonCustom>
           <ButtonCustom
-            mb={30}
             onClick={() => setSearchType('WithAi')}
             disabled={gameId !== null}
           >
@@ -121,13 +116,21 @@ export const Content = ({ history, searchType, setSearchType }) => {
           </ButtonCustom>
           <ButtonCustom
             onClick={() => setSearchType('Code')}
-            mb={30}
             disabled={gameId !== null}
           >
             {t('menu.playPrivateGame')}
           </ButtonCustom>
-          <ButtonCustom mb={30} onClick={() => history.push('/liders')}>
+          <ButtonCustom onClick={() => history.push('/liders')}>
             {t('menu.leaderboard')}
+          </ButtonCustom>{' '}
+          <ButtonCustom
+            onClick={() => {
+              localStorage.removeItem('GoGameToken')
+              history.push('/')
+            }}
+            className="mt-4"
+          >
+            {t('menu.logOut')}
           </ButtonCustom>{' '}
         </>
       ) : null}

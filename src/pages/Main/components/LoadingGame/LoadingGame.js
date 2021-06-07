@@ -11,15 +11,15 @@ import { Input } from '../../../../components/InputCustom'
 import { useTranslation } from 'react-i18next'
 
 const Text = styled.p`
-  font-size: 36px;
-  line-height: 42px;
-  margin-bottom: 86px;
+  font-size: 28px;
+  line-height: 32px;
+  margin-bottom: 58px;
   text-align: center;
 `
 
 const Spinner = styled.div`
   margin: 0 auto;
-  width: 126px;
+  width: 64px;
   margin-bottom: 46px;
 `
 
@@ -98,7 +98,7 @@ export const LoadingGame = ({
   return (
     <>
       <Spinner>
-        <Loader type="Grid" color="#3b3b3b" height={126} width={126} />
+        <Loader type="Grid" color="#3b3b3b" height={64} width={64} />
       </Spinner>
       <Text>{text}</Text>
       {codeBlock()}

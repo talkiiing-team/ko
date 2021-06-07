@@ -13,7 +13,8 @@
     "playWithRandom": "Play with random",
     "playWithBot": "Play with AI",
     "playPrivateGame": "Private game",
-    "leaderboard": "Leaderboard"
+    "leaderboard": "Leaderboard",
+    "logOut": "Log Out"
   },
   "auth": {
     "error": {
@@ -30,7 +31,7 @@
     "points": "Points",
     "nickname": "Nickname",
     "winrate": "Winrate",
-    "enterNameOrNumber": "Type name or number of player"
+    "enterNameOrNumber": "Username or ID"
   },
   "common": {
     "downloading": "Loading...",
@@ -64,7 +65,7 @@
     "win": "You won!",
     "lose": "You loosed!",
     "score": "Score",
-    "scoreHints": "Score on tip",
+    "scoreHints": "Tips total price",
     "totalScore": "Total"
   },
   "game": {
@@ -105,5 +106,8 @@
   "white": "White",
   "black": "Black",
   "madeAMove": "made a move to",
-  "timeFormat": "MM/dd/yy HH:mm"
+  "timeFormat": "MM/dd/yy HH:mm",
+  "gameHistory": "Game history",
+  "points": "Points: ",
+  "winrate": "Rate: "
 }

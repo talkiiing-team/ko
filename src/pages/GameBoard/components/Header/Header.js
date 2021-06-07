@@ -1,101 +1,22 @@
 import React, { useEffect, useState } from 'react'
-import styled from 'styled-components'
-import Logo from '../../../../assets/img/logo_game.png'
-import { MAIN_URL } from '../../../../constants/routes'
-
-const Wrapper = styled.div`
-  display: flex;
-  height: 66px;
-  align-items: center;
-  margin-bottom: 34px;
-  padding-top: 29px;
-`
-const Content = styled.div`
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  width: 100%;
-`
-const Menu = styled.div`
-  display: flex;
-  align-items: center;
-  margin-left: 64px;
-`
-const Left = styled.div`
-  display: flex;
-  align-items: center;
-`
-const LogoWrapper = styled.div`
-  display: flex;
-  align-items: center;
-  cursor: pointer;
-`
-const Logotype = styled.img``
-const Text = styled.p`
-  font-size: 24px;
-  line-height: 28px;
-  margin-right: 32px;
-  cursor: pointer;
-`
-const TextHint = styled.p`
-  font-size: 24px;
-  line-height: 28px;
-  margin-right: 32px;
-  cursor: pointer;
-  color: ${(props) => (props.hint ? '#D8AD63' : '#000')};
-`
-
-const TextSdf = styled.p`
-  font-size: 24px;
-  line-height: 28px;
-  cursor: pointer;
-  color: #aaaaaa;
-  &:hover {
-    color: #000000;
-  }
-`
-const GameId = styled.p`
-  font-size: 24px;
-  line-height: 28px;
-`
-const Timer = styled.p`
-  font-size: 24px;
-  line-height: 28px;
-  color: #767676;
-`
-
-let timesCal = null
+import Logo from '../../../../assets/img/mindgame.png'
+import { MAIN_URL, PROFILE_URL } from '../../../../constants/routes'
+import { ButtonCustom } from '../../../../components/ButtonCustom'
+import { useTranslation } from 'react-i18next'
 
 export const Header = ({
-  history,
-  gameId,
-  setHint,
-  hint,
-  setResign,
-  helpType,
-  setPass,
-  viewPass,
-  view,
+  gameId
 }) => {
+  const { t } = useTranslation()
+
   return (
-    <Wrapper>
-      <Content>
-        <Left>
-          <LogoWrapper onClick={() => history.push(MAIN_URL)}>
-            <Logotype alt="logo" src={Logo} />
-          </LogoWrapper>
-          <Menu>
-            {viewPass && <Text onClick={() => setPass()}>Пас</Text>}
-            <Text onClick={() => setResign()}>Сдаться</Text>
-            {view && (
-              <TextHint onClick={() => setHint(!hint)} hint={hint}>
-                Взять подсказку
-              </TextHint>
-            )}
-          </Menu>
-        </Left>
-        <GameId>ID игры: {gameId}</GameId>
-      </Content>
-    </Wrapper>
+    <div className="fixed bg-white border-b-2 border-gray-100 bg-opacity-95 backdrop-filter backdrop-blur-lg z-50 top-0 left-0 w-full h-20 flex justify-between gap-x-4 items-center p-6 py-2">
+      <a href={MAIN_URL}>
+        <img className="w-auto max-w-xl h-12" alt="Mind Games" src={Logo} />
+      </a>
+      <div className="w-full flex flex-row justify-end">
+        <p className="text-lg my-2 text-gray-400">ID: {gameId}</p>
+      </div>
+    </div>
   )
 }

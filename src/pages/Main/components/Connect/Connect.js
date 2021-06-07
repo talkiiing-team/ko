@@ -1,45 +1,8 @@
 import React, { useState, useEffect } from 'react'
-import styled from 'styled-components'
 import { ButtonCustom } from '../../../../components/ButtonCustom'
 import AvatarImage from '../../../../assets/img/avatar-2.png'
 import { GAME_URL } from '../../../../constants/routes'
 import { useTranslation } from 'react-i18next'
-
-const Text = styled.p`
-  font-size: 36px;
-  line-height: 42px;
-  margin-bottom: 30px;
-  text-align: center;
-`
-
-const Enemy = styled.div`
-  margin-bottom: 20px;
-`
-
-const Info = styled.div`
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-`
-
-const Name = styled.p`
-  font-size: 48px;
-  line-height: 56px;
-  font-weight: 700;
-`
-
-const ScoreWrapper = styled.div`
-  display: flex;
-`
-
-const Pts = styled.p`
-  font-size: 20px;
-  color: #c1c1c1;
-`
-
-const Avatar = styled.img`
-  border-radius: 100px;
-`
 
 export const Connect = ({ text, history, opponent }) => {
   const [seconds, setSeconds] = useState(0)
@@ -60,19 +23,21 @@ export const Connect = ({ text, history, opponent }) => {
 
   return (
     <>
-      <Enemy>
-        <Info>
-          <Avatar alt="avatar" src={opponent.avatar} />
-          <Name>{opponent.nickname}</Name>
-          <ScoreWrapper>
-            <Pts>{opponent.pts}</Pts>
-            <Pts>\</Pts>
-            <Pts>{opponent.position + 'th'}</Pts>
-          </ScoreWrapper>
-        </Info>
-      </Enemy>
-      <Text>{text}</Text>
-      <ButtonCustom width={'350px'} disabled>
+      <div className="mb-4">
+        <div className="flex flex-col items-center">
+          <img
+            className="rounded-full h-24"
+            alt="Avatar"
+            src={opponent.avatar}
+          />
+          <p className="text-3xl">{opponent.nickname}</p>
+          <p className="text-xl">
+            {opponent.pts}/{opponent.position + 'th'}
+          </p>
+        </div>
+      </div>
+      <p className="text-2xl text-center mb-4">{text}</p>
+      <ButtonCustom disabled>
         {t('common.cancel')}
       </ButtonCustom>
     </>

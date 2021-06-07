@@ -11,18 +11,17 @@ export const LangSelector = () => {
   return (
     <div className="fixed right-6 bottom-8 w-36 rounded-lg px-3 py-2 shadow-2xl bg-gray-100 flex flex-col items-center">
       <div className="flex flex-row gap-2 select-none">
-        {['en', 'ru'].map((v) => (
+        {['en', 'ru'].map((v, i) => (
           <div
+            key={i}
             onClick={() => changeLanguage(v)}
-            className={
-              (v === i18n.language ? 'font-bold' : 'cursor-pointer')
-            }
+            className={v === i18n.language ? 'font-bold' : 'cursor-pointer'}
           >
             {v.toUpperCase()}
           </div>
         ))}
       </div>
-      <p>{t('lang')}</p>
+      <p className="select-none">{t('lang')}</p>
     </div>
   )
 }
