@@ -106,6 +106,7 @@
   "white": "Белые",
   "black": "Черные",
   "madeAMove": "сделали ход в",
+  "madeAPass": "сделали пас",
   "timeFormat": "dd.MM.yy HH:mm",
   "gameHistory": "История игры",
   "points": "Очки: ",
