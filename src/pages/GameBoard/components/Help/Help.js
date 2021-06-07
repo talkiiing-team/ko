@@ -177,7 +177,7 @@ const Help = ({ handleHelp, activeHelpId, scores, counter }) => {
   ]
 
   return (
-    <div className="w-full mt-8">
+    <div className="w-full">
       <div className="flex flex-row flex-wrap justify-between items-stretch">
         <p className="w-full p-2 mb-2 text-2xl text-gray-700 font-bold select-none bg-transparent">
           {t('game.weRecommend')}{' '}

@@ -20,7 +20,7 @@
       "fillAll": "Заполните все поля"
     },
     "next": "Далее",
-    "register": "Зарегистрироваться",
+    "register": "Создать",
     "signIn": "Войти",
     "email": "Почта",
     "nickname": "Имя пользователя",
@@ -29,13 +29,13 @@
   "leaders": {
     "points": "Очки",
     "nickname": "Никнейм",
-    "winrate": "Коэф. игр",
+    "winrate": "WR",
     "enterNameOrNumber": "Введите имя или номер игрока"
   },
   "common": {
     "downloading": "Загружаем...",
     "us": {
-      "madeWith": "Сделано с",
+      "madeWith": "Сделано с ",
       "byTeam": "командой"
     },
     "toTheMenu": "Назад в меню",
@@ -75,7 +75,7 @@
     },
     "btn": {
       "pass": "Пас",
-      "takeHint": "Получить совет",
+      "takeHint": "Взять совет",
       "giveUp": "Сдаться"
     },
     "whites": "Белые",
@@ -105,5 +105,8 @@
   "white": "Белые",
   "black": "Черные",
   "madeAMove": "сделали ход в",
-  "timeFormat": "dd.MM.yy HH:mm"
+  "timeFormat": "dd.MM.yy HH:mm",
+  "gameHistory": "История игры",
+  "points": "Очки: ",
+  "winrate": "Рейтинг: "
 }

@@ -27,6 +27,7 @@ import Players from './components/GameInfo/components/Players/Players'
 import { Toast } from '../../components/Toast'
 import GameInfo from './components/GameInfo/GameInfo'
 import { useTranslation } from 'react-i18next'
+import { HelpPlate } from './components/Help/HelpPlate'
 
 const GameBoard = ({ history }) => {
   const game_id = useSelector((state) => state.createGame.id)
@@ -321,19 +322,7 @@ const GameBoard = ({ history }) => {
   return (
     <>
       {blocked && <LoaderPage text={t('game.loader')} />}
-      <Header
-        hint={hint}
-        setPass={pass}
-        viewPass={Object.keys(coordinates).length > 0}
-        history={history}
-        setHint={(e) => setHint(e)}
-        setResign={resign}
-        helpType={helpType}
-        gameId={game_id}
-        view={stepColor === yourColor}
-        timeOut={() => alert('End Time')}
-        timer={stepColor === yourColor}
-      />
+      <Header gameId={game_id} />
       <Toast
         heading={t('game.superiority')}
         description={
@@ -356,7 +345,7 @@ const GameBoard = ({ history }) => {
         onClose={() => dispatch(clearSuperiority())}
       />
 
-      <div className="flex flex-col lg:flex-row justify-between w-full items-stretch px-8 mx-auto mt-32">
+      <div className="flex flex-col lg:flex-row justify-between w-full items-stretch px-0 lg:px-8 mx-auto mt-20">
         <Board
           lastMarkers={lastMarkers}
           hint={hint}
@@ -378,7 +367,7 @@ const GameBoard = ({ history }) => {
           mapStones={mapStones}
           gameId={game_id}
         />
-        <div className="mt-9 px-4 w-full lg:w-1/2">
+        <div className="flex flex-col items-center mt-9 px-4 gap-y-8 w-full lg:w-1/2">
           <Players
             enemyPass={enemyPass}
             opponent={opponent}
@@ -388,6 +377,14 @@ const GameBoard = ({ history }) => {
             stepMain={stepMain}
             stepTwo={stepTwo}
             times={times}
+          />
+          <HelpPlate
+            hint={hint}
+            setPass={pass}
+            viewPass={Object.keys(coordinates).length > 0}
+            setHint={(e) => setHint(e)}
+            setResign={resign}
+            view={stepColor === yourColor}
           />
           {hint ? (
             <Help

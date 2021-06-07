@@ -19,13 +19,14 @@ export const Header = ({
   setNicknameFunc,
   onlyLogo,
 }) => {
-
   const { t } = useTranslation()
 
   return (
     <div
       className={classNames(
-        'fixed bg-white border-b-2 border-gray-100 transition-all duration-200 opacity-90 backdrop-filter backdrop-blur-lg z-50 top-0 left-0 w-full h-32 flex gap-x-4 items-center p-6',
+        'fixed flex flex-row gap-x-4 items-center bg-white border-b-2 ' +
+        'border-gray-100 transition-all duration-200 bg-opacity-90 ' +
+        'backdrop-filter backdrop-blur-lg z-50 top-0 left-0 w-full h-20 px-6',
         {
           'justify-between': !onlyLogo,
           'justify-center': onlyLogo,
@@ -38,36 +39,40 @@ export const Header = ({
             ? MAIN_URL
             : '#'
         }
+        className={(onlyLogo ? "block" : "hidden") + "lg:block"}
       >
-        <img className="w-auto max-w-xl h-16" alt="logo" src={Logo} />
+        <img className="w-auto max-w-xl h-12" alt="Mind Games" src={Logo} />
       </a>
       {!onlyLogo &&
         (!profile ? (
-          <div>
-            <div
-              className="grid grid-flow-col"
-              onClick={() => {
-                if (
-                  searchType !== 'ConnectRandom' &&
-                  searchType !== 'ConnectCode'
-                ) {
-                  history.push(PROFILE_URL)
-                }
-              }}
-            >
-              <div className="flex items-center">
-                <div className="grid grid-flow-row gap-y-1 text-right">
-                  <div className="font-bold text-4xl">{nickname || ''}</div>
-                  <div>{pts || 0}pts</div>
-                  <div>{winrate || ''}</div>
+          <div
+            className="flex flex-row gap-x-4 items-center justify-self-end"
+            onClick={() => {
+              if (
+                searchType !== 'ConnectRandom' &&
+                searchType !== 'ConnectCode'
+              ) {
+                history.push(PROFILE_URL)
+              }
+            }}
+          >
+            <div className="flex items-center">
+              <div className="flex flex-col gap-y-1 text-right">
+                <div className="font-bold text-2xl">{nickname || ''}</div>
+                <div className="text-sm">
+                  {t('points')}
+                  {pts || 0}
+                  {'  '}
+                  {t('winrate')}
+                  {winrate || ''}
                 </div>
               </div>
-              <img
-                className="ml-3 w-24 h-24 rounded-full"
-                alt="avatar"
-                src={avatar}
-              />
             </div>
+            <img
+              className="w-14 h-14 rounded-full"
+              alt="User Avatar"
+              src={avatar}
+            />
           </div>
         ) : (
           <>

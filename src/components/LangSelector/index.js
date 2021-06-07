@@ -14,15 +14,13 @@ export const LangSelector = () => {
         {['en', 'ru'].map((v) => (
           <div
             onClick={() => changeLanguage(v)}
-            className={
-              (v === i18n.language ? 'font-bold' : 'cursor-pointer')
-            }
+            className={v === i18n.language ? 'font-bold' : 'cursor-pointer'}
           >
             {v.toUpperCase()}
           </div>
         ))}
       </div>
-      <p>{t('lang')}</p>
+      <p className="select-none">{t('lang')}</p>
     </div>
   )
 }
