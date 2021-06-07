@@ -13,7 +13,8 @@
     "playWithRandom": "Play with random",
     "playWithBot": "Play with AI",
     "playPrivateGame": "Private game",
-    "leaderboard": "Leaderboard"
+    "leaderboard": "Leaderboard",
+    "logOut": "Log Out"
   },
   "auth": {
     "error": {
@@ -64,7 +65,7 @@
     "win": "You won!",
     "lose": "You loosed!",
     "score": "Score",
-    "scoreHints": "Score on tip",
+    "scoreHints": "Tips total price",
     "totalScore": "Total"
   },
   "game": {

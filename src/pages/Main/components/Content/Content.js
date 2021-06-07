@@ -123,6 +123,15 @@ export const Content = ({ history, searchType, setSearchType }) => {
           <ButtonCustom onClick={() => history.push('/liders')}>
             {t('menu.leaderboard')}
           </ButtonCustom>{' '}
+          <ButtonCustom
+            onClick={() => {
+              localStorage.removeItem('GoGameToken')
+              history.push('/')
+            }}
+            className="mt-4"
+          >
+            {t('menu.logOut')}
+          </ButtonCustom>{' '}
         </>
       ) : null}
       {ContentMainBoard(setSearchType, searchType, history, gameId)}

@@ -52,7 +52,7 @@ const JoinGame = ({ setSearchType, cancelGame, code, setCode }) => {
   return (
     <>
       <p className="text-4xl text-center">{t('games.typeGameCode')}:</p>
-      <Input mt={30} mb={30} onChange={setCode} name="code" />
+      <Input className="uppercase" maxLength={6} onChange={setCode} name="code" />
       <ButtonCustom
         mb={30}
         disabled={!code}

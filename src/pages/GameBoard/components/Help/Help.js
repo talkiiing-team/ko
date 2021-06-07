@@ -188,7 +188,13 @@ const Help = ({ handleHelp, activeHelpId, scores, counter }) => {
         {helpersList
           .filter((v) => v.relevant(counter))
           .map((v) => (
-            <HelpButton active={activeHelpId === v.id} onClick={v.handler}>
+            <HelpButton
+              active={activeHelpId === v.id}
+              onClick={() => {
+                v.handler()
+                window.scroll(0, 0)
+              }}
+            >
               {v.text}
             </HelpButton>
           ))}
@@ -199,7 +205,12 @@ const Help = ({ handleHelp, activeHelpId, scores, counter }) => {
           select-none transition-all duration-100 p-2 hover:bg-gray-50"
           onClick={() => setHintShow((v) => !v)}
         >
-          <ChevronDownIcon className={classNames('w-5 h-5 inline transform transition-transform duration-150', { '-rotate-90': !hintShow })} />{' '}
+          <ChevronDownIcon
+            className={classNames(
+              'w-5 h-5 inline transform transition-transform duration-150',
+              { '-rotate-90': !hintShow }
+            )}
+          />{' '}
           {t('game.allHints')}
         </p>
         <div
@@ -211,7 +222,13 @@ const Help = ({ handleHelp, activeHelpId, scores, counter }) => {
           {helpersList
             .filter((v) => !v.relevant(counter))
             .map((v) => (
-              <HelpButton active={activeHelpId === v.id} onClick={v.handler}>
+              <HelpButton
+                active={activeHelpId === v.id}
+                onClick={() => {
+                  v.handler()
+                  window.scroll(0, 0)
+                }}
+              >
                 {v.text}
               </HelpButton>
             ))}

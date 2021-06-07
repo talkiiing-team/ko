@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react'
 import { useSelector } from 'react-redux'
 import classNames from 'classnames'
 import { DateTime } from 'luxon'
+import { ellipsis } from '../../../../../../helpers/utils'
 
 let timesPlayerOneCall = null
 let timesPlayerTwoCall = null
@@ -12,7 +13,7 @@ const Card = ({
   opponent,
   enemyPass,
   scores,
-  timerParseOne,
+  timerParse,
   stepMain,
   stepColor,
   cardColor,
@@ -29,38 +30,45 @@ const Card = ({
   return (
     <div
       className={classNames(
-        `flex w-1/2 px-2 py-2 relative rounded-xl gap-x-4 transform transition-all duration-200 border-2 border-gray-50`,
+        `flex flex-col gap-y-2 w-full px-3 py-2 relative rounded-xl gap-x-4
+         transform transition-all duration-200 border-2 border-gray-50
+         overflow-hidden`,
         {
           'shadow-md bg-gray-50': stepColor !== cardColor,
           'shadow-xl scale-105': stepColor === cardColor,
         }
       )}
     >
-      <img
-        alt="avatar"
-        src={yourColor === cardColor ? you.avatar : opponent.avatar}
-        className={classNames(
-          'rounded-full w-24 h-24 border-4 shadow-md',
-          cardColor === 'black' ? 'border-black' : 'border-white'
+      <div className="font-bold text-xl px-1 overflow-ellipsis">
+        {ellipsis(
+          yourColor === cardColor ? you.nickname : opponent.nickname,
+          13
         )}
-      />
-      <div className="absolute top-2 left-28">
-        <div className="font-bold text-xl">
-          {yourColor === cardColor ? you.nickname : opponent.nickname}
-        </div>
-        <div className="text-gray-500 text-sm">
-          {yourColor === cardColor ? you.pts : opponent.pts}/
-          {yourColor === cardColor
-            ? you.position + 'th'
-            : opponent.position + 'th'}
-        </div>
-        {scores && scores.winner === 'B' && <div>+ {scores.score}</div>}
       </div>
-      {enemyPass && yourColor !== cardColor && (
-        <div className="absolute bottom-0 left-28 bottom-2">Пас</div>
-      )}
-      <div className="absolute right-4 bottom-8">{timerParseOne}</div>
-      <div className="absolute right-4 bottom-2">{stepMain}</div>
+      <div className="flex flex-row gap-x-4 w-full">
+        <img
+          alt="Player avatar"
+          src={yourColor === cardColor ? you.avatar : opponent.avatar}
+          className={classNames(
+            'rounded-full w-12 h-12 border-4 shadow-md',
+            cardColor === 'black' ? 'border-black' : 'border-white'
+          )}
+        />
+        <div className="flex flex-col items-start w-full">
+          <div className="flex flex-row gap-x-2 justify-between w-full">
+            <div className="text-gray-700 text-lg w-20">{timerParse}</div>
+            <div className="text-gray-500 text-lg w-8 text-right">
+              {stepMain}
+            </div>
+          </div>
+          <div className="text-gray-500 text-sm">
+            {yourColor === cardColor ? you.pts : opponent.pts}/
+            {yourColor === cardColor
+              ? you.position + 'th'
+              : opponent.position + 'th'}
+          </div>
+        </div>
+      </div>
     </div>
   )
 }
@@ -92,7 +100,7 @@ const Players = ({
     if (t >= 0) {
       timesPlayerOneCall = setTimeout(() => {
         setTimerParseOne(
-          DateTime.fromSeconds(t, { zone: 'utc' }).toFormat('HH:mm:ss')
+          DateTime.fromSeconds(t, { zone: 'utc' }).toFormat('mm:ss')
         )
         if (start) {
           timesPlayerOne(t - 1, start)
@@ -107,7 +115,7 @@ const Players = ({
     if (t >= 0) {
       timesPlayerTwoCall = setTimeout(() => {
         setTimerParseTwo(
-          DateTime.fromSeconds(t, { zone: 'utc' }).toFormat('HH:mm:ss')
+          DateTime.fromSeconds(t, { zone: 'utc' }).toFormat('mm:ss')
         )
         if (start) {
           timesPlayerTwo(t - 1, start)
@@ -119,15 +127,15 @@ const Players = ({
   }
 
   return (
-    <div className="flex gap-x-4">
+    <div className="w-full grid grid-rows-2 sm:grid-cols-2 sm:grid-rows-1 gap-y-4 sm:gap-x-4 lg:mt-6 px-4 lg:px-1">
       <Card
         yourColor={yourColor}
         you={you}
         opponent={opponent}
         enemyPass={enemyPass}
         scores={scores}
-        timerParseOne={timerParseOne}
-        stepMain={stepMain}
+        timerParse={timerParseOne}
+        stepMain={stepTwo}
         stepColor={stepColor}
         cardColor={'black'}
       />
@@ -137,8 +145,8 @@ const Players = ({
         opponent={opponent}
         enemyPass={enemyPass}
         scores={scores}
-        timerParseOne={timerParseTwo}
-        stepMain={stepTwo}
+        timerParse={timerParseTwo}
+        stepMain={stepMain}
         stepColor={stepColor}
         cardColor={'white'}
       />

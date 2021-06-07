@@ -1,5 +1,4 @@
 import React, { useState, useEffect } from 'react'
-import styled from 'styled-components'
 import { ButtonCustom } from '../../../../components/ButtonCustom'
 import AvatarImage from '../../../../assets/img/avatar-2.png'
 import { GAME_URL } from '../../../../constants/routes'

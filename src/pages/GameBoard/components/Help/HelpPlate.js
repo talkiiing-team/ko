@@ -13,22 +13,25 @@ export const HelpPlate = ({
   const { t } = useTranslation()
 
   return (
-    <div>
-      <div className="flex flex-row gap-x-2 text-lg lg:text-2xl ml-4">
-        <ButtonCustom
-          onClick={() => setHint(!hint)}
-          active={hint || false}
-          disabled={!view}
-        >
-          {t('game.btn.takeHint')}
-        </ButtonCustom>
-        <ButtonCustom onClick={() => setPass()} disabled={!viewPass}>
-          {t('game.btn.pass')}
-        </ButtonCustom>
-        <ButtonCustom onClick={() => setResign()}>
-          {t('game.btn.giveUp')}
-        </ButtonCustom>
-      </div>
+    <div className="w-full flex flex-row items-stretch justify-between gap-x-2 text-lg lg:text-2xl px-1">
+      <ButtonCustom
+        onClick={() => setHint(!hint)}
+        active={hint || false}
+        disabled={!view}
+        className="px-4"
+      >
+        {t('game.btn.takeHint')}
+      </ButtonCustom>
+      <ButtonCustom
+        onClick={() => setPass()}
+        disabled={!viewPass}
+        className="px-4"
+      >
+        {t('game.btn.pass')}
+      </ButtonCustom>
+      <ButtonCustom onClick={() => setResign()} className="px-4">
+        {t('game.btn.giveUp')}
+      </ButtonCustom>
     </div>
   )
 }

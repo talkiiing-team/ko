@@ -13,7 +13,8 @@
     "playWithRandom": "Игра со случайным игроком",
     "playWithBot": "Игра с ИИ",
     "playPrivateGame": "Приватная игра",
-    "leaderboard": "Рейтинговая таблица"
+    "leaderboard": "Рейтинговая таблица",
+    "logOut": "Выйти"
   },
   "auth": {
     "error": {
@@ -64,7 +65,7 @@
     "win": "Победа!",
     "lose": "Поражение!",
     "score": "Счёт",
-    "scoreHints": "Счёт по советам",
+    "scoreHints": "Стоимость советов",
     "totalScore": "Итоговый счёт"
   },
   "game": {

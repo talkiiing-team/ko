@@ -6,6 +6,7 @@ import { Input } from '../../../../components/InputCustom'
 import { HomeIcon } from '@heroicons/react/outline'
 import classNames from 'classnames'
 import { useTranslation } from 'react-i18next'
+import { ellipsis } from '../../../../helpers/utils'
 
 export const Header = ({
   history,
@@ -25,12 +26,9 @@ export const Header = ({
     <div
       className={classNames(
         'fixed flex flex-row gap-x-4 items-center bg-white border-b-2 ' +
-        'border-gray-100 transition-all duration-200 bg-opacity-90 ' +
-        'backdrop-filter backdrop-blur-lg z-50 top-0 left-0 w-full h-20 px-6',
-        {
-          'justify-between': !onlyLogo,
-          'justify-center': onlyLogo,
-        }
+          'border-gray-100 transition-all duration-200 bg-opacity-90 ' +
+          'backdrop-filter backdrop-blur-lg z-50 top-0 left-0 w-full h-20 px-6 ' +
+          'justify-end lg:justify-between'
       )}
     >
       <a
@@ -39,14 +37,14 @@ export const Header = ({
             ? MAIN_URL
             : '#'
         }
-        className={(onlyLogo ? "block" : "hidden") + "lg:block"}
+        className={(onlyLogo ? 'block' : 'hidden') + ' lg:block'}
       >
         <img className="w-auto max-w-xl h-12" alt="Mind Games" src={Logo} />
       </a>
       {!onlyLogo &&
         (!profile ? (
           <div
-            className="flex flex-row gap-x-4 items-center justify-self-end"
+            className="flex flex-row gap-x-4 items-center"
             onClick={() => {
               if (
                 searchType !== 'ConnectRandom' &&
@@ -56,16 +54,16 @@ export const Header = ({
               }
             }}
           >
-            <div className="flex items-center">
-              <div className="flex flex-col gap-y-1 text-right">
-                <div className="font-bold text-2xl">{nickname || ''}</div>
-                <div className="text-sm">
-                  {t('points')}
-                  {pts || 0}
-                  {'  '}
-                  {t('winrate')}
-                  {winrate || ''}
-                </div>
+            <div className="flex flex-col gap-y-1 text-right">
+              <div className="font-bold text-2xl">
+                {ellipsis(nickname, 15) || ''}
+              </div>
+              <div className="text-sm">
+                {t('points')}
+                {pts || 0}
+                {'  '}
+                {t('winrate')}
+                {winrate || ''}
               </div>
             </div>
             <img
