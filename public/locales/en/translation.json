@@ -106,6 +106,7 @@
   "white": "White",
   "black": "Black",
   "madeAMove": "made a move to",
+  "madeAPass": "passed",
   "timeFormat": "MM/dd/yy HH:mm",
   "gameHistory": "Game history",
   "points": "Points: ",

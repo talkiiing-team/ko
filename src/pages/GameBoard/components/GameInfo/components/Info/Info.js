@@ -6,7 +6,7 @@ const Info = ({ turns }) => {
   const { t } = useTranslation()
 
   const timeConverter = (UNIX_timestamp) => {
-    return DateTime.fromMillis(UNIX_timestamp).toFormat(t("timeFormat"))
+    return DateTime.fromMillis(UNIX_timestamp).toFormat(t('timeFormat'))
   }
 
   return (
@@ -16,11 +16,17 @@ const Info = ({ turns }) => {
       </p>
       <div className="overflow-y-scroll h-full max-h-96 px-4 py-4 bg-gray-100 rounded-md m-1">
         {turns.map((item, i) => {
-          const {time, place, turn} = item
+          const { time, place, turn } = item
           return (
             <p key={i}>
-              <span className="text-lg font-light text-gray-800">{timeConverter(time)}</span>
-              <span className="text-lg font-light">: {`${t(turn)} ${t('madeAMove')} ${place}`}</span>
+              <span className="text-lg font-light text-gray-800">
+                {timeConverter(time)}
+              </span>
+              <span className="text-lg font-light">
+                :{' '}
+                {`${t(turn)} ` +
+                  (!!place ? `${t('madeAMove')} ${place}` : t('madeAPass'))}
+              </span>
             </p>
           )
         })}
