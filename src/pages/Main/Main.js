@@ -33,7 +33,7 @@ const Main = ({ history, location }) => {
   }
 
   return (
-    <div className="w-full max-w-7xl pt-24 relative h-screen mx-auto flex items-center h-6">
+    <div className="w-full max-w-7xl relative h-screen mx-auto flex items-center">
       <Header
         history={history}
         setSearchType={setSearchType}

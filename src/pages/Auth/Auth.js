@@ -1,11 +1,10 @@
 import React, { useState } from 'react'
 import { useDispatch } from 'react-redux'
 import styled from 'styled-components'
-import Logo from '../../../assets/img/mindgame.png'
-import { ButtonCustom } from '../../../components/ButtonCustom'
-import { Input } from '../../../components/InputCustom'
-import { regSubmit, loginSubmit } from '../../../store/Auth/actions'
-import { Header } from '../../Main/components/Header'
+import Logo from '../../assets/img/mindgame.png'
+import { ButtonCustom } from '../../components/ButtonCustom'
+import { Input } from '../../components/InputCustom'
+import { regSubmit, loginSubmit } from '../../store/Auth/actions'
 import { useTranslation } from 'react-i18next'
 
 const Form = styled.form``
@@ -62,8 +61,8 @@ const Auth = () => {
   }
 
   return (
-    <div className="flex flex-col items-center pt-80 px-6">
-      <Header onlyLogo />
+    <div className="flex flex-col items-center mt-28 px-6">
+      <img className="w-auto max-w-xl my-6" alt="Mind Games" src={Logo} />
       <div className="w-full mx-auto max-w-xl mb-40">
         <Form onSubmit={handleAuth}>
           <Tabs className="mb-8">

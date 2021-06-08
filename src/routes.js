@@ -1,7 +1,7 @@
 import React from 'react'
 import { Redirect, Router, Switch } from 'react-router-dom'
 import history from './history'
-import Auth from './pages/Auth/components/Auth'
+import Auth from './pages/Auth/Auth'
 import Main from './pages/Main/Main'
 import GameBoard from './pages/GameBoard/GameBoard'
 import Profile from './pages/Profile/Profile'

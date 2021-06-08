@@ -18,6 +18,7 @@ export const Input = ({
   value,
   readonly,
   disabled,
+  maxLength,
 }) => (
   <>
     <input
@@ -33,6 +34,7 @@ export const Input = ({
       value={value}
       readOnly={!!readonly}
       disabled={!!disabled}
+      maxLength={maxLength || undefined}
       onChange={(event) => onChange(event.target.value, event)}
     />
     {noError ? <ErrorText>{errorMessage}</ErrorText> : null}

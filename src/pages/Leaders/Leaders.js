@@ -31,48 +31,49 @@ export const Leaders = ({ history }) => {
     }
   }, [nickname, leaders])
 
+  const ellipsis = (str) => (str.length > 10 ? str.slice(0, 10) + '...' : str)
+
   return (
-    <div className="container px-6 pt-48">
+    <div className="container px-6 pt-24">
       <Header
         history={history}
         profile={true}
         setNicknameFunc={(val) => setNickname(val)}
       />
-      <div className="grid grid-cols-1 lg:grid-cols-2 gap-y-7 gap-x-12">
-        <div className="grid grid-cols-userRating gap-x-5 text-gray-500 items-end">
+      <div className="grid grid-cols-1 lg:grid-cols-2 gap-y-5 gap-x-12">
+        <div className="grid grid-cols-userRating gap-x-2 text-gray-500 items-end">
           <div className="text-right col-start-2">№</div>
           <div>{t('leaders.nickname')}</div>
           <div className="text-right">{t('leaders.points')}</div>
-          <div>{t('leaders.winrate')}</div>
+          <div className="text-center">{t('leaders.winrate')}</div>
         </div>
-        <div className="hidden lg:grid grid-cols-userRating gap-x-5 text-gray-500 items-end">
+        <div className="hidden lg:grid grid-cols-userRating gap-x-2 text-gray-500 items-end">
           <div className="text-right col-start-2">№</div>
           <div>{t('leaders.nickname')}</div>
           <div className="text-right">{t('leaders.points')}</div>
-          <div>{t('leaders.winrate')}</div>
+          <div className="text-center">{t('leaders.winrate')}</div>
         </div>
-        {(list.length > 0 || nickname) ? (
+        {list.length > 0 || nickname ? (
           list.map((item, i) => {
             return (
               <div
-                className="grid grid-cols-userRating gap-x-5 text-lg items-center"
+                className="w-full max-w-full grid grid-cols-userRating gap-x-2 text-lg items-center"
                 key={i}
               >
                 <img className="w-12 h-12 rounded-full" src={item.avatar} />
                 <div className="font-thin text-lg text-right">{i + 1}</div>
-                <div>
-                  {item.nickname} ({item.id})
+                <div className="w-full flex flex-col lg:flex-row lg:gap-x-3">
+                  {ellipsis(item.nickname)}
+                  <span className="text-gray-500 text-sm lg:text-lg">#{item.id}</span>
                 </div>
-                <div className="text-right">
-                  {item.pts}pts / {item?.position}th
-                </div>
-                <div>
-                  <span className="text-red-500">
-                    {item.winrate.split('/')[0]}
-                  </span>
-                  &nbsp;/&nbsp;
+                <div className="text-right text-sm lg:text-lg">{item.pts}</div>
+                <div className="text-center text-sm lg:text-lg">
                   <span className="text-green-500">
                     {item.winrate.split('/')[1]}
+                  </span>
+                  &nbsp;|&nbsp;
+                  <span className="text-red-500">
+                    {item.winrate.split('/')[0]}
                   </span>
                 </div>
               </div>

@@ -177,7 +177,7 @@ const Help = ({ handleHelp, activeHelpId, scores, counter }) => {
   ]
 
   return (
-    <div className="w-full mt-8">
+    <div className="w-full">
       <div className="flex flex-row flex-wrap justify-between items-stretch">
         <p className="w-full p-2 mb-2 text-2xl text-gray-700 font-bold select-none bg-transparent">
           {t('game.weRecommend')}{' '}
@@ -188,7 +188,13 @@ const Help = ({ handleHelp, activeHelpId, scores, counter }) => {
         {helpersList
           .filter((v) => v.relevant(counter))
           .map((v) => (
-            <HelpButton active={activeHelpId === v.id} onClick={v.handler}>
+            <HelpButton
+              active={activeHelpId === v.id}
+              onClick={() => {
+                v.handler()
+                window.scroll(0, 0)
+              }}
+            >
               {v.text}
             </HelpButton>
           ))}
@@ -199,7 +205,12 @@ const Help = ({ handleHelp, activeHelpId, scores, counter }) => {
           select-none transition-all duration-100 p-2 hover:bg-gray-50"
           onClick={() => setHintShow((v) => !v)}
         >
-          <ChevronDownIcon className={classNames('w-5 h-5 inline transform transition-transform duration-150', { '-rotate-90': !hintShow })} />{' '}
+          <ChevronDownIcon
+            className={classNames(
+              'w-5 h-5 inline transform transition-transform duration-150',
+              { '-rotate-90': !hintShow }
+            )}
+          />{' '}
           {t('game.allHints')}
         </p>
         <div
@@ -211,7 +222,13 @@ const Help = ({ handleHelp, activeHelpId, scores, counter }) => {
           {helpersList
             .filter((v) => !v.relevant(counter))
             .map((v) => (
-              <HelpButton active={activeHelpId === v.id} onClick={v.handler}>
+              <HelpButton
+                active={activeHelpId === v.id}
+                onClick={() => {
+                  v.handler()
+                  window.scroll(0, 0)
+                }}
+              >
                 {v.text}
               </HelpButton>
             ))}

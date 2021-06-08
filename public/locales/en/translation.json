@@ -13,7 +13,8 @@
     "playWithRandom": "Play with random",
     "playWithBot": "Play with AI",
     "playPrivateGame": "Private game",
-    "leaderboard": "Leaderboard"
+    "leaderboard": "Leaderboard",
+    "logOut": "Log Out"
   },
   "auth": {
     "error": {
@@ -30,7 +31,7 @@
     "points": "Points",
     "nickname": "Nickname",
     "winrate": "Winrate",
-    "enterNameOrNumber": "Type name or number of player"
+    "enterNameOrNumber": "Username or ID"
   },
   "common": {
     "downloading": "Loading...",
@@ -64,7 +65,7 @@
     "win": "You won!",
     "lose": "You lost!",
     "score": "Score",
-    "scoreHints": "Score on hints",
+    "scoreHints": "Tips total price",
     "totalScore": "Total"
   },
   "game": {
@@ -75,7 +76,7 @@
     },
     "btn" : {
       "pass": "Pass",
-      "takeHint": "Take Hint",
+      "takeHint": "Take a Tip",
       "giveUp": "Give Up"
     },
     "whites": "White",
@@ -89,21 +90,25 @@
       "bestTwoOp" : "Best Two Moves of enemy",
       "bestThreeOp" : "Best Three Moves of enemy",
       "bestFourOp" : "Best Four Moves of enemy",
-      "heatmapDetailed" : "Detailed Heatmap",
+      "heatmapDetailed" : "Heatmap",
       "heatmapRegular" : "Regular Heatmap",
       "bestOfThree" : "Best of Three",
       "bestQuarter" : "Best Quarter to play",
-      "getGap" : "Get score gap",
-      "getSuper" : "Superiority?"
+      "getGap" : "Find out the gap",
+      "getSuper" : "Who is superior?"
     },
     "weRecommend": "We recommend",
     "theyWillBeUseful": "It might be helpful",
-    "allHints": "All Hints",
+    "allHints": "All Tips",
     "superiority": "Superiority",
     "loader": "Applying..."
   },
   "white": "White",
   "black": "Black",
   "madeAMove": "made a move to",
-  "timeFormat": "MM/dd/yy HH:mm"
+  "madeAPass": "passed",
+  "timeFormat": "MM/dd/yy HH:mm",
+  "gameHistory": "Game history",
+  "points": "Points: ",
+  "winrate": "Rate: "
 }
