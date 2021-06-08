@@ -126,7 +126,7 @@ const Players = ({
     }
   }
 
-  return (
+  return you && opponent ? (
     <div className="w-full grid grid-rows-2 sm:grid-cols-2 sm:grid-rows-1 gap-y-4 sm:gap-x-4 lg:mt-6 px-4 lg:px-1">
       <Card
         yourColor={yourColor}
@@ -151,6 +151,8 @@ const Players = ({
         cardColor={'white'}
       />
     </div>
+  ) : (
+    <></>
   )
 }
 

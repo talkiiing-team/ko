@@ -68,6 +68,7 @@ const BaseAPI = (method, { url, body, token }, mockResponse) => {
       if (response.status === 401) {
         return { code: response.status, message: response.statusText }
       }
+      
 
       return response.json()
     })
